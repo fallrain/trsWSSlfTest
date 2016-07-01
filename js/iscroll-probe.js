@@ -569,8 +569,8 @@
       if(newY > 0 || newY < this.maxScrollY){
         newY = this.options.bounce ? this.y + deltaY / 3 : newY > 0 ? 0 : this.maxScrollY;
       }
-      /*2016-06-29添加*/
-      if(newY > 0 && this.pointY + this.wrapperOffset.top > this.wrapperHeight){
+      /*2016-06-29 wgk修改添加*/
+      if(newY > 0 && this.pointY + this.wrapperOffset.top > document.documentElement.clientHeight){
         this.scrollTo(0, 0, 300, this.options.bounceEasing);
         return;
       }
