@@ -44,11 +44,13 @@
     };
 
     me.addEvent = function(el, type, fn, capture){
-      el.addEventListener(type, fn, !!capture);
+      /*2016-07-01 wgk修改*/
+      (el.addEventListener && el.addEventListener(type, fn, !!capture)) || el.attachEvent(type, fn, !!capture);
     };
 
     me.removeEvent = function(el, type, fn, capture){
-      el.removeEventListener(type, fn, !!capture);
+      /*2016-07-01 wgk修改*/
+      (el.removeEventListener && el.removeEventListener(type, fn, !!capture)) || el.detachEvent(type, fn, !!capture);
     };
 
     me.prefixPointerEvent = function(pointerEvent){
