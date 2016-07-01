@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!--hover放在focus前面的话，当点击链接后，hover样式就不起作用了，应该把hover都放在后面-->
+<!--同理作用于active，active只能放二者后面，否则而不起作用-->
+<!--这应该算是个bug,常理来说，active应该大于hover,但是实际上，hover变成了包括active-->
+<style>
+    a:focus{
+        color:#AA80FE;
+        text-decoration:underline;
+    }
+    a:hover{
+        color:#FF0000;
+        text-decoration:underline;
+    }
+    a:active{
+        color:#FFCC00;
+    }
+</style>
+<body>
+<a href="javascript:;">这是个链接</a>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

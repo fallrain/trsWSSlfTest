@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .qq {
+        width: 100px;
+        height: 30px;
+        border:1px solid;
+    }
+</style>
+<body>
+<div class="qq">1</div>
+<div class="qq">2</div>
+<div class="qq">3</div>
+<div class="qq">4</div>
+<div class="qq">5</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    function qq(){
+        console.log(this.innerHTML)
+    }
+    for(var i=0;i<$('.qq').length;i++){
+        $('.qq')[i].onclick=qq;
+    }
+</script>
+</body>
+</html>

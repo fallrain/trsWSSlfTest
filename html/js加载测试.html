@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js加载测试</title>
+</head>
+<!--js请求和css等资源是同步请求的，但是就测试情况来说，接收是到节点位置才会接收，并执行。待继续测试-->
+<style>
+    .qq {
+        width: 50px;
+        height: 50px;
+        border: 1px solid;
+    }
+</style>
+<body>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<div class="qq"></div>
+<div class="qq"></div>
+<div class="qq"></div>
+<div class="qq"></div>
+<!--<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>-->
+<div class="qq"></div>
+</body>
+</html>

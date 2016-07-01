@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉框测试</title>
+    <link rel="stylesheet" href="../css/hn_base1.css">
+    <link rel="stylesheet" href="../css/moban.css">
+</head>
+<style>
+    #check1:checked + .ul2 {
+        display: block !important;
+    }
+</style>
+<body>
+
+<div class="pa_group req ac_add">
+    <span class="ba" style="vertical-align:top;">居住地址</span>
+    <ul class="ul1 js_1 ac_add">
+        <li class="up js_pulldown">
+            <em>请选择</em>
+            <ul class="ul2 js_1a" id="province" style="display: none;">
+                <li livalue="1">安徽</li>
+                <li livalue="2">北京</li>
+                <li livalue="3">重庆</li>
+                <li livalue="4">福建</li>
+                <li livalue="5">甘肃</li>
+                <li livalue="6">广东</li>
+                <li livalue="7">广西</li>
+                <li livalue="8">贵州</li>
+                <li livalue="9">海南</li>
+                <li livalue="10">河北</li>
+                <li livalue="11">河南</li>
+                <li livalue="12">黑龙江</li>
+                <li livalue="13">湖北</li>
+                <li livalue="14">湖南</li>
+                <li livalue="15">吉林</li>
+                <li livalue="16">江苏</li>
+                <li livalue="17">江西</li>
+                <li livalue="50">辽宁</li>
+                <li livalue="51">内蒙</li>
+                <li livalue="52">宁夏</li>
+                <li livalue="53">青海</li>
+                <li livalue="54">山东</li>
+                <li livalue="55">山西</li>
+                <li livalue="56">陕西</li>
+                <li livalue="57">上海</li>
+                <li livalue="58">四川</li>
+                <li livalue="59">天津</li>
+                <li livalue="60">西藏</li>
+                <li livalue="61">香港特别行政区</li>
+                <li livalue="62">新疆</li>
+                <li livalue="63">云南</li>
+                <li livalue="64">浙江</li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="ul1 js_1 ac_add">
+        <li class="up js_pulldown">
+            <em>请选择</em>
+            <ul class="ul2 js_1a" id="city" style="display: none;">
+            </ul>
+        </li>
+    </ul>
+    <ul class="ul1 js_1 ac_add">
+        <li class="up js_pulldown">
+            <em>请选择</em>
+            <ul class="ul2 js_1a" id="area" style="display: none;">
+            </ul>
+        </li>
+    </ul>
+    <div class="clear"></div>
+    <textarea id="detailAdd" cols="30" rows="10" placeholder="请尽可能详尽的填写接到，楼号，楼层，门牌号"></textarea>
+</div>
+
+<div class="rotate-main" id="testr">
+    <div class="rotate-card">
+        <img class="" src="../img/bai.png" alt="../img/hei.png">
+    </div>
+</div>
+<div class="clear"></div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/address-select.js"></script>
+<script src="../js/rotate.js"></script>
+<script>
+    $.fn.dbRotate2D.call($("#testr"));
+</script>
+</body>
+</html>

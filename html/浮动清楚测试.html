@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .cl {
+        clear: both;
+    }
+
+    .pl {
+        float: left;
+    }
+
+    .qq {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+    }
+
+    .fd::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .sd::before {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .div1 {
+        background: #000080;
+        border: 1px solid red;
+    }
+
+    .div2 {
+        background: #800080;
+        border: 1px solid red;
+        height: 100px;
+        margin-top: 10px
+    }
+
+    .left {
+        float: left;
+        width: 20%;
+        height: 200px;
+        background: #DDD
+    }
+
+    .right {
+        float: right;
+        width: 30%;
+        height: 80px;
+        background: #DDD
+    }
+
+    /*清除浮动代码*/
+    .clearfloat:after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+
+    .clearfloat {
+        zoom: 1
+    }
+</style>
+<body>
+<div class="div1 clearfloat">
+    <div class="left">Left</div>
+    <div class="right">Right</div>
+</div>
+<div class="div2">
+    div2
+</div>
+<div class="fd pl qq">
+
+</div>
+<div class="qq sd"></div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

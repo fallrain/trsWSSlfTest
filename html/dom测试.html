@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    jQuery对象的赋予并不是地址，而是复制一份，待分析
+</style>
+<body>
+<div class="qq">
+    <div class="qq1">dsd</div>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var qqcopy=$('.qq').find('.qq1');
+    $('.qq').remove();
+    console.log(qqcopy);
+    $('body').append(qqcopy);
+</script>
+</body>
+</html>

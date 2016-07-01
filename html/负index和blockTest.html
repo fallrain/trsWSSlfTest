@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        display: flex;
+    }
+
+    .box > div {
+        background-color: blue;
+        z-index: 1;
+    }
+
+    /* 此时该div是普通元素，z-index无效 */
+    .box > div > img {
+        position: relative;
+        z-index: -1;
+        right: -150px; /* 注意这里是负值z-index */
+    }
+</style>
+<body>
+<div class="box">
+    <div>
+        <img src="../img/bai.png">
+    </div>
+</div>
+
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

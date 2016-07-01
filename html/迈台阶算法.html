@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+<body>
+请输入台阶数：<input id="step" type="text">
+<button id="count" type="button">计算</button>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var stepKinds = 0;
+    function count(){
+        var step = document.getElementById('step').value;
+        stepKinds = 0;
+        if(!step){
+            return;
+        }
+        var low = Math.floor(step / 2);
+        for(var i = 0; i <= low; i++){
+            stepKinds += zh(step - i, i);
+        }
+        alert(stepKinds);
+    }
+    document.getElementById('count').onclick = count;
+    function jiecheng(shu){
+        /*阶乘算法*/
+        if(shu <= 0){
+            return 1;
+        }
+        return shu * jiecheng(--shu);
+    }
+    function zh(n, m){
+        /*组合算法*/
+        return jiecheng(n) / (jiecheng(m) * jiecheng(n - m));
+    }
+</script>
+</body>
+</html>

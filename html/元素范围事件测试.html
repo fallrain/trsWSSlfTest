@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素范围事件测试</title>
+</head>
+<!--实际证明，元素在页面中的位置不管在不在父元素内，父元素事件依然会生效-->
+<style>
+    .main{
+        width: 300px;
+        height: 300px;
+        border:1px solid;
+        position: relative;
+    }
+    .ex{
+        width: 30px;
+        height: 30px;
+        border: 1px solid;
+        position: absolute;
+        left: 400px;
+    }
+</style>
+<body>
+<div class="main">
+    <div class="ex"></div>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var test1=function(){
+        alert();
+    }
+    $('.main').on('mouseover',test1);
+</script>
+</body>
+</html>

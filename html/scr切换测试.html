@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!--请求完一次会放缓存里，几十dom没有，也不会再请求-->
+<style>
+
+</style>
+<body>
+<div class="qq">
+    dsd
+</div>
+<img src="../img/b1.png" alt="" id="img1">
+<button type="button" onclick="cs()" id="b">dsds</button>
+<button type="button" onclick="cs1()" id="b1">11</button>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    function cs(){
+        $('#img1').prop('src','../img/bai.png');
+    }
+    function cs1(){
+        $('#img1').prop('src','../img/b1.png');
+    }
+
+</script>
+</body>
+</html>

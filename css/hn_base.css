@@ -1,0 +1,24 @@
+@charset "UTF-8";
+* {
+  font-family: DeliciousRoman, arial, Microsoft Yahei, 宋体, sans-serif !important;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+ul, li {
+  list-style: outside none none;
+}
+
+.datetimepicker {
+  font-size: 12px;
+}
+
+html, body {
+  font-size: 10px !important;
+}
+
+

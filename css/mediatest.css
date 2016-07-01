@@ -1,0 +1,10 @@
+.qq {
+  width: 100px;
+  height: 100px;
+  background: #000;
+}
+@media (max-width: 1500px) {
+  .qq {
+    background: red;
+  }
+}

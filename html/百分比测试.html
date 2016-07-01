@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!--宽 高 top left是分别按照父元素的宽高top left-->
+<!--margin padding指按照宽来计算-->
+<style>
+    .qq {
+        width: 200px;
+        height: 100px;
+        border: 1px solid;
+        position: relative;
+    }
+
+    .qq1 {
+        width: 10%;
+        height: 10%;
+        border: 1px solid;
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        margin-top: 10%;
+        margin-left: 10%;
+        padding-top: 10%;
+        padding-left: 10%;
+    }
+</style>
+<body>
+<div class="qq">
+    <div class="qq1"></div>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

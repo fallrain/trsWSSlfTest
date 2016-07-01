@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    #wrapper {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+    }
+
+    li {
+        height: 100px;
+        border: 1px solid;
+    }
+</style>
+<body>
+<div id="wrapper">
+    <ul>
+        <li>dasdasd</li>
+        <li>dasdadas</li>
+    </ul>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/iscroll-probe.js"></script>
+<script src="../js/pageRefresh.js"></script>
+<script>
+    $(function(){
+        window.onload = function(){
+            myScroll = new IScroll('#wrapper', {
+                mouseWheel: true,
+                click: true,
+                probeType: 2,
+                upDownRefresh: true
+            });
+        }
+    })
+</script>
+</body>
+</html>

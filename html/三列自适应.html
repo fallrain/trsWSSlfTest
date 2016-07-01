@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE> 测试3列布局 </TITLE>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+        .divall {
+            width: 600px;
+            height: 200px;
+            display: table;
+        }
+
+        .divall > div {
+            display: table-cell;
+        }
+
+        .cld {
+            width: 33%;
+            border: 1px solid;
+        }
+
+        .jg {
+            width: 20px;
+            height: 1px;
+            display: inline-block!important;
+        }
+        .pd{
+            padding-left:10px;
+            padding-right: 10px;
+        }
+    </style>
+</HEAD>
+
+<BODY>
+<div class="divall">
+    <div class="cld"></div>
+    <div class="jg"></div>
+    <div class="cld"></div>
+    <div class="jg"></div>
+    <div class="cld"></div>
+</div>
+</BODY>
+</HTML>

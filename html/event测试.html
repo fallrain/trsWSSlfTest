@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .pad {
+        width: 200px;
+        height: 200px;
+        background: red;
+        padding: 50px;
+    }
+
+    .dd {
+        width: 50px;
+        height: 50px;
+        background: #000;
+    }
+</style>
+<body>
+<div class="pad" id="pad">
+    <div class="dd" onclick=""></div>
+</div>
+<button id="btn1" type="button" onclick="">aaaa</button>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var btn1 = $('#btn1');
+    var a;
+    var fn1 = function(e){
+        a = e;
+    };
+    var btn10 = document.getElementById('btn1');
+    //btn10.addEventListener('click',fn1);
+    btn1.click(fn1);
+
+    document.onclick=function(e){
+        var t=e.target;
+        if(t.id!='pad'){
+            return;
+        }
+        alert('pad');
+    };
+    /*function fn2(e){
+        e.stopPropagation();
+    }*/
+
+</script>
+</body>
+</html>

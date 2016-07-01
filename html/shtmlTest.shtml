@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shtml测试</title>
+</head>
+<body>
+<!--#echo var="DD"-->
+<!--#echo var="DOCUMENT_NAME"-->
+</body>
+</html>

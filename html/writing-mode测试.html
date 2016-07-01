@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>writing-mode测试</title>
+</head>
+<body>
+<style>
+    .verticle-mode {
+        writing-mode: tb-rl;
+        -webkit-writing-mode: vertical-rl;
+        writing-mode: vertical-lr;
+    }
+
+    /* IE7比较弱，需要做点额外的动作 */
+    .verticle-mode {
+        *width: 120px;
+    }
+
+    .verticle-mode h4,
+    .verticle-mode p {
+        *display: inline;
+        *writing-mode: tb-rl;
+    }
+
+    .verticle-mode h4 {
+        *float: right;
+    }
+    .vd{
+        width: 30px;
+        height: 100px;
+        border:1px solid;
+    }
+</style>
+<!--HTML代码：-->
+<h4>咏柳</h4>
+<p>碧玉妆成一树高，<br>万条垂下绿丝绦。<br>不知细叶谁裁出，<br>二月春风似剪刀。</p>
+
+<div class="verticle-mode">
+    <h4>咏柳</h4>
+    <p>碧玉妆成一树高，<br>万条垂下绿丝绦。<br>不知细叶谁裁出，<br>二月春风似剪刀。</p>
+</div>
+<div class="verticle-mode">
+    <h4>咏柳</h4>
+    <p>碧玉妆成一树高，<br>万条垂下绿丝绦。<br>不知细叶谁裁出，<br>二月春风似剪刀。</p>
+    <div class="vd">1a好</div>
+    <div class="vd">2b生</div>
+    <div class="vd">3c学</div>
+    <div class="vd">4d习</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>eraser effect</title>
+    <script type="text/javascript" src="jquery.core.js"></script>
+    <style>
+        #canvas {
+            background: url(../img/bai.png);
+        <!-- 奖品图片-- > width: 531 px;
+        height: 438 px;
+        }
+
+        .before {
+            background: none !important;
+        }
+
+        #canvas canvas {
+            cursor: url("../img/hei.png") 0 0, auto;
+        <!-- PC端的手势图片-- >
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;">
+<div id="canvas"></div>
+</body>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        window.onload = function(){
+            /**判断浏览器是否支持canvas**/
+            try{
+                document.createElement('canvas').getContext('2d');
+            }catch(e){
+                var addDiv = document.createElement('div');
+                alert('您的手机不支持刮刮卡效果哦~!');
+            }
+        };
+        var u = navigator.userAgent, mobile = '';
+        if(u.indexOf('iPhone') > -1) mobile = 'iphone';
+        if(u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) mobile = 'Android';
+        function createCanvas(parent, width, height){
+            var canvas = {};
+            canvas.node = document.createElement('canvas');
+            canvas.context = canvas.node.getContext('2d');
+            canvas.node.width = width || 100;
+            canvas.node.height = height || 100;
+            parent.appendChild(canvas.node);
+            return canvas;
+        }
+
+        function init(container, width, height, fillColor, type){
+            var canvas = createCanvas(container, width, height);
+            var ctx = canvas.context;
+// define a custom fillCircle method
+            ctx.fillCircle = function(x, y, radius, fillColor){
+                this.fillStyle = fillColor;
+                this.beginPath();
+                this.moveTo(x, y);
+                this.arc(x, y, radius, 0, Math.PI * 2, false);
+                this.fill();
+            };
+            ctx.clearTo = function(fillColor){
+                ctx.fillStyle = fillColor;
+                ctx.fillRect(0, 0, width, height);
+            };
+            ctx.clearTo(fillColor || "#ddd");
+            canvas.node.addEventListener("touchstart", function(e){
+                canvas.isDrawing = true;
+            }, false);
+            canvas.node.addEventListener("touchend", function(e){
+                canvas.isDrawing = false;
+            }, false);
+            canvas.node.addEventListener("touchmove", function(e){
+                if(!canvas.isDrawing){
+                    return;
+                }
+                if(type == 'Android'){
+                    var x = e.changedTouches[0].pageX - this.offsetLeft;
+                    var y = e.changedTouches[0].pageY - this.offsetTop;
+                }else{
+                    var x = e.pageX - this.offsetLeft;
+                    var y = e.pageY - this.offsetTop;
+                }
+                var radius = 20;
+                var fillColor = '#ff0000';
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.fillCircle(x, y, radius, fillColor);
+            }, false);
+        }
+
+        var container = document.getElementById('canvas');
+        init(container, 531, 438, '#ff0000', mobile);
+    })();
+</script>
+</html>
