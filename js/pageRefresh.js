@@ -88,9 +88,15 @@
     genPullDown: function(){
       /*不会再次判断pulldownhtml是否为空*/
       var pullDownHtml = this.cfg.pullDownHtml;
-      var preHtml = $(this.iScroll.scroller).prevAll();
-      preHtml.remove();//暂时设定为删除滚动区域之前的所有
-      this.rootDom.prepend(pullDownHtml);
+      var $pullDownHtml = $(pullDownHtml);
+      /*var preHtml = $(this.iScroll.scroller).prevAll();
+       preHtml.remove();//暂时设定为删除滚动区域之前的所有
+       this.rootDom.prepend(pullDownHtml);*/
+      var scroller = $(this.iScroll.scroller);
+      scroller.prepend($pullDownHtml);
+      var pullDownHeight = $pullDownHtml.height();//插入后才取值
+      this.iScroll.scrollTo(0,pullDownHeight * -1);
+      this.iScroll.pullDownY = pullDownHeight;
     },
   });
 

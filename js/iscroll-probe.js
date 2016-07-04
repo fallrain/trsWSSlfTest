@@ -573,7 +573,8 @@
       }
       /*2016-06-29 wgk修改添加*/
       if(newY > 0 && this.pointY + this.wrapperOffset.top > document.documentElement.clientHeight){
-        this.scrollTo(0, 0, 300, this.options.bounceEasing);
+        var pullDownY = this.pullDownY ? this.pullDownY * -1 : 0;
+        this.scrollTo(0, pullDownY, 300, this.options.bounceEasing);
         return;
       }
 
@@ -727,7 +728,7 @@
       }
       /*2016-06-30 wgk修改*/
       if(!this.hasVerticalScroll || this.y >= 0 || (this.scrollerHeight <= document.documentElement.clientHeight && this.maxScrollY >= 0 && this.y <= 0)){
-        y = 0;
+        y = this.pullDownY ? this.pullDownY * -1 : 0;
       }else if(this.maxScrollY <= 0 && this.y < this.maxScrollY){
         y = this.maxScrollY;
       }
@@ -1144,7 +1145,7 @@
     },
 
     _wheel: function(e){
-      /*2016-07-05 wgk修改*/
+      /*2016-070*/
       if(!this.enabled || this.maxScrollY >= 0){
         return;
       }
