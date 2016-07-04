@@ -4,23 +4,31 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+<link rel="stylesheet" href="../css/pageRefresh.css">
 <style>
     #wrapper {
         position: absolute;
-        top: 10px;
-        bottom: 10px;
     }
 
     li {
         height: 100px;
         border: 1px solid;
     }
+
+    .pull-down {
+        height: 50px;
+        width: 100%;
+        box-sizing: border-box;
+        background: #32beff;
+    }
 </style>
 <body>
-<div id="wrapper">
-    <ul>
-        <li>dasdasd</li>
-        <li>dasdadas</li>
+<div id="pr-demo-wrapper" class="pr-demo-wrapper">
+    <ul class="pr-dft-demo-ul">
+        <li id="qq">dasdasd</li>
+        <li>1</li><li>2</li><li>3</li>
+       <!-- <li>4</li><li>5</li><li>6</li>
+        <li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li>-->
     </ul>
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
@@ -28,14 +36,14 @@
 <script src="../js/pageRefresh.js"></script>
 <script>
     $(function(){
-        window.onload = function(){
-            myScroll = new IScroll('#wrapper', {
-                mouseWheel: true,
-                click: true,
-                probeType: 2,
-                upDownRefresh: true
-            });
-        }
+        myScroll = new PageRefresh({
+            appendId: 'pr-demo-wrapper',
+            mouseWheel: true,
+            probeType: 2,
+            upDownRefresh: true,
+            //pullDownHtml:'<div class="pull-down"></div>',
+        });
+
     })
 </script>
 </body>

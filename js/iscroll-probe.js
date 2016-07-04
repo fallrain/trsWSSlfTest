@@ -726,7 +726,7 @@
         x = this.maxScrollX;
       }
       /*2016-06-30 wgk修改*/
-      if(!this.hasVerticalScroll || this.y >= 0 || (this.maxScrollY >= 0 && this.y <= 0)){
+      if(!this.hasVerticalScroll || this.y >= 0 || (this.scrollerHeight <= document.documentElement.clientHeight && this.maxScrollY >= 0 && this.y <= 0)){
         y = 0;
       }else if(this.maxScrollY <= 0 && this.y < this.maxScrollY){
         y = this.maxScrollY;
@@ -766,8 +766,8 @@
       /* REPLACE END: refresh */
       /*2016-06-30 wgk修改*/
       if(this.options.upDownRefresh){
-        this.hasVerticalScroll = this.options.scrollY;
-        this.hasHorizontalScroll = this.options.scrollX;
+        this.hasVerticalScroll = true;
+        //this.hasHorizontalScroll = this.options.scrollX;
       }else{
         this.hasVerticalScroll = this.options.scrollY && this.maxScrollY < 0;
         this.hasHorizontalScroll = this.options.scrollX && this.maxScrollX < 0;
@@ -1144,7 +1144,8 @@
     },
 
     _wheel: function(e){
-      if(!this.enabled){
+      /*2016-07-05 wgk修改*/
+      if(!this.enabled || this.maxScrollY >= 0){
         return;
       }
 

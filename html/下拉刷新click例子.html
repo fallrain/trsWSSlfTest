@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <title>iScroll demo: click</title>
+
+    <script type="text/javascript" src="../js/iscroll-probe.js"></script>
+
+    <script type="text/javascript">
+
+        var myScroll;
+
+        window.onload = setTimeout(function loaded(){
+            myScroll = new IScroll('#wrapper', {
+                mouseWheel: true,
+                click: true,
+                probeType: 2,
+                upDownRefresh: true
+            });
+            /*  myScroll.on('scrollEnd', function(){
+             //alert();
+             });*/
+            myScroll.on('scroll', function(){
+                //console.log(myScroll.y);
+            });
+            myScroll.on('refresh', function(){
+                //alert(1);
+            });
+        }, 300);
+        document.addEventListener('touchmove', function(e){
+            e.preventDefault();
+        }, false);
+    </script>
+
+    <style type="text/css">
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        #wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+        ul{
+            margin:0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+<body onload="">
+
+<div id="wrapper">
+    <div id="scroller">
+        <ul>
+            <li id="qq">Pretty row 1</li>
+            <li>Pretty row 2</li>
+            <li>Pretty row 3</li>
+            <li>Pretty row 4</li>
+            <li>Pretty row 5</li>
+            <li id="me">
+                <a href="#" onclick="console.log(this.parentNode.style.backgroundColor);this.parentNode.style.backgroundColor=this.parentNode.style.backgroundColor==''?'#a00':'';return false">Click
+                    me!</a></li>
+            <li>Pretty row 7</li>
+            <li>Pretty row 8</li>
+            <li>Pretty row 9</li>
+            <li>Pretty row 10</li>
+            <li>Pretty row 11</li>
+            <li>Pretty row 12</li>
+            <li>Pretty row 13</li>
+            <li>Pretty row 14</li>
+            <li>Pretty row 15</li>
+
+
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>
