@@ -56,7 +56,14 @@
     defaultCfg: {
       appendId: '',
       isDown: false,//是否下拉刷新
-      pullDownHtml: '',//下拉的HTML
+      pullDownHtml: '<div class="pr-pull-down">' +
+      '<div class="pr-loader">' +
+      '<span></span><span></span><span></span><span></span>' +
+      '</div>' +
+      '<div class="pr-loader-inf">下拉刷新</div>' +
+      '</div>',//下拉的HTML
+      beginPullUp: function(){
+      },
     },
     init: function(cfg){
       this.cfg = cfg;
@@ -82,12 +89,51 @@
         var appendId = _this.cfg.appendId;
         _this.iScroll = new IScroll('#' + appendId, _this.cfg);
         /*组合下拉，因为在onload事件中，所以需要在此方法执行，扩展性待修改*/
-        _this.cfg.pullDownHtml && _this.genPullDown();//如果存在下拉就组合下拉
+        _this.genPullDown();//如果存在下拉就组合下拉
+        _this.pullDownHover();
       }
     },
+    pullDownHover: function(){
+      /*下拉刷新悬停*/
+      var _this = this;
+      var iScroll=_this.iScroll;
+      iScroll.on('scroll', function(){
+        if(this.y >= this.pullDownY){
+          if(_this.cfg.beginPullUp){
+            _this.cfg.beginPullUp();
+            iScroll.off('scrollEnd');
+            iScroll.on('scrollEnd', function(){
+              if(_this.cfg.downRefreshFn){
+                _this.cfg.downRefreshFn();
+              }
+              iScroll.off('scrollEnd');
+            });
+          }else{
+            _this.defaultBeginPullUp();
+            iScroll.off('scrollEnd');
+            iScroll.on('scrollEnd', function(){
+              if(_this.cfg.downRefreshFn){
+                _this.cfg.downRefreshFn();
+              }
+              iScroll.off('scrollEnd');
+            });
+          }
+        }
+      });
+    },
+    afterDownRefreshFn: function(){
+      /*在下拉刷新后需要执行的函数*/
+      this.iScroll.pullDownY = this.pullDownHeight;
+      this.iScroll.resetPosition(400);
+    },
+    defaultBeginPullUp: function(){
+      /*在把下拉提示框都拉出来之后需要执行的函数*/
+      this.rootDom.find('.pr-loader').css('display', 'block');
+      this.iScroll.pullDownY = 0;
+    },
     genPullDown: function(){
-      /*不会再次判断pulldownhtml是否为空*/
-      var pullDownHtml = this.cfg.pullDownHtml;
+      /*组合下拉的代码区*/
+      var pullDownHtml = this.cfg.pullDownHtml ? this.cfg.pullDownHtml : this.defaultCfg.pullDownHtml;
       var $pullDownHtml = $(pullDownHtml);
       /*var preHtml = $(this.iScroll.scroller).prevAll();
        preHtml.remove();//暂时设定为删除滚动区域之前的所有
@@ -95,8 +141,9 @@
       var scroller = $(this.iScroll.scroller);
       scroller.prepend($pullDownHtml);
       var pullDownHeight = $pullDownHtml.height();//插入后才取值
-      this.iScroll.scrollTo(0,pullDownHeight * -1);
-      this.iScroll.pullDownY = pullDownHeight;
+      this.iScroll.scrollTo(0, pullDownHeight * -1);
+      this.pullDownHeight = pullDownHeight;
+      this.iScroll.pullDownY = pullDownHeight;//需要拿这个判断的值
     },
   });
 

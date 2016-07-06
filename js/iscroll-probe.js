@@ -810,7 +810,10 @@
       if(!this._events[type]){
         return;
       }
-
+      if(!fn){
+        this._events[type]=[];
+        return;
+      }
       var index = this._events[type].indexOf(fn);
 
       if(index > -1){
