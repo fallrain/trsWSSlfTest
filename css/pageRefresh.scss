@@ -12,6 +12,7 @@ body {
   height: 500px;
   overflow: hidden;
   border-top: 5px solid #CCCCCC;
+  border-bottom: 5px solid #CCCCCC;
 }
 
 .pr-dft-demo-ul {
@@ -21,10 +22,15 @@ body {
   position: absolute;
 }
 
-.pr-pull-down {
+.pr-pull-down,
+.pr-pull-up {
   text-align: center;
   height: 50px;
   overflow: hidden;
+}
+
+.pr-pull-up {
+  //display: none;
 }
 
 .pr-loader-inf {

@@ -62,8 +62,16 @@
       '</div>' +
       '<div class="pr-loader-inf">下拉刷新</div>' +
       '</div>',//下拉的HTML
+      pullUpHtml: '<div class="pr-pull-up">' +
+      '<div class="pr-loader">' +
+      '<span></span><span></span><span></span><span></span>' +
+      '</div>' +
+      '<div class="pr-loader-inf">上拉刷新</div>' +
+      '</div>',//下拉的HTML
       beginPullUp: function(){
       },
+      downRefreshFn: function(){
+      },//查询数据的函数，一般是异步，所以需要在回调函数最后执行afterDownRefreshFn方法
     },
     init: function(cfg){
       this.cfg = cfg;
@@ -89,14 +97,19 @@
         var appendId = _this.cfg.appendId;
         _this.iScroll = new IScroll('#' + appendId, _this.cfg);
         /*组合下拉，因为在onload事件中，所以需要在此方法执行，扩展性待修改*/
-        _this.genPullDown();//如果存在下拉就组合下拉
-        _this.pullDownHover();
+        if(_this.cfg.isPullDown){
+          _this.genPullDown();
+          _this.pullDownHover();
+        }
+        if(_this.cfg.isPullUp){
+          //_this.genPullUp();
+        }
       }
     },
     pullDownHover: function(){
       /*下拉刷新悬停*/
       var _this = this;
-      var iScroll=_this.iScroll;
+      var iScroll = _this.iScroll;
       iScroll.on('scroll', function(){
         if(this.y >= this.pullDownY){
           if(_this.cfg.beginPullUp){
@@ -144,6 +157,23 @@
       this.iScroll.scrollTo(0, pullDownHeight * -1);
       this.pullDownHeight = pullDownHeight;
       this.iScroll.pullDownY = pullDownHeight;//需要拿这个判断的值
+    },
+    genPullUp: function(){
+      var pullUpHtml = this.cfg.pullUpHtml ? this.cfg.pullUpHtml : this.defaultCfg.pullUpHtml;
+      var $pullDownHtml = $(pullUpHtml);
+      var iScroll=this.iScroll;
+      var scroller = $(iScroll.scroller);
+      var scrollerHeight;
+      if(this.cfg.isPullDown && this.cfg.pullDownHtml){
+        scrollerHeight = iScroll.scrollerHeight - $(this.cfg.pullDownHtml).height();
+      }else{
+        scrollerHeight = iScroll.scrollerHeight;
+      }
+      if(scrollerHeight < iScroll.wrapperHeight){
+        /*小于容器高则不会显示*/
+        $pullDownHtml.css('display', 'none');
+      }
+      scroller.append($pullDownHtml);
     },
   });
 

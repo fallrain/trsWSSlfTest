@@ -8,3 +8,12 @@
     background: red;
   }
 }
+.qq2 {
+  width: 100px;
+  height: 100px;
+  background: url('../img/bai.png');
+  transform: rotate(30deg);
+  border-radius: 100%;
+  position: relative;
+  behavior: url(../js/ie-css3.htc);
+}

@@ -10,7 +10,8 @@ body {
   width: 100%;
   height: 500px;
   overflow: hidden;
-  border-top: 5px solid #CCCCCC; }
+  border-top: 5px solid #CCCCCC;
+  border-bottom: 5px solid #CCCCCC; }
 
 .pr-dft-demo-ul {
   margin: 0;
@@ -18,7 +19,8 @@ body {
   list-style: none;
   position: absolute; }
 
-.pr-pull-down {
+.pr-pull-down,
+.pr-pull-up {
   text-align: center;
   height: 50px;
   overflow: hidden; }

@@ -810,8 +810,9 @@
       if(!this._events[type]){
         return;
       }
+      /*2016-07-06 wgk修改*/
       if(!fn){
-        this._events[type]=[];
+        this._events[type] = [];
         return;
       }
       var index = this._events[type].indexOf(fn);
@@ -1148,7 +1149,7 @@
     },
 
     _wheel: function(e){
-      /*2016-070*/
+      /*2016-07-04 wgk修改*/
       if(!this.enabled || this.maxScrollY >= 0){
         return;
       }
@@ -1233,7 +1234,8 @@
       }
 
       if(newY > 0){
-        newY = 0;
+        /*2016-07-06 wgk修改*/
+        newY = this.pullDownY ? this.pullDownY * -1 : 0;
       }else if(newY < this.maxScrollY){
         newY = this.maxScrollY;
       }

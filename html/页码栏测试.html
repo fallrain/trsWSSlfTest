@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .paging {
+        background: #fff;
+        text-align: center;
+    }
+
+    .paging a.disable {
+        background: #f6f6f6;
+        color: #ccc;
+    }
+
+    .paging a.prev,
+    .paging a.next {
+        width: 46px;
+    }
+
+    .paging a {
+        border: 1px solid #e5e5e5;
+        color: #666;
+        display: inline-block;
+        font-size: 14px;
+        height: 38px;
+        line-height: 38px;
+        margin-right: 10px;
+        text-align: center;
+        min-width: 32px;
+        padding: 0 3px;
+        text-decoration: none;
+    }
+
+    .paging a.active,
+    .paging a.active:hover {
+        background: #005aab;
+        border: 1px solid #005aab;
+        color: #fff;
+    }
+
+    .paging span.ellipsis {
+        margin: 0 15px 0 5px;
+    }
+
+    .paging span {
+        color: #666;
+        font-size: 14px;
+        margin: 0 6px;
+    }
+
+    .comButton {
+        background: #32beff;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .paging .comButton {
+        border: 0;
+        color: #fff;
+        height: 40px;
+        text-align: center;
+        vertical-align: top;
+        width: 68px;
+    }
+
+    .paging input {
+        border: 1px solid #e5e5e5;
+        height: 22px;
+        line-height: 22px;
+        outline: none;
+        padding: 8px;
+        text-align: center;
+        vertical-align: top;
+        width: 43px;
+        font-size: 14px;
+    }
+</style>
+<body>
+<div class="paging">
+    <a href="javascript:;" class="prev disable">上一页</a>
+    <a href="javascript:;" class="active">1</a>
+    <a href="javascript:;">2</a>
+    <a href="javascript:;">3</a>
+    <span class="ellipsis">...</span>
+    <a href="javascript:;">25</a>
+    <a href="javascript:;" class="next">下一页</a>
+    <span>跳转到</span>
+    <input type="text" class="placeholder">
+    <span>页</span>
+    <a href="javascript:;" class="comButton">确定</a>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>
