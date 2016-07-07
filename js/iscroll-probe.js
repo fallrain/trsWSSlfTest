@@ -1217,7 +1217,6 @@
         }
 
         this.goToPage(newX, newY);
-
         return;
       }
 
@@ -1236,8 +1235,9 @@
       if(newY > 0){
         /*2016-07-06 wgk修改*/
         newY = this.pullDownY ? this.pullDownY * -1 : 0;
-      }else if(newY < this.maxScrollY){
-        newY = this.maxScrollY;
+        /*2016-07-07 wgk修改*/
+      }else if(newY < (this.maxScrollY - this.pullDownY || 0)){
+        newY = this.maxScrollY - this.pullDownY || 0;
       }
 
       this.scrollTo(newX, newY, 0);
