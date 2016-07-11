@@ -572,10 +572,14 @@
         newY = this.options.bounce ? this.y + deltaY / 3 : newY > 0 ? 0 : this.maxScrollY;
       }
       /*2016-06-29 wgk修改添加*/
-      if(newY > 0 && this.pointY + this.wrapperOffset.top > document.documentElement.clientHeight){
+      if(newY > 0 && this.pointY  > document.documentElement.clientHeight){
         var pullDownY = this.pullDownY ? this.pullDownY * -1 : 0;
         this.scrollTo(0, pullDownY, 300, this.options.bounceEasing);
         return;
+      }
+      /*2016-07-01 wgk修改添加*/
+      if(this.pointY<=0 && newY<(this.maxScrollY-this.pullDownY || 0)){
+        this.scrollTo(0, this.maxScrollY-this.pullDownY || 0, 200, this.options.bounceEasing);
       }
 
       this.directionX = deltaX > 0 ? -1 : deltaX < 0 ? 1 : 0;
@@ -729,8 +733,8 @@
       /*2016-06-30 wgk修改*/
       if(!this.hasVerticalScroll || this.y >= 0 || (this.scrollerHeight <= document.documentElement.clientHeight && this.maxScrollY >= 0 && this.y <= 0)){
         y = this.pullDownY ? this.pullDownY * -1 : 0;
-      }else if(this.maxScrollY <= 0 && this.y < this.maxScrollY){
-        y = this.maxScrollY;
+      }else if(this.maxScrollY <= 0 && this.y < (this.maxScrollY - this.pullDownY || 0)){
+        y = this.maxScrollY - this.pullDownY || 0;
       }
 
       if(x == this.x && y == this.y){
