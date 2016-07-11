@@ -63,11 +63,11 @@
       '<div class="pr-loader-inf">下拉刷新</div>' +
       '</div>',//下拉的HTML
       pullUpHtml: '<div class="pr-pull-up">' +
+      '<div class="pr-loader-inf">上拉刷新</div>' +
       '<div class="pr-loader">' +
       '<span></span><span></span><span></span><span></span>' +
       '</div>' +
-      '<div class="pr-loader-inf">上拉刷新</div>' +
-      '</div>',//下拉的HTML
+      '</div>',
       beginPullUp: function(){
       },
       downRefreshFn: function(){
@@ -102,7 +102,8 @@
           _this.pullDownHover();
         }
         if(_this.cfg.isPullUp){
-          //_this.genPullUp();
+          _this.genPullUp();
+          _this.pullUpHover();
         }
       }
     },
@@ -110,39 +111,66 @@
       /*下拉刷新悬停*/
       var _this = this;
       var iScroll = _this.iScroll;
+      var scrollDownEndFn = function(){
+        if(_this.cfg.downRefreshFn){
+          _this.cfg.downRefreshFn();
+        }
+        iScroll.off('scrollEnd');
+      };
       iScroll.on('scroll', function(){
         if(this.y >= this.pullDownY){
-          if(_this.cfg.beginPullUp){
-            _this.cfg.beginPullUp();
-            iScroll.off('scrollEnd');
-            iScroll.on('scrollEnd', function(){
-              if(_this.cfg.downRefreshFn){
-                _this.cfg.downRefreshFn();
-              }
-              iScroll.off('scrollEnd');
-            });
+          if(_this.cfg.beginPullDown){
+            _this.cfg.beginPullDown();
+            iScroll.off('scrollEnd', scrollDownEndFn);
+            iScroll.on('scrollEnd', scrollDownEndFn);
           }else{
-            _this.defaultBeginPullUp();
-            iScroll.off('scrollEnd');
-            iScroll.on('scrollEnd', function(){
-              if(_this.cfg.downRefreshFn){
-                _this.cfg.downRefreshFn();
-              }
-              iScroll.off('scrollEnd');
-            });
+            _this.defaultBeginPullDown();
+            iScroll.off('scrollEnd', scrollDownEndFn);
+            iScroll.on('scrollEnd', scrollDownEndFn);
           }
         }
       });
     },
-    afterDownRefreshFn: function(){
+    pullUpHover: function(){
+      /*上拉刷新悬停*/
+      var _this = this;
+      var iScroll = _this.iScroll;
+      var scrollUpEndFn = function(){
+        if(_this.cfg.upRefreshFn){
+          _this.cfg.upRefreshFn();
+        }
+        iScroll.off('scrollEnd');
+      };
+      iScroll.on('scroll', function(){
+        if(this.y <= (this.maxScrollY - (_this.pullDownHeight || 0) - (_this.pullUpHeight || 0))){
+          if(_this.cfg.beginPullUp){
+            _this.cfg.beginPullUp();
+            iScroll.off('scrollEnd', scrollUpEndFn);
+            iScroll.on('scrollEnd', scrollUpEndFn);
+          }else{
+            _this.defaultBeginPullUp();
+            iScroll.off('scrollEnd', scrollUpEndFn);
+            iScroll.on('scrollEnd', scrollUpEndFn);
+          }
+        }
+      });
+    },
+    afterRefreshFn: function(type){
       /*在下拉刷新后需要执行的函数*/
-      this.iScroll.pullDownY = this.pullDownHeight;
+      var nameType = type.substr(0, 1).toUpperCase() + type.substr(1);
+      this.iScroll['pull' + nameType + 'Y'] = type == 'up' ? 0 : this['pull' + nameType + 'Height'];
       this.iScroll.resetPosition(400);
+      this.rootDom.find('.pr-loader').css('display', 'none');
+    },
+    defaultBeginPullDown: function(){
+      /*在把下拉提示框都拉出来之后需要执行的函数*/
+      this.rootDom.find('.pr-pull-down .pr-loader').css('display', 'block');
+      this.iScroll.pullDownY = 0;//
     },
     defaultBeginPullUp: function(){
-      /*在把下拉提示框都拉出来之后需要执行的函数*/
-      this.rootDom.find('.pr-loader').css('display', 'block');
-      this.iScroll.pullDownY = 0;
+      /*在把上拉提示框都拉出来之后需要执行的函数*/
+      this.rootDom.find('.pr-pull-up .pr-loader').css('display', 'block');
+      this.iScroll.pullUpY = this.pullUpHeight;
     },
     genPullDown: function(){
       /*组合下拉的代码区*/
@@ -160,8 +188,9 @@
     },
     genPullUp: function(){
       var pullUpHtml = this.cfg.pullUpHtml ? this.cfg.pullUpHtml : this.defaultCfg.pullUpHtml;
-      var $pullDownHtml = $(pullUpHtml);
-      var iScroll=this.iScroll;
+      var $pullUpHtml = $(pullUpHtml);
+
+      var iScroll = this.iScroll;
       var scroller = $(iScroll.scroller);
       var scrollerHeight;
       if(this.cfg.isPullDown && this.cfg.pullDownHtml){
@@ -169,11 +198,16 @@
       }else{
         scrollerHeight = iScroll.scrollerHeight;
       }
+      scroller.append($pullUpHtml);
+      var pullUpHeight = $pullUpHtml.height();//插入后取值
       if(scrollerHeight < iScroll.wrapperHeight){
         /*小于容器高则不会显示*/
-        $pullDownHtml.css('display', 'none');
+        $pullUpHtml.css('display', 'none');
+      }else{
+        //设置上拉的区域的高
+        this.pullUpHeight = pullUpHeight;
+        this.iScroll.pullUpY = pullUpHeight;//需要拿这个判断的值
       }
-      scroller.append($pullDownHtml);
     },
   });
 

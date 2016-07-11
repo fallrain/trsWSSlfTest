@@ -733,8 +733,8 @@
       /*2016-06-30 wgk修改*/
       if(!this.hasVerticalScroll || this.y >= 0 || (this.scrollerHeight <= document.documentElement.clientHeight && this.maxScrollY >= 0 && this.y <= 0)){
         y = this.pullDownY ? this.pullDownY * -1 : 0;
-      }else if(this.maxScrollY <= 0 && this.y < (this.maxScrollY - this.pullDownY || 0)){
-        y = this.maxScrollY - this.pullDownY || 0;
+      }else if(this.maxScrollY <= 0 && this.y < (this.maxScrollY - (this.pullDownY || 0)-(this.pullUpY || 0))){
+        y = this.maxScrollY - (this.pullDownY || 0) - (this.pullUpY || 0);
       }
 
       if(x == this.x && y == this.y){

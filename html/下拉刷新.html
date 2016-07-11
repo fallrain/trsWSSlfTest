@@ -59,8 +59,12 @@
             isPullUp: true,
             //pullDownHtml:'<div class="pull-down"></div>',
             downRefreshFn: function(){
-                alert(1);
-                myScroll.afterDownRefreshFn();
+                alert('下拉查询结束');
+                myScroll.afterRefreshFn('down');
+            },
+            upRefreshFn: function(){
+                alert('上拉查询结束');
+                myScroll.afterRefreshFn('up');
             }
         });
 
