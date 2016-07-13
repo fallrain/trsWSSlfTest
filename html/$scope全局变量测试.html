@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<!--scope $scope没有释放到window中-->
+<style>
+
+</style>
+<body>
+<div ng-app="myApp">
+
+    <div ng-controller="MyController">
+        <h1>{{carname}}</h1>
+        <h1>Hello {{ clock.now }}!</h1>
+        <h1>Hello {{ clock.now2 }}!</h1>
+    </div>
+</div>
+
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+    var app1 = angular.module('myApp1', []);
+    var app = angular.module('myApp', []);
+    /* app.controller('myCtrl', function($scope) {
+     $scope.carname = "Volvo";
+     });*/
+    function MyController($scope){
+        $scope.clock = {
+            now: new Date()
+        };
+        var updateClock = function(){
+            $scope.clock.now = new Date();
+            $scope.clock.now2 = new Date();
+        };
+        setInterval(function(){
+            $scope.$apply(updateClock);//$apply使得数据更新后刷新到视图
+        }, 1000);
+    }
+    //1.5.7版本需要通过下面的方式注册一下，1.2.x版本只需要和MyController同名就可以了
+    app.controller('MyController', MyController);
+</script>
+</body>
+</html>
