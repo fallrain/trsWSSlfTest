@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<div ng-app="myApp">
+    <hw>dadas</hw>
+    <div class="hw"></div>
+    <div hw eat="饭" attr-say="{{say}}"></div>
+    <input type="text" ng-model="say">
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    myApp.directive('hw', function(){
+        return {
+            restrict: 'ECMA',
+            template: '<div>hello word!你想说啥：{{say}},你想吃啥：{{eat}}</div>',
+            //replace:true,
+            scope: {
+                say: '@attrSay',
+                eat: '@'
+            }
+        };
+    });
+</script>
+</body>
+</html>

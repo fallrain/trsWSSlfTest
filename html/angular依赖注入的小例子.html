@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<div ng-app="myApp">
+  <div ng-controller="luanqi"></div>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+
+  myApp.controller('luanqi', ['$scope', 'greeter', function($scope, greeter){
+    greeter.greet('弹出内容！');
+  }]);
+
+  myApp.factory('greeter', function(){
+    return {
+      greet: function(res){
+        alert(res);
+      }
+    }
+  });
+</script>
+</body>
+</html>

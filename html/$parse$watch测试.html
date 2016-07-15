@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="myctl">
+        <input type="text" ng-model="expr">
+        <h2>{{parsedVal}}</h2>
+    </div>
+</div>
+<script src="../js/angular.1.2.29.js"></script>
+<script>
+    //并没有起作用，原因待排查
+    var myApp = angular.module('myApp', []);//module名必须和html里的ng-app名字相同
+    myApp.controller('myctl',   ['$scope', '$parse',function($scope, $parse){
+        $scope.$watch('expr', function(newVal, oldVal, scope){
+            if(newVal !== oldVal){
+                var parseFun = $parse(newVal);
+                //  获取经过解析后表达式的值
+                $scope.parsedVal = parseFun(scope);
+            }
+        })
+    }]);
+</script>
+</body>
+</html>

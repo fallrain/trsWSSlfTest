@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<div ng-controller="MyController">
+    <input ng-model="to" type="text" placeholder="Recipient" value="sa"/>
+    <textarea ng-model="emailBody"></textarea>
+    <pre>{{ previewText }}</pre>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+    var myApp = angular.module('myApp', [])
+    myApp.controller('MyController', function($scope, $interpolate){
+        console.log($scope.to);
+        $scope.to='sas';
+        //  设置监听
+        $scope.$watch('emailBody', function(body){
+            if(body){
+                var template = $interpolate(body);
+                $scope.previewText =
+                        template({to: $scope.to});
+            }
+        })
+    });
+</script>
+</body>
+</html>

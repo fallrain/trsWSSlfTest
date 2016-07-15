@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    #parentCtrl {
+        background-color: yellow;
+        padding: 10px;
+    }
+
+    #childCtrl {
+        background-color: green;
+        padding: 10px;
+    }
+</style>
+<body>
+<p>We can access: {{ rootProperty }}</p>
+<div id="parentCtrl" ng-controller="ParentCtrl">
+    <p>We can access: {{ rootProperty }} and {{ parentProperty }}</p>
+    <div id="childCtrl" ng-controller="ChildCtrl">
+        <p>
+            We can access:
+            {{ rootProperty }} and
+            {{ parentProperty }} and
+            {{ childProperty }}
+        </p>
+        <p>{{ fullSentenceFromChild }}</p>
+    </div>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+    angular.module('myApp', [])
+            .run(function($rootScope){
+                //  使用.run访问$rootScope
+                $rootScope.rootProperty = 'root scope';
+            })
+            .controller('ParentCtrl', function($scope){
+                //  使用.controller访问`ng-controller`内部的属性
+                //  在DOM 忽略的$scope中，根据当前控制器进行推断
+                $scope.parentProperty = 'parent scope';
+            })
+            .controller('ChildCtrl', function($scope){
+                $scope.childProperty = 'child scope';
+                //  同在DOM 中一样，我们可以通过当前$scope直接访问原型中的任意属性
+                $scope.fullSentenceFromChild = 'Same $scope: We can access: ' +
+                        $scope.rootProperty + ' and ' +
+                        $scope.parentProperty + ' and ' +
+                        $scope.childProperty
+            });
+</script>
+</body>
+</html>

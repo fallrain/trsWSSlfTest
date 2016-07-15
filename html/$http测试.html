@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<dvi ng-controller="mc">
+  <div ng-click="click1()">sasa</div>
+</dvi>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  var mc = myApp.controller('mc', ['$scope', '$http', function($scope, $http){
+    $scope.click1 = function(){
+      alert();
+    };
+    var pms = $http({
+      url: 'https://api.github.com/users/undefined/events?callback=angular.callbacks._5'
+    });
+    pms.then(function(data, state, header, config){
+      console.log(data);
+    });
+    pms.success(function(data, state, header, config){
+      console.log(data);
+    });
+    pms.error(function(data, state, header, config){
+      console.log(data);
+    });
+
+  }]);
+</script>
+</body>
+</html>

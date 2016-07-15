@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<div ng-controller="ServiceController">
+  <label for="username">
+    Type in a GitHub username
+  </label>
+  <input type="text"
+         ng-model="username"
+         placeholder="Enter a GitHub username"/>
+  <ul>
+    <li ng-repeat="event in events">
+      {{ event.actor.login }} {{ event.repo.name }}
+    </li>
+  </ul>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', ['myApp.service']);
+  var myAppSvs = angular.module('myApp.service', []);
+  myAppSvs.factory('httpSelf1', ['$http', function($http){
+    var githubUrl = 'https://api.github.com';
+    var githubUsername;
+    var runUserRequest = function(path){
+      // 从使用JSONP 调用Github API的$http 服务中返回promise
+      return $http({
+        method: 'JSONP',
+        url: githubUrl + '/users/' +
+        githubUsername + '/' +
+        path + '?callback=JSON_CALLBACK'
+      });
+    };
+    return {
+      events: function(username){
+        return runUserRequest('events');
+      },
+      setUsername: function(username){
+        githubUsername = username;
+      }
+    }
+  }]);
+  myAppSvs.controller('ServiceController', ['$scope', 'httpSelf1', '$timeout', function($scope, httpSelf1, $timeout){
+    //console.log(httpSelf1.events('wang'));
+    $scope.setUsername = httpSelf1.setUsername;
+    //  我们可以调用对象的事件函数
+    $scope.events = httpSelf1.events('auser');
+    //  注意username属性的变化
+    //  如果有变化就运行该函数
+    var timeOut;
+    $scope.$watch('username', function(newUsername){
+      // 从使用JSONP 调用Github API的$http 服务中返回promise
+      if(timeOut){
+        $timeout.cancel(timeOut);
+      }
+      timeOut = $timeout(httpSelf1.events(newUsername)
+        .success(function(data, status, headers,cfg){
+          // success函数在数据中封装响应
+          // 因此我们需要调用data.data 来获取原始数据
+          $scope.events = data.data;
+        }), 350);
+    });
+  }]);
+</script>
+</body>
+</html>

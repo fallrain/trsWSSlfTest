@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+<script>
+    var d1 = new Date();
+</script>
+<body ng-app="myApp">
+    <div ng-app="child">
+
+    </div>
+<div ng-controller="myctl">
+    小数点过滤器
+    {{123.456789 | number:2:3}}<br>
+    货币格式
+    {{123.456 | currency}}<br>
+    日期格式
+    {{ '2016-03-01' | date:'yy:MM:dd' }}<br>
+    过滤器
+    {{ 'abcdefg' | filter:'!a'}}<br>
+    对象过滤器
+    {{ [{
+    'name': 1,
+    'sex': '女'
+    }, {
+    'name': 2,
+    'sex': '男'
+    }] | filter:'name':1}}<br>
+
+    {{ {'name': 'Ari', 'City': 'SanFrancisco'} | json }} <br>
+
+    {{ [{
+    'name': 'Ari',
+    'status': 'awake'
+    },{
+    'name': 'Q',
+    'status': 'sleeping'
+    },{
+    'name': 'Nate',
+    'status': 'awake'
+    }] | orderBy:'name' }}<br>
+    自定义filter
+    {{ '冒号后面会有123：' | add123}}<br>
+</div>
+<script src="../js/angular.1.2.29.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('myctl', function($scope){
+        $scope.flt1 = [{
+            name: 1,
+            sex: '女'
+        }, {
+            name: 2,
+            sex: '男'
+        }];
+    });
+    var appChild = angular.module('myApp.child', []);
+    /*自定义过滤器*/
+    myApp.filter('add123', function(){
+        /*返回一个函数的方式并不太喜欢*/
+        return function(val){
+            return val + '123'
+        }
+    });
+</script>
+</body>
+</html>

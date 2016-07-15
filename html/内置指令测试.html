@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<label>someProperty = {{someProperty}}</label>
+<input type="checkbox"
+       ng-checked="someProperty"
+       ng-init="someProperty = true"
+       ng-model="someProperty">
+
+<label>someProperty = {{anotherProperty}}</label>
+<input type="checkbox"
+       ng-checked="anotherProperty"
+       ng-init="anotherProperty = false"
+       ng-model="anotherProperty">
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+</script>
+</body>
+</html>
