@@ -63,11 +63,11 @@
       '<div class="pr-loader-inf">下拉刷新</div>' +
       '</div>',//下拉的HTML
       pullUpHtml: '<div class="pr-pull-up">' +
-      '<div class="pr-loader-inf">上拉刷新</div>' +
       '<div class="pr-loader">' +
       '<span></span><span></span><span></span><span></span>' +
       '</div>' +
-      '</div>',
+      '<div class="pr-loader-inf">上拉刷新</div>' +
+      '</div>',//下拉的HTML
       beginPullUp: function(){
       },
       downRefreshFn: function(){
