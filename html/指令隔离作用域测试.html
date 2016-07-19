@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  .bordline {
+    height: 2px;
+    background: #000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+</style>
+<body ng-app="myApp">
+<div ng-controller='MainController' ng-init="myProperty = 'wow, this is cool'">
+  Outside myDirective: {{ myProperty }}
+  <div my-directive>
+  </div>
+</div>
+<div class="bordline"></div>
+<div ng-init="myProperty1='wow,thisiscool'">
+  Surrounding scope: {{ myProperty1 }}
+  <div my-directive1></div>
+  <div my-inherit-scope-directive></div>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.controller('MainController', function($scope){
+  });
+  myApp.directive('myDirective', function(){
+    return {
+      restrict: 'A',
+      scope: {},
+      priority: 100,
+      template: '<div>Inside myDirective1 {{ myProperty }}</div>'
+    };
+  });
+
+  myApp.directive('myDirective1', function(){
+    return {
+      restrict: 'A',
+      template: '内部指令, 孤立作用域: {{ myProperty1 }}',
+      scope: {}
+    };
+  })
+  myApp.directive('myInheritScopeDirective', function(){
+    return {
+      restrict: 'A',
+      template: '内部指令, 孤立作用域: {{ myProperty1 }}',
+      scope: true
+    };
+  });
+</script>
+</body>
+</html>

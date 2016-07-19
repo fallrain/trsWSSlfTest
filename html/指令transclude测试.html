@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<div sideboxtitle="Links" sidebox>
+  <ul>
+    <li>First link</li>
+    <li>Second link</li>
+  </ul>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.directive('sidebox', function(){
+    return {
+      restrict: 'EA',
+      scope: {
+        title: '@'
+      },
+      transclude: true,
+      template: '<div class="sidebox">\
+            <div class="content">\
+                <h2 class="header">{{ title }}</h2>\
+                <span class="content" ng-transclude>\
+                </span>\
+            </div>\
+        </div>'
+    };
+  });
+</script>
+</body>
+</html>

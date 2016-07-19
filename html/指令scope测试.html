@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<div ng-app="myApp" ng-init="someProperty = 'some data'">
+  <div ng-init="siblingProperty='moredata'">
+    Inside Div Two: {{ aThirdProperty }}
+    <div ng-init="aThirdProperty = 'data for 3rd property'" ng-controller="SomeController">
+      Inside Div Three: {{ aThirdProperty }}
+      <div ng-controller="SecondController">
+        Inside Div Four: {{ aThirdProperty }}
+        <br>
+        Outside myDirective: {{ myProperty }}
+        <div my-directive ng-init="myProperty = 'wow, this is cool'">
+          Inside myDirective: {{ myProperty }}
+          外部作用域的东西：{{someProperty}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.controller('SomeController', function($scope){
+    // we can leave it empty, it just needs to be defined
+  });
+  myApp.controller('SecondController', function($scope){
+    // also can be empty
+  });
+  myApp.directive('myDirective', function(){
+    return {
+      restrict: 'A',
+      scope: {}
+    }
+  })
+</script>
+</body>
+</html>

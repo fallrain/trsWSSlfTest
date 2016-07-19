@@ -9,10 +9,12 @@
 </style>
 <body>
 <div ng-app="myApp">
-    <hw>dadas</hw>
-    <div class="hw"></div>
-    <div hw eat="饭" attr-say="{{say}}"></div>
+<!--    <hw>dadas</hw>
+    <div class="hw"></div>-->
+    <div hw eat="饭" attr-say="{{say}}"></div>{{eat}}
     <input type="text" ng-model="say">
+    <div>吃：</div>
+    <input type="text" ng-model="eat">
 </div>
 <script src="../js/angular.1.5.7.js"></script>
 <script>
