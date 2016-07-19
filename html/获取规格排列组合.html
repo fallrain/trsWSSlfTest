@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  *::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  .spec-main {
+    border: 1px solid #cad5eb;
+    padding: 5px;
+  }
+
+  .spec-name,
+  .spec-val {
+    height: 50px;
+    min-height: 50px;
+    float: left;
+  }
+
+  .spec-val {
+    line-height: 40px;
+    background: #e5e5e5;
+    padding: 5px;
+  }
+
+  .spec-name {
+    line-height: 50px;
+  }
+
+  .spec-val-par {
+    display: inline-block;
+  }
+
+  .gen-spec-btn {
+    display: inline-block;
+    border: 1px solid #e5e5e5;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .spec-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .spec-table td {
+    border: 1px solid;
+  }
+</style>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+  <div ng-click="click1();">事件测试1</div>
+  <div class="gen-spec-btn" ng-click="genSpecForm();">生成规格表</div>
+  <div class="spec-main">
+    <div class="spec-name">颜色</div>
+    <div class="spec-val">
+      <div class="spec-val-par" ng-repeat="c in specData[1].data">
+        <input type="checkbox" name="color" ng-model="c.checked" value="c.val" ng-checked="c.checked">
+        <span ng-bind="c.name"></span>
+      </div>
+    </div>
+  </div>
+  <div class="spec-main">
+    <div class="spec-name">容量</div>
+    <div class="spec-val">
+      <div class="spec-val-par" ng-repeat="v in specData[2].data">
+        <input type="checkbox" name="color" ng-model="v.checked" value="c.val" ng-checked="c.checked">
+        <span ng-bind="v.name"></span>
+      </div>
+    </div>
+  </div>
+  <div class="spec-main">
+    <div class="spec-name">材质</div>
+    <div class="spec-val">
+      <input type="text" name="texture" ng-model="specData[0].data[0].name">
+    </div>
+  </div>
+  <div class="spec-table">
+
+  </div>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.factory('getSpecData', function(){
+    return function(){
+      return [
+        {
+          name: '材质',
+          type: 'single',
+          data: [
+            {
+              name: '木质',
+              val: '木质'
+            },
+          ]
+        },
+        {
+          name: "颜色",
+          type: 'checkBox',
+          data: [
+            {
+              name: '红色',
+              val: '红色',
+              checked: true
+            },
+            {
+              name: '黄色',
+              val: '黄色',
+              checked: false
+            },
+            {
+              name: '青色',
+              val: '青色',
+              checked: false
+            },
+            {
+              name: '绿色',
+              val: '绿色',
+              checked: false
+
+            },
+            {
+              name: '紫色',
+              val: '紫色',
+              checked: false
+            },
+          ],
+        },
+        {
+          name: '容量',
+          type: 'checkBox',
+          data: [
+            {
+              name: '1L',
+              val: '1L',
+              checked: false
+            },
+            {
+              name: '2L',
+              val: '2L',
+              checked: false
+            },
+            {
+              name: '3L',
+              val: '3L',
+              checked: false
+            },
+            {
+              name: '4.5L',
+              val: '4.5L',
+              checked: false
+            },
+          ]
+        }
+      ]
+    }
+  });
+  myApp.service('genSpecForm', [function(){
+    /*组合生成规格表*/
+    var specData = {};//规则的数据
+    var delNoCheck = function(datas, begin){
+      /*删掉重复的东西*/
+      for(var i = begin; i < datas.length; i++){
+        var data = datas[i];
+        if(!data.checked){
+          datas.splice(i, 1);
+          if(i == datas.length){
+            return datas;
+          }
+          delNoCheck(datas, i);
+        }else{
+          if(i == datas.length - 1){
+            return datas;
+          }
+        }
+      }
+    };
+    var convertData = function(){
+      if(!specData || JSON.stringify(specData) == '{}'){
+        return;
+      }
+      var newSpecData = angular.copy(specData);
+      for(var i in newSpecData){
+        var data = newSpecData[i];
+        if(data.type == 'single'){
+          if(!data.data && data.data != 0){
+            //删掉这个对象
+            delete newSpecData[i];
+          }
+        }else if(data.type == 'checkBox'){
+          delNoCheck(data.data, 0);
+          if(!data.data.length){
+            //长度为0也删除
+            delete newSpecData[i];
+          }
+        }
+      }
+      return newSpecData;
+    };
+    var genFormHtml = function(formData){
+      var table = genTable(formData, 0);
+      $('.spec-table').append(table);
+    };
+    var genTable = function(formData, num){
+      var data = formData[num].data;
+      if(!data){
+        return;
+      }
+      num++;
+      var table = $('<table></table>');
+      for(var i = 0; i < data.length; i++){
+        var tr = $('<tr></tr>');
+        var td = $('<td>' + data[i].name + '</td>');
+        if(num < formData.length){
+          var td2=$('<td></td>');
+          td2.append(genTable(formData,num));
+          tr.append(td2);
+        }
+        tr.prepend(td);
+        table.append(tr);
+      }
+      return table;
+    };
+    var drawForm = function(formData){
+      var par = $('.spec-table');
+      var html = genFormHtml(formData);
+    };
+    return {
+      gen: function(data){
+        var pendingData = this.getCheckedData(data);
+        console.log(pendingData);
+        drawForm(pendingData);
+      },
+      getCheckedData: function(data){
+        specData = data;
+        var pendingData = convertData();
+        return pendingData;
+      }
+    }
+  }]);
+  myApp.controller(
+    'myCtrl',
+    ['$scope', 'getSpecData', 'genSpecForm',
+      function($scope, getSpecData, genSpecForm){
+        $scope.specData = getSpecData();
+        $scope.click1 = function(){
+          /*测试数据函数*/
+          console.log($scope.specData);
+        };
+        $scope.genSpecForm = function(){
+          genSpecForm.gen($scope.specData);
+          //$scope.checkedData = genSpecForm.getCheckedData($scope.specData);
+        };
+
+        $scope.checkedData = genSpecForm.getCheckedData($scope.specData);
+
+
+      }
+    ]
+  );
+</script>
+</body>
+</html>
