@@ -159,8 +159,10 @@
       /*在下拉刷新后需要执行的函数*/
       var nameType = type.substr(0, 1).toUpperCase() + type.substr(1);
       this.iScroll['pull' + nameType + 'Y'] = type == 'up' ? 0 : this['pull' + nameType + 'Height'];
+      this.iScroll.refresh();
       this.iScroll.resetPosition(400);
       this.rootDom.find('.pr-loader').css('display', 'none');
+
     },
     defaultBeginPullDown: function(){
       /*在把下拉提示框都拉出来之后需要执行的函数*/

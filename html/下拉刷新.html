@@ -8,7 +8,7 @@
 <style>
 
   #pr-demo-wrapper {
-    position: absolute;
+    //position: absolute;
   }
 
   ul {
@@ -31,7 +31,7 @@
 
 </style>
 <body>
-<div style="height: 200px;width: 100px;background: #000;">
+<div style="height: 20px;width: 100px;background: #000;">
 
 </div>
 <div id="pr-demo-wrapper" class="pr-demo-wrapper">
@@ -49,6 +49,12 @@
 <script src="../js/iscroll-probe.js"></script>
 <script src="../js/pageRefresh.js"></script>
 <script>
+  var liNum=6;
+  function apdLi(){
+    for(var i=0;i<4;i++){
+      $('.pr-dft-demo-ul').children().last().before('<li>'+ ++liNum+'</li>');
+    }
+  }
   $(function(){
     myScroll = new PageRefresh({
       type: 'upDownRefresh',
@@ -61,6 +67,7 @@
       //pullDownHtml:'<div class="pull-down"></div>',
       downRefreshFn: function(){
         alert('下拉查询结束');
+        apdLi();
         /*在这里写查询数据的方法*/
         myScroll.afterRefreshFn('down');
       },
