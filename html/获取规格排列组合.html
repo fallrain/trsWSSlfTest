@@ -55,10 +55,27 @@
   .spec-table table {
     border-collapse: collapse;
     border-spacing: 0;
+    border: 1px solid;
+    border-left: none;
+  }
+
+  .spec-table table table {
+    border: none;
+    border-bottom: 1px solid;
+  }
+
+  .spec-table tr {
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    min-height: 50px;
+  }
+
+  .spec-table tr:nth-last-child(1) {
+    border-bottom: none;
   }
 
   .spec-table td {
-    border: 1px solid;
+    padding: 0;
   }
 </style>
 <body ng-app="myApp">
@@ -201,13 +218,13 @@
         if(data.type == 'single'){
           if(!data.data && data.data != 0){
             //删掉这个对象
-            delete newSpecData[i];
+            newSpecData.splice(i, 1);
           }
         }else if(data.type == 'checkBox'){
           delNoCheck(data.data, 0);
           if(!data.data.length){
             //长度为0也删除
-            delete newSpecData[i];
+            newSpecData.splice(i, 1);
           }
         }
       }
@@ -215,7 +232,7 @@
     };
     var genFormHtml = function(formData){
       var table = genTable(formData, 0);
-      $('.spec-table').append(table);
+      $('.spec-table').html(table);
     };
     var genTable = function(formData, num){
       var data = formData[num].data;
@@ -228,8 +245,8 @@
         var tr = $('<tr></tr>');
         var td = $('<td>' + data[i].name + '</td>');
         if(num < formData.length){
-          var td2=$('<td></td>');
-          td2.append(genTable(formData,num));
+          var td2 = $('<td></td>');
+          td2.append(genTable(formData, num));
           tr.append(td2);
         }
         tr.prepend(td);
@@ -244,7 +261,6 @@
     return {
       gen: function(data){
         var pendingData = this.getCheckedData(data);
-        console.log(pendingData);
         drawForm(pendingData);
       },
       getCheckedData: function(data){
@@ -270,6 +286,13 @@
 
         $scope.checkedData = genSpecForm.getCheckedData($scope.specData);
 
+        $scope.$watch(
+          'specData',
+          function(){
+            genSpecForm.gen($scope.specData);
+          },
+          true
+        );
 
       }
     ]
