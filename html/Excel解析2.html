@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- xlsx.js (C) 2013-2015 SheetJS http://sheetjs.com -->
+<!-- vim: set ts=2: -->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>JS-XLSX Live Demo</title>
+  <style>
+    #drop {
+      border: 2px dashed #bbb;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      padding: 25px;
+      text-align: center;
+      font: 20pt bold, "Vollkorn";
+      color: #bbb
+    }
+
+    #b64data {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+
+<p><input type="file" name="xlfile" id="xlf"/> ... or click here to select a file</p>
+
+
+<pre id="out"></pre>
+<br/>
+
+<script src="../js/jszip.js"></script>
+<script src="../js/xlsx.js"></script>
+<script>
+  var X = XLSX;
+
+  var rABS = typeof FileReader !== "undefined" && typeof FileReader.prototype !== "undefined" && typeof FileReader.prototype.readAsBinaryString !== "undefined";
+
+  var use_worker = typeof Worker !== 'undefined';
+
+  var transferable = use_worker;
+
+  var wtf_mode = false;
+
+  function fixdata(data){
+    var o = "", l = 0, w = 10240;
+    for(; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
+    o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
+    return o;
+  }
+
+  function to_json(workbook){
+    var result = {};
+    workbook.SheetNames.forEach(function(sheetName){
+      var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+      if(roa.length > 0){
+        result[sheetName] = roa;
+      }
+    });
+    return result;
+  }
+
+  function to_formulae(workbook){
+    var result = [];
+    workbook.SheetNames.forEach(function(sheetName){
+      var formulae = X.utils.get_formulae(workbook.Sheets[sheetName]);
+      if(formulae.length > 0){
+        result.push("SHEET: " + sheetName);
+        result.push("");
+        result.push(formulae.join("\n"));
+      }
+    });
+    return result.join("\n");
+  }
+
+  function to_csv(workbook){
+    var result = [];
+    workbook.SheetNames.forEach(function(sheetName){
+      var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+      if(csv.length > 0){
+        result.push("SHEET: " + sheetName);
+        result.push("");
+        result.push(csv);
+      }
+    });
+    return result.join("\n");
+  }
+
+  /*  function to_formulae(workbook){
+   var result = [];
+   workbook.SheetNames.forEach(function(sheetName){
+   var formulae = X.utils.get_formulae(workbook.Sheets[sheetName]);
+   if(formulae.length > 0){
+   result.push("SHEET: " + sheetName);
+   result.push("");
+   result.push(formulae.join("\n"));
+   }
+   });
+   return result.join("\n");
+   }*/
+
+  function process_wb(wb,type){
+    var output = "";
+    switch(type){
+      case "json":
+        output = JSON.stringify(to_json(wb), 2, 2);
+        break;
+      case "form":
+        output = to_formulae(wb);
+        break;
+      default:
+        output = to_csv(wb);
+    }
+    if(out.innerText === undefined) out.textContent = output;
+    else out.innerText = output;
+    if(typeof console !== 'undefined') console.log("output", new Date());
+  }
+
+  var xlf = document.getElementById('xlf');
+  function handleFile(e){
+    var files = e.target.files;
+    var f = files[0];
+    {
+      var reader = new FileReader();
+      var name = f.name;
+      reader.onload = function(e){
+        if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
+        var data = e.target.result;
+
+        var wb;
+
+        var arr = fixdata(data);
+        wb = X.read(btoa(arr), {type: 'base64'});
+        process_wb(wb);
+      //};
+      reader.readAsArrayBuffer(f);
+    }
+  }
+
+  if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+</script>
+</body>
+</html>

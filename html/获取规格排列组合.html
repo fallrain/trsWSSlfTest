@@ -52,16 +52,22 @@
     cursor: pointer;
   }
 
+  .spec-table {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+  }
+
+  .spec-table table:nth-last-of-type(1) {
+  / / border-right: 1 px solid;
+  }
+
   .spec-table table {
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid;
-    border-left: none;
   }
 
   .spec-table table table {
-    border: none;
-    border-bottom: 1px solid;
+
   }
 
   .spec-table tr {
@@ -87,7 +93,7 @@
     <div class="spec-val">
       <div class="spec-val-par" ng-repeat="c in specData[1].data">
         <input type="checkbox" name="color" ng-model="c.checked" value="c.val" ng-checked="c.checked">
-        <span ng-bind="c.name"></span>
+        <span ng-bind="c.valueName"></span>
       </div>
     </div>
   </div>
@@ -96,14 +102,14 @@
     <div class="spec-val">
       <div class="spec-val-par" ng-repeat="v in specData[2].data">
         <input type="checkbox" name="color" ng-model="v.checked" value="c.val" ng-checked="c.checked">
-        <span ng-bind="v.name"></span>
+        <span ng-bind="v.valueName"></span>
       </div>
     </div>
   </div>
   <div class="spec-main">
     <div class="spec-name">材质</div>
     <div class="spec-val">
-      <input type="text" name="texture" ng-model="specData[0].data[0].name">
+      <input type="text" name="texture" ng-model="specData[0].data[0].valueName">
     </div>
   </div>
   <div class="spec-table">
@@ -114,81 +120,27 @@
 <script src="../js/jquery-1.11.0.js"></script>
 <script>
   var myApp = angular.module('myApp', []);
-  myApp.factory('getSpecData', function(){
-    return function(){
-      return [
-        {
-          name: '材质',
-          type: 'single',
-          data: [
-            {
-              name: '木质',
-              val: '木质'
-            },
-          ]
-        },
-        {
-          name: "颜色",
-          type: 'checkBox',
-          data: [
-            {
-              name: '红色',
-              val: '红色',
-              checked: true
-            },
-            {
-              name: '黄色',
-              val: '黄色',
-              checked: false
-            },
-            {
-              name: '青色',
-              val: '青色',
-              checked: false
-            },
-            {
-              name: '绿色',
-              val: '绿色',
-              checked: false
-
-            },
-            {
-              name: '紫色',
-              val: '紫色',
-              checked: false
-            },
-          ],
-        },
-        {
-          name: '容量',
-          type: 'checkBox',
-          data: [
-            {
-              name: '1L',
-              val: '1L',
-              checked: false
-            },
-            {
-              name: '2L',
-              val: '2L',
-              checked: false
-            },
-            {
-              name: '3L',
-              val: '3L',
-              checked: false
-            },
-            {
-              name: '4.5L',
-              val: '4.5L',
-              checked: false
-            },
-          ]
+  myApp.factory(
+    'getSpecData',
+    [
+      '$http',
+      function($http){
+        var url = '/trsWSSlfTest/json/specData.json';
+        return function($scope){
+          var prom = $http({
+            url: url
+          });
+          prom.success(function(data){
+            console.log(data);
+            $scope.specData =  data;
+          });
+          prom.error(function(data){
+            alert(2);
+          });
         }
-      ]
-    }
-  });
-  myApp.service('genSpecForm', [function(){
+      }])
+  ;
+  myApp.service('genSpecForm', ['$http', function($http){
     /*组合生成规格表*/
     var specData = {};//规则的数据
     var delNoCheck = function(datas, begin){
@@ -230,11 +182,24 @@
       }
       return newSpecData;
     };
+    var tableStr = function(num){
+      var table = $('<table></table>');
+      for(var i = 0; i < num; i++){
+        var tr = $('<tr></tr>');
+        var td = $('<td style="border-left: 1px solid;">' + '1111111' + '</td>');
+        tr.prepend(td);
+        table.append(tr);
+      }
+      return table;
+    };
     var genFormHtml = function(formData){
       var table = genTable(formData, 0);
       $('.spec-table').html(table);
     };
     var genTable = function(formData, num){
+      if(!formData){
+        return;
+      }
       var data = formData[num].data;
       if(!data){
         return;
@@ -243,11 +208,16 @@
       var table = $('<table></table>');
       for(var i = 0; i < data.length; i++){
         var tr = $('<tr></tr>');
-        var td = $('<td>' + data[i].name + '</td>');
+        var td = $('<td>' + data[i].valueName + '</td>');
         if(num < formData.length){
           var td2 = $('<td></td>');
           td2.append(genTable(formData, num));
           tr.append(td2);
+        }
+        if(num == formData.length){
+          tr.append('<td style="border-left: 1px solid;">1111</td>');
+          tr.append('<td style="border-left: 1px solid;">2222</td>');
+
         }
         tr.prepend(td);
         table.append(tr);
@@ -274,7 +244,7 @@
     'myCtrl',
     ['$scope', 'getSpecData', 'genSpecForm',
       function($scope, getSpecData, genSpecForm){
-        $scope.specData = getSpecData();
+        getSpecData($scope);
         $scope.click1 = function(){
           /*测试数据函数*/
           console.log($scope.specData);

@@ -1,0 +1,72 @@
+[
+  {
+    "typeName": "材质",
+    "type": "single",
+    "orderNum": 0,
+    "data": [
+      {
+        "valueName": "木质",
+        "valueId": "木质"
+      }
+    ]
+  },
+  {
+    "typeName": "颜色",
+    "type": "checkBox",
+    "orderNum": 1,
+    "data": [
+      {
+        "valueName": "红色",
+        "valueId": "红色",
+        "checked": true
+      },
+      {
+        "valueName": "黄色",
+        "valueId": "黄色",
+        "checked": false
+      },
+      {
+        "valueName": "青色",
+        "valueId": "青色",
+        "checked": false
+      },
+      {
+        "valueName": "绿色",
+        "valueId": "绿色",
+        "checked": false
+      },
+      {
+        "valueName": "紫色",
+        "valueId": "紫色",
+        "checked": false
+      }
+    ]
+  },
+  {
+    "typeName": "容量",
+    "type": "checkBox",
+    "orderNum": 3,
+    "data": [
+      {
+        "valueName": "1L",
+        "valueId": "1L",
+        "checked": false
+      },
+      {
+        "valueName": "2L",
+        "valueId": "2L",
+        "checked": false
+      },
+      {
+        "valueName": "3L",
+        "valueId": "3L",
+        "checked": false
+      },
+      {
+        "valueName": "4.5L",
+        "valueId": "4.5L",
+        "checked": false
+      }
+    ]
+  }
+]

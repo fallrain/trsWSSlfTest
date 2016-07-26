@@ -21,8 +21,8 @@
 <div class="bordline"></div>
 <div ng-init="myProperty1='wow,thisiscool'">
   Surrounding scope: {{ myProperty1 }}
-  <div my-directive1></div>
-  <div my-inherit-scope-directive></div>
+  <div my-directive1 aa="{{ myProperty1 }}"></div>
+  <div my-inherit-scope-directive aa="adas" aa1="{{ myProperty1 }}" bb="{{aa}}"></div>{{aa}}
 </div>
 <script src="../js/angular.1.5.7.js"></script>
 <script>
@@ -41,15 +41,18 @@
   myApp.directive('myDirective1', function(){
     return {
       restrict: 'A',
-      template: '内部指令, 孤立作用域: {{ myProperty1 }}',
+      template: '内部指令, 孤立作用域1: {{ myProperty1 }}',
       scope: {}
     };
   })
   myApp.directive('myInheritScopeDirective', function(){
     return {
       restrict: 'A',
-      template: '内部指令, 孤立作用域: {{ myProperty1 }}',
-      scope: true
+      template: '内部指令, 孤立作用域2: {{ myProperty1 }}',
+      scope: {
+        //cc:'@aa',
+        aa:'@'
+      }
     };
   });
 </script>

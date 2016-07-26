@@ -1,0 +1,55 @@
+[{
+  "ChannelID": "2730301",
+  "ChnlDesc": "商品中心",
+  "ChnlName": "sp",
+  "ParentId": "0",
+  "CRUSER": "曹辉",
+  "CRTIME": "2015-12-01 21:33",
+  "ContainsChildren": false,
+  "Url":"eShop.commodity"
+},{
+  "ChannelID": "2730302",
+  "ChnlDesc": "订单中心",
+  "ChnlName": "dd",
+  "ParentId": "0",
+  "CRUSER": "曹辉",
+  "CRTIME": "2015-12-01 21:33",
+  "ContainsChildren": false,
+  "Url":"eShop.order"
+},{
+  "ChannelID": "2730303",
+  "ChnlDesc": "积分平台",
+  "ChnlName": "jf",
+  "ParentId": "0",
+  "CRUSER": "曹辉",
+  "CRTIME": "2015-12-01 21:33",
+  "ContainsChildren": false,
+  "Url":"eShop.haibei"
+},{
+  "ChannelID": "2730304",
+  "ChnlDesc": "营销活动",
+  "ChnlName": "yx",
+  "ParentId": "0",
+  "CRUSER": "曹辉",
+  "CRTIME": "2015-12-01 21:33",
+  "ContainsChildren": false,
+  "Url":"eShop.operation"
+},{
+  "ChannelID": "2730305",
+  "ChnlDesc": "个人中心",
+  "ChnlName": "gr",
+  "ParentId": "0",
+  "CRUSER": "曹辉",
+  "CRTIME": "2015-12-01 21:33",
+  "ContainsChildren": false,
+  "Url":"eShop.user"
+},{
+  "ChannelID": "2730306",
+  "ChnlDesc": "财务结算",
+  "ChnlName": "yx",
+  "ParentId": "0",
+  "CRUSER": "曹辉",
+  "CRTIME": "2015-12-01 21:33",
+  "ContainsChildren": false,
+  "Url":"eShop.financial"
+}]

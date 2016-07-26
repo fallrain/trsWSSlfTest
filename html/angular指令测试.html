@@ -11,10 +11,13 @@
 <div ng-app="myApp">
 <!--    <hw>dadas</hw>
     <div class="hw"></div>-->
-    <div hw eat="饭" attr-say="{{say}}"></div>{{eat}}
-    <input type="text" ng-model="say">
+    <div hw attr-eat="饭" attr-say="好的"></div><br>
+    <div>
+      说：
+    </div>
+    <input type="text" ng-model="say1">
     <div>吃：</div>
-    <input type="text" ng-model="eat">
+    <input type="text" ng-model="eat1">
 </div>
 <script src="../js/angular.1.5.7.js"></script>
 <script>
@@ -22,11 +25,11 @@
     myApp.directive('hw', function(){
         return {
             restrict: 'ECMA',
-            template: '<div>hello word!你想说啥：{{say}},你想吃啥：{{eat}}</div>',
+            template: '<div>hello word!你想说啥：{{sayI}},你想吃啥：{{eat1}}</div>',
             //replace:true,
             scope: {
-                say: '@attrSay',
-                eat: '@'
+                sayI: '@attrSay',
+                eat1: '@attrEat'
             }
         };
     });
