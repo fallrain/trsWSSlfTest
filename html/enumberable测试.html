@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function test(data, exclude){
+    /*重置参数值为空字符串*/
+    for(var i = 0; i < exclude.length; i++){
+      Object.defineProperty(data, exclude[i], {
+        enumerable: false
+      });
+    }
+    for(var i in data){
+      data[i] = '';
+    }
+    for(var i = 0; i < exclude.length; i++){
+      Object.defineProperty(data, exclude[i], {
+        enumerable: true
+      });
+    }
+  }
+  var data = {
+    a: 1,
+    b: 2
+  };
+  var exclude = ['b'];
+  test(data, exclude);
+  console.log(data);
+</script>
+</body>
+</html>

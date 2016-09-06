@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<div ng-controller="myCtrl">
+  <div ng-if="m2">sddsds</div>
+  <input type="text" ng-model="m1">
+  <button ng-click="cg();" type="button">dadas</button>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope){
+    $scope.m1 = 1;
+    $scope.m2 = [];
+    $scope.$watch('m1', function(v){
+      console.log(v)
+    });
+    $scope.cg = function(){
+      $scope.m1 = 3333;
+    }
+  });
+</script>
+</body>
+</html>

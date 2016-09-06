@@ -112,9 +112,35 @@
       <input type="text" name="texture" ng-model="specData[0].data[0].valueName">
     </div>
   </div>
-  <div class="spec-table">
+  <div class="spec-table" id="spec-table">
 
   </div>
+  <br>
+  <hr>
+  <div class="spec-table">
+    <table ng-init="num=0">
+      <tr>
+        <td ng-repeat="spec in specData[0].data">{{spec.valueName}}</td>
+        <td ng-if="!$last">
+          <table>
+            <tr ng-repeat="spec2 in specData[1].data">
+              <td >{{spec2.valueName}}{{$index}}{{$last}}</td>
+              <td>
+                <table>
+                  <tr ng-repeat="spec3 in specData[2].data">
+                    <td >{{spec3.valueName}}</td>
+                    <td >1111</td>
+                    <td >2222</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+
 </div>
 <script src="../js/angular.1.5.7.js"></script>
 <script src="../js/jquery-1.11.0.js"></script>
@@ -194,7 +220,7 @@
     };
     var genFormHtml = function(formData){
       var table = genTable(formData, 0);
-      $('.spec-table').html(table);
+      $('#spec-table').html(table);
     };
     var genTable = function(formData, num){
       if(!formData){
@@ -215,8 +241,8 @@
           tr.append(td2);
         }
         if(num == formData.length){
-          tr.append('<td style="border-left: 1px solid;">1111</td>');
-          tr.append('<td style="border-left: 1px solid;">2222</td>');
+          tr.append('<td style="border-left: 0px solid;">1111</td>');
+          tr.append('<td style="border-left: 0px solid;">2222</td>');
 
         }
         tr.prepend(td);
@@ -225,7 +251,7 @@
       return table;
     };
     var drawForm = function(formData){
-      var par = $('.spec-table');
+      var par = $('#spec-table');
       var html = genFormHtml(formData);
     };
     return {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<div dd></div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.filter('capitalize', function(){
+      return function(input){
+        // input 是我们传入的字符串
+        if(input){
+          return input[0].toUpperCase() + input.slice(1);
+        }
+      }
+    }
+  );
+  myApp.directive(
+    'dd',
+    [
+      function(){
+        return {
+          restrict: 'ECMA',
+          template:'<div>\{\{\'aiyouwoca1\' | capitalize\}\}</div>'
+        }
+      }
+    ]
+  );
+</script>
+</body>
+</html>

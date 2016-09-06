@@ -8,18 +8,19 @@
 
 </style>
 <body>
-
+<div id="results"></div>
 <script src="../js/jquery-1.11.0.js"></script>
 <script>
   $.ajax({
-
+    method:'post',
     url: "../js/getSeasonSSOUrls.json",
     dataType: 'json',
     complete:function(data){
       alert()
+      console.log(data)
     },
     success: function(html){
-
+      console.log(html)
       $("#results").append(html);
 
     }

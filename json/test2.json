@@ -1,0 +1,80 @@
+{
+  "isSuccess": true,
+  "resultMsg": "执行成功！",
+  "data": {
+    "productId": 565767,
+    "propertys": [
+      {
+        "typeId": 2143,
+        "typeName": "颜色",
+        "list": [
+          {
+            "no": 1,
+            "valueName": "白色",
+            "smallPic": "xxxx.jpg",
+            "pic": "xxxx.jpg"
+          },
+          {
+            "no": 2,
+            "valueName": "粉红色",
+            "smallPic": "xxxx.jpg",
+            "pic": "xxxx.jpg"
+          }
+        ]
+      },
+      {
+        "typeId": 2144,
+        "typeName": "尺码",
+        "list": [
+          {
+            "no": 1,
+            "valueName": "30码"
+          }
+        ]
+      }
+    ],
+    "sku": [
+      //sku列表
+      {
+        "skuId": 9878,
+        //sku主键,
+        "value": "2143:1,2144:2",
+        //规格组合
+        "stock": 200,
+        //库存
+        "costPrice": 10,
+        //进货价
+        "strategy": 1,
+        //售价策略
+        "pcSalePrice": 0,
+        //pc售价
+        "pcScorePrice": 1000,
+        //pc积分价格
+        "pcSalePer": 0,
+        //pc售价占比
+        "pcScorePer": 100,
+        ///pc积分占比
+        "pcSaleCal": 0,
+        //pc计算售价
+        "pcScoreCal": 1000,
+        //pc计算积分价格
+        "mbSalePrice": 0,
+        //移动端售价
+        "mbScorePrice": 1000,
+        //移动端积分价格
+        "mbSalePer": 0,
+        //移动端售价占比
+        "mbScorePer": 100,
+        ///移动端积分占比
+        "mbSaleCal": 0,
+        //移动端计算售价
+        "mbScoreCal": 1000,
+        //移动端计算积分价格
+        "skuCode": "123456789",
+        //sku编码
+        "barCode": "2344654338766"
+        //条形码
+      }
+    ]
+  }
+}

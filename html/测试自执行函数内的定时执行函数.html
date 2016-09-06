@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  .qq {
+    font-size: 50px;
+  }
+</style>
+<body>
+<div id="qq" class="qq">dsdadsadasda</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function test1(){
+    alert(2)
+  }
+  (function(){
+    window.test=function (){
+      alert(1)
+    }
+    $('#qq').click(fn);
+    function fn(){
+      setInterval('test()', 1000);
+    }
+  })();
+</script>
+</body>
+</html>

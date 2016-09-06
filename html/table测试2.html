@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--在tr里不设置td,那本tr会游离在table之外-->
+<!--在tr外的任何元素，除了tbody，都会游离出table外-->
+<style>
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid;
+  }
+
+  td, th {
+    border: 1px solid;
+    width: 100px;
+  }
+</style>
+<body>
+<table>
+  <tr>
+    <th>111</th>
+    <th>111</th>
+    <th>111</th>
+    <th>111</th>
+  </tr>
+  <tr>
+    <td>tttttdddddd</td>
+  </tr>
+  <tbody>
+  <tr>
+    dasd
+  </tr>
+  </tbody>
+  <tbody>
+  <tr>
+    <td>ads</td>
+    <td>ads</td>
+    <td>ads</td>
+    <td>ads</td>
+  </tr>
+  </tbody>
+</table>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

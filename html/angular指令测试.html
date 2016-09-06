@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 </head>
 <style>
 
 </style>
 <body>
 <div ng-app="myApp">
-<!--    <hw>dadas</hw>
-    <div class="hw"></div>-->
-    <div hw attr-eat="饭" attr-say="好的"></div><br>
-    <div>
-      说：
-    </div>
+  <!--    <hw>dadas</hw>
+      <div class="hw"></div>-->
+  <div ng-controller="myc">
+    <div hw eat="eat" attr-say="say1" ctrl="ctrl1"></div>
+    <div>说：</div>
     <input type="text" ng-model="say1">
     <div>吃：</div>
-    <input type="text" ng-model="eat1">
+    <input type="text" ng-model="eat">
+    <button type="button" ng-click="fn();">dadas</button>
+  </div>
 </div>
 <script src="../js/angular.1.5.7.js"></script>
 <script>
-    var myApp = angular.module('myApp', []);
-    myApp.directive('hw', function(){
-        return {
-            restrict: 'ECMA',
-            template: '<div>hello word!你想说啥：{{sayI}},你想吃啥：{{eat1}}</div>',
-            //replace:true,
-            scope: {
-                sayI: '@attrSay',
-                eat1: '@attrEat'
-            }
-        };
-    });
+  var myApp = angular.module('myApp', []);
+  myApp.controller('myc', function($scope){
+    $scope.fn = function(){
+      console.log($scope.eat);
+    }
+    $scope.ctrl1 = '这里是controller里的内容';
+  });
+  myApp.directive('hw', function(){
+    return {
+      restrict: 'ECMA',
+      template: '<div>hello word!你想说啥：{{say}},你想吃啥：{{eat}},{{ctrl}}</div>',
+      //replace:true,
+      scope: {
+        say: '=attrSay',
+        eat: '=',
+        ctrl: '='
+      },
+      controller: function($scope){
+        $scope.$watch('eat', function(){
+          //console.log($scope.eat);
+        });
+      }
+    };
+  });
 </script>
 </body>
 </html>

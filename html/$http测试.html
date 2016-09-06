@@ -19,17 +19,21 @@
       alert();
     };
     var pms = $http({
-      url: 'https://api.github.com/users/undefined/events?callback=angular.callbacks._5'
+      url: 'https://api.github.com/users/undefined/events',
+      params:{
+        callback:"angular.callbacks._5"
+      }
+
     });
-    pms.then(function(data, state, header, config){
+    /*pms.then(function(data, state, header, config){
       console.log(data);
-    });
+    });*/
     pms.success(function(data, state, header, config){
       console.log(data);
     });
-    pms.error(function(data, state, header, config){
+   /* pms.error(function(data, state, header, config){
       console.log(data);
-    });
+    });*/
 
   }]);
 </script>

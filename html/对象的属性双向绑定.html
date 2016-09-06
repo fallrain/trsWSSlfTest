@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<div ng-controller="myctl" id="myc">
+  <input type="text" id="ay1">{{ay[1]}}
+  <input type="text" ng-model="obj.a" id="obj1">
+  <button type="button" ng-click="click1();">dada</button>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.controller(
+    'myctl',
+    function($scope, $compile){
+      var ay = [1, 2, 3];
+      var obj = {
+        a: 1
+      };
+      $scope.ay = ay;
+      $scope.obj = obj;
+
+      /*$compile(
+        angular.element(document.getElementById('ay1')).attr('ng-model', 'ay[1]')
+      )($scope);*/
+      var c=1;
+      $compile(
+        $('#ay1').attr('ng-model', 'ay['+c+']')
+      )($scope);
+      //$('#myc').append($compile('<input type="text" ng-model=ay[1]>')($scope));
+      $scope.$watch('ay', function(newVal, oldVal){
+        //alert(1)
+        if(newVal === oldVal){
+          return;
+        }
+      }, true);
+      $scope.$watch('obj', function(){
+      }, true);
+
+      $scope.click1 = function(){
+        $scope.ay.unshift('aaa')
+      }
+    });
+</script>
+</body>
+</html>
