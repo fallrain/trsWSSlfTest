@@ -26,13 +26,15 @@
   myApp.controller('myc', function($scope){
     $scope.fn = function(){
       console.log($scope.eat);
+    };
+    $scope.ctrl1 = {
+      a: 'ctrl1的内容'
     }
-    $scope.ctrl1 = '这里是controller里的内容';
   });
   myApp.directive('hw', function(){
     return {
       restrict: 'ECMA',
-      template: '<div>hello word!你想说啥：{{say}},你想吃啥：{{eat}},{{ctrl}}</div>',
+      template: '<div>hello word!你想说啥：{{say}},你想吃啥：{{eat}},{{ctrl.a}}</div>',
       //replace:true,
       scope: {
         say: '=attrSay',
