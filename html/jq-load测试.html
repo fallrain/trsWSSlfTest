@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<button type="button" onclick="load();">load</button>
+<div id="qq"></div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function load(){
+    $('#qq').load('liuge.html', {
+      a: 1,
+      b: 2,
+      c: 3
+    }, function(data, state, request){
+      debugger
+      console.log(data);
+    });
+  }
+</script>
+</body>
+</html>

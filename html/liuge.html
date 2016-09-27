@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  #item_edit {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 12px;
+    width: 60px;
+    background-color: #F5F5F5;
+    height: 100%;
+    border-left: 1px solid #E0E0E0;
+    cursor: pointer;
+  }
+
+  #item_edit .item {
+    display: block;
+    width: 60px;
+    text-align: center;
+    color: #999999;
+    height: 42px;
+    line-height: 42px;
+  }
+
+  #item_edit .item:hover {
+    background-color: #479DE6;
+    color: #ffffff;
+  }
+
+  #item_edit #_move {
+    cursor: move;
+  }
+
+  .table-par {
+    display: table;
+  }
+
+  .table-child {
+    display: table-cell;
+    vertical-align: middle;
+  }
+</style>
+<body>
+<div class="table-par" id="item_edit" style="display:none1;">
+  <div class="table-child">
+    <div class="item" id="_delete">删除</div>
+    <div class="item" id="_up">向上</div>
+    <div class="item" id="_down">向下</div>
+    <div class="item" id="_copy">复制</div>
+    <div class="item" id="_setup">设置</div>
+    <div class="item" id="_move">移动</div>
+  </div>
+</div>
+
+</body>
+</html>

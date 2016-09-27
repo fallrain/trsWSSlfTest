@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  var ay = [3, 4, 7, 10, 1, 2, 0, 6];
+  var len = ay.length;
+  var newAy = [];
+  for(var i = 0; i < len; i++){
+    var ay1 = ay[i];
+    var tagNum = i;
+    for(var j = i + 1; j < len; j++){
+      if(ay1 < ay[j]){
+        ay1 = ay[j];
+        tagNum = j
+      }
+    }
+    var temp=ay[tagNum];
+    ay[tagNum]=ay[i];
+    ay[i]=temp;
+  }
+  console.log(ay)
+</script>
+</body>
+</html>

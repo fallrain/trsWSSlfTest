@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<!--ng-click无法在里面直接写执行代码-->
+<body ng-app="myApp">
+<div ng-controller="myc">
+  <div ng-click="alert(1);">cdsdsd</div>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.controller('myc', function($scope){
+    $scope.fn = function(){
+      alert(2);
+    };
+  });
+</script>
+</body>
+</html>
