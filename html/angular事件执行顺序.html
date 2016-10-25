@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  .c1 {
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    border: 1px solid;
+  }
+
+  .c2 {
+    width: 50px;
+    height: 50px;
+    border: 1px solid red;
+  }
+
+  .c3 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid yellow;
+  }
+</style>
+<body ng-app="myApp">
+<div ng-controller="myctl">
+  <div class="c1" ng-click="fn1();">
+    <div class="c2" ng-click="fn2();">sdsdsd</div>
+    <div class="c2" ng-click="fn3();">3号</div>
+  </div>
+  <div ng-controller="myctl2">
+    <div class="c3" ng-click="fn2();">dsd</div>
+    <div ng-if="show">ngif</div>
+  </div>
+</div>
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  myApp.controller('myctl', function($scope){
+    $scope.fn1 = function(){
+
+    };
+
+    $scope.fn2 = function(){
+      $scope.show = false;
+      alert(2)
+    };
+  });
+  myApp.controller('myctl2', function($scope){
+    $scope.show = false;
+    $scope.fn3 = function(){
+      alert(3);
+    };
+  });
+</script>
+</body>
+</html>

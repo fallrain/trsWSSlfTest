@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body ng-app="myApp">
+<dvi ng-controller="mc">
+  <div ng-click="click1();">sasa</div>
+  <div ng-repeat="i in data">{{i}}
+    <span ng-repeat="b in bData[i]">{{b}}</span>
+  </div>
+</dvi>
+
+<script src="../js/angular.1.5.7.js"></script>
+<script>
+  var myApp = angular.module('myApp', []);
+  var mc = myApp.controller('mc',
+    ['$scope',
+      function($scope, $http){
+        $scope.data = [0, 1, 2];
+        $scope.click1 = function(){
+          $scope.bData = [
+            {
+              a: 'a'
+            },
+            {
+              b: 'b'
+            },
+            {
+              a: 'c'
+            }
+          ];
+        }
+      }
+    ]);
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--确实没问题-->
+<style>
+  .c1 {
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    border: 1px solid;
+  }
+
+  .c2 {
+    width: 50px;
+    height: 50px;
+    border: 1px solid red;
+  }
+</style>
+<body>
+<div class="c1" onclick="fn1();">
+  <div class="c2" onclick="fn2();">sdsdsd</div>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function fn1(){
+    alert(1);
+  }
+  function fn2(){
+    alert(2);
+  }
+</script>
+</body>
+</html>
