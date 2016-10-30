@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" href="layer/skin/layer.css"/>
+  <script type="text/javascript" src="layer/jquery-1.11.0.js"></script>
+  <script type="text/javascript" src="/layer/layer.js"></script>
+</head>
+<body>
+<style>
+  .demo3 {
+    height: 600px;
+    width: 450px;
+    border: 1px solid black;
+    margin: 0 auto;
+  }
+</style>
+
+
+<div class="demo3">
+
+  <button id="test1"> 点击</button>
+</div>
+<script>
+  $('#test1').on('click', function(){
+    layer.open({
+      type: 2,
+      title: 'iframe父子操作',
+      maxmin: true,
+      shadeClose: true, //点击遮罩关闭层
+      area: ['800px', '520px'],
+      content: 'http://localhost/supeixun/tanceng.html'
+    });
+  });
+
+
+</script>
+
+</body>
+</html>

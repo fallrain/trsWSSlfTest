@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  .qq {
+    width: 100px;
+    height: 50px;
+    border: 1px solid;
+    overflow: hidden;
+  }
+
+  .warp {
+    white-space: pre-wrap;
+  }
+
+  .pre-line {
+    white-space: pre-line;
+  }
+
+  .pre {
+    white-space: pre;
+  }
+</style>
+<body>
+<div class="qq pre-line">
+  好1 好2345678901234567890
+  好3
+  好4
+  好5
+  好6
+  好7
+  好8
+  好9
+  好10
+</div>
+<div class="qq warp">
+  pre-wrap：     好2345678901234567890
+  好3
+  <span>ds</span>
+</div>
+<pre class="qq">
+  pre tag：    好2345678901234567890
+  好3
+  <span>ds</span>
+</pre>
+<div class="qq pre">
+  pre:    好2345678901234567890
+  好3
+  <span>ds</span>
+</div>
+<div class="qq">
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>
