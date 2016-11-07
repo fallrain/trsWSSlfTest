@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  /*z-index相同也会层叠*/
+  .qq {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+  }
+
+  .ab {
+    position: absolute;
+    z-index:1;
+  }
+
+  .top {
+
+  }
+</style>
+<body>
+<div class="qq ab">1</div>
+<div class="qq ab">2</div>
+<!--<div class="qq1">3</div>-->
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

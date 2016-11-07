@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--form提交会刷新页面，不刷新的方式是target设置为一个iframe,使本页面刷新改为iframe刷新-->
+<style>
+
+</style>
+<body>
+<iframe src="" frameborder="0" name="ifm" id="ifm"></iframe>
+<form action="/trsWSSlfTest/json/specData.json" target="ifm" onsubmit="fn1();">
+  <input type="text" name="name">
+  <button type="submit">提交</button>
+</form>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  var content = $('ifm').html();
+  //var contentObj = JSON.parse(content);
+  //console.log(contentObj);
+  function fn1(){
+    alert();
+  }
+</script>
+</body>
+</html>

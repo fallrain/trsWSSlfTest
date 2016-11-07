@@ -1,0 +1,399 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset={DT_CHARSET}"/>
+  <title>{if $seo_title}{$seo_title}{else}{if $head_title}{$head_title}{$DT[seo_delimiter]}{/if}{if
+    $city_sitename}{$city_sitename}{else}{$DT[sitename]}{/if}{/if}</title>
+  {if $head_keywords}
+  <meta name="keywords" content="{$head_keywords}"/>
+  {/if}
+  {if $head_description}
+  <meta name="description" content="{$head_description}"/>
+  {/if}
+  {if $head_mobile}
+  <meta http-equiv="mobile-agent" content="format=html5;url={$head_mobile}">
+  {/if}
+  <meta name="generator" content="DESTOON B2B - www.destoon.com"/>
+  <link rel="shortcut icon" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+  <link rel="bookmark" type="image/x-icon" href="{DT_STATIC}favicon.ico"/>
+  {if $head_canonical}
+  <link rel="canonical" href="{$head_canonical}"/>
+  {/if}
+  {if $EXT[archiver_enable]}
+  <link rel="archives" title="{$DT[sitename]}" href="{$EXT[archiver_url]}"/>
+  {/if}
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}style.css"/>
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}index.css"/>
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}share.css"/>
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}new.css"/>
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}main(2).css"/>
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}bottom.css"/>
+  {if $moduleid>4}
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}{$module}.css"/>
+  {/if}
+  {if $CSS}
+  {loop $CSS $css}
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}{$css}.css"/>
+
+  {/loop}
+  {/if}
+  <!--[if lte IE 6]>
+  <link rel="stylesheet" type="text/css" href="{DT_SKIN}ie6.css"/>
+  <![endif]-->
+  {if !DT_DEBUG}
+  <script type="text/javascript">window.onerror = function(){
+    return true;
+  }</script>
+  {/if}
+  <script type="text/javascript" src="{DT_STATIC}lang/{DT_LANG}/lang.js"></script>
+  <script type="text/javascript" src="{DT_STATIC}file/script/config.js"></script>
+  <script type="text/javascript" src="{DT_STATIC}file/script/jquery.js"></script>
+  <script type="text/javascript" src="{DT_STATIC}file/script/page.js"></script>
+  <script type="text/javascript" src="{DT_STATIC}file/script/classtab.js"></script>
+  <script type="text/javascript" src="{DT_STATIC}file/script/getcity.js"></script>
+  {if $lazy}
+  <script type="text/javascript" src="{DT_STATIC}file/script/jquery.lazyload.js"></script>
+  {/if}
+  {if $JS}
+  {loop $JS $js}
+  <script type="text/javascript" src="{DT_STATIC}file/script/{$js}.js"></script>
+  {/loop}
+  {/if}
+  {php $searchid = ($moduleid > 3 && $MODULE[$moduleid]['ismenu'] && !$MODULE[$moduleid]['islink']) ? $moduleid : 5;}
+  <script type="text/javascript">
+    {
+      if $head_mobile && $EXT[mobile_goto]}
+    GoMobile('{$head_mobile}');
+    {/
+      if}
+    var searchid = {$searchid};
+    {
+      if $itemid && $DT[anticopy]}
+    document.oncontextmenu = function(e){
+      return false;
+    };
+    document.onselectstart = function(e){
+      return false;
+    };
+    {/
+      if}
+  </script>
+  <!--[以上为系统关键代码，除非您明确其含义，否则请勿修改或删除，否则会导致系统错误]-->
+  <!--[模板中所有带id的元素，请勿修改或删除，否则会导致部分JS代码无法运行]-->
+  <!--[以上类似的注释，在编译模板时，系统会自动移除，不会显示在实际的页面中]-->
+</head>
+<body>
+<div class="head" id="head">
+  <div class="head_m">
+    <div class="f_r" id="destoon_member">欢迎，
+      <span class="f_red">客人</span> |
+      <a href="http://ceshi.supeixun.com/member/login.php">请登录</a>
+      | <a href="http://ceshi.supeixun.com/member/register.php">免费注册</a>
+      | <a href="http://ceshi.supeixun.com/member/send.php">忘记密码?</a></div>
+    <div class="head_l">
+      <ul>
+        <li class="h_fav">
+          <script type="text/javascript">addFav('收藏本页');</script>
+          <a href="http://ceshi.supeixun.com/" title="想学习 速培训" rel="sidebar"
+             onclick="if(UA.indexOf('chrome') != -1){alert('请按快捷键Ctrl+D收藏本页，谢谢');
+                       return false;}window.external.addFavorite(this.href, this.title);return false;">
+          </a>
+        </li>
+        <li class="h_mobile">
+          <a href="http://ceshi.supeixun.com/mobile/mobile.php">手机版</a>&nbsp;</li>
+        <li class=""><a href="javascript:Dqrcode();">你好！欢迎来到速培训</a>&nbsp;</li>
+        <li class="h_cart"><a href="http://ceshi.supeixun.com/mall/cart.php" rel="nofollow">购物车</a>
+          (<span class="head_t" id="destoon_cart">0</span>)
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="destoon_qrcode" style="display:none;"></div>
+<div class="m head_s" id="destoon_space"></div>
+<div class="m">
+  <div id="search_tips" style="display:none;"></div>
+</div>
+<div class="m">
+
+  <form id="destoon_search" action="http://localhost/supeixun/sell/search.php" onsubmit="return Dsearch(1);">
+    <input type="hidden" name="moduleid" value="5" id="destoon_moduleid"/>
+    <input type="hidden" name="spread" value="0" id="destoon_spread"/>
+    <div id="head2">
+      <div class="w1200">
+        <div class="logo f_l">
+          <div>
+            <a href="{$MODULE[1][linkurl]}">
+              <img src="{DT_SKIN}image/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div id="masthead" class="clearfix">
+          <div class="index_address" id="getcity">
+            {if $DT[city]}<em class="orange f15 mr10">{$city_name}</em>
+            <a href="{DT_PATH}api/city.php" class=" alter gray2 f12">切换</a>{/if}
+            <div class="cityList" style="display: none;">
+              <div class="showcity"></div>
+              <div class="title">
+                <ul class="titleChartop">
+                  <li class="on">热门城市</li>
+                  <li>ABCDFG</li>
+                  <li>HJKLMN</li>
+                  <li>PQRST</li>
+                  <li>WXYZ</li>
+                </ul>
+              </div>
+
+              <div class="cityListBox">
+                <dl class="hotCity">
+                  <dd>
+                    <a href="">北京</a>
+                    <a href="http://www.pxto.com.cn/shanghai">上海</a>
+                  </dd>
+                  <span><a href="http://www.pxto.com.cn/city">全部城市</a></span>
+                </dl>
+                <!--{php $tags=tag("table=city&px=1&order=letter ASC&pagesize=100&template=null");}-->
+
+                <dl class="none">
+                  {loop $tags $k $v}
+                  {if $k <= "G"}
+                  <dt>{$k}</dt>
+                  <dd>
+                    {loop $v $s}
+                    <a href="{$s['domain']}">{$s['name']}</a>
+                    {/loop}
+                  </dd>
+                  {/if}
+                  {/loop}
+                </dl>
+                <dl class="none">
+                  {loop $tags $k $v}
+                  {if $k <= "N" && $k >= "H"}
+                  <dt>{$k}</dt>
+                  <dd>
+                    {loop $v $s}
+                    <a href="{$s['domain']}">{$s['name']}</a>
+                    {/loop}
+                  </dd>
+                  {/if}
+                  {/loop}
+                </dl>
+                <dl class="none">
+                  {loop $tags $k $v}
+                  {if $k <= "T" && $k >= "P"}
+                  <dt>{$k}</dt>
+                  <dd>
+                    {loop $v $s}
+                    <a href="{$s['domain']}">{$s['name']}</a>
+                    {/loop}
+                  </dd>
+                  {/if}
+                  {/loop}
+                </dl>
+                <dl class="none">
+                  {loop $tags $k $v}
+                  {if $k >= "W"}
+                  <dt>{$k}</dt>
+                  <dd>
+                    {loop $v $s}
+                    <a href="{$s['domain']}">{$s['name']}</a>
+                    {/loop}
+                  </dd>
+                  {/if}
+                  {/loop}
+                </dl>
+
+              </div>
+
+            </div>
+          </div>
+          <div class="ali-search fr">
+            <form id="destoon_search" action="{$MODULE[$searchid][linkurl]}search.php" onsubmit="return Dsearch(1);" target="_blank">
+              <input type="hidden" name="moduleid" value="{$searchid}" id="destoon_moduleid"/>
+              <input type="hidden" name="spread" value="0" id="destoon_spread"/>
+              <div class="alisearch">
+                {loop $MODULE $m}{if $m[ismenu] &&
+                !$m[islink]}<a href="javascript:;" class="search-option class" id="destoon_select" value="{$MODULE[$searchid][name]}" onclick="$('#search_module').fadeIn('fast');setModule('{$m[moduleid]}','{$m[name]}');">{$m[name]}</a><span></span>{/if}{/loop}
+                <!--<a href="javascript:;" class="search-option class" data-action="/home/search/course.html">课程</a><span></span>
+                <a href="javascript:;" class="search-option" id="j_search" data-action="/home/search/jigou.html">机构</a><span></span>
+                <a href="javascript:;" class="search-option" id="j_search" data-action="/home/search/news.html">新闻</a>
+                 a href="javascript:;" class="search-option" data-action="/home/search/laoshi.html">老师</a -->
+              </div>
+              <div class="clear"></div>
+              <div class="form">
+                <input class="search_txt" name="kw" id="destoon_kw" type="text" value="{if $kw}{$kw}{else}请输入关键词{/if}" onfocus="if(this.value=='请输入关键词') this.value='';" {if $DT[search_tips]} onkeyup="STip(this.value);" autocomplete="off" {/if}
+                x-webkit-speech speech/>
+                <button class="search_s" type="submit" id="alisearch-submit" value="">搜 索</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+  <!--免费咨询-->
+</div>
+<div class="m">
+  <div class="menu">
+    <ul>
+      <li class="menuon"><a href="http://localhost/supeixun/"><span>行业分类</span></a></li>
+      <li
+        {if $moduleid
+      <4} class="menuon"{/if}><a href="{$MODULE[1][linkurl]}"><span>首页</span></a></li>{loop $MODULE $m}{if
+      $m[ismenu]}
+      <li
+        {if $m[moduleid]==$moduleid}
+        class="menuon" {
+      /if}><a href="{$m[linkurl]}" {if $m[isblank]} target="_blank" {/if}><span{if $m[style]}
+      style="color:{$m[style]};"{/if}>{$m[name]}</span></a></li>{/if}{/loop}
+      <!--<li><a href="http://localhost/supeixun/mall/"><span>首页</span></a></li>
+      <li><a href="http://localhost/supeixun/sell/"><span>培训招标</span></a></li>
+      <li><a href="http://localhost/supeixun/buy/"><span>培训机构</span></a></li>
+      <li><a href="http://localhost/supeixun/company/"><span>培训课程</span></a></li>
+      <li><a href="http://localhost/supeixun/group/"><span>网校课程</span></a></li>
+      <li><a href="http://localhost/supeixun/quote/"><span>视频课程</span></a></li>
+      <li><a href="http://localhost/supeixun/exhibit/"><span>培训问答</span></a></li>
+
+       <li><a href="http://localhost/supeixun/news/"><span>资讯</span></a></li>
+       <li><a href="http://localhost/supeixun/invest/"><span>招商</span></a></li>
+       <li><a href="http://localhost/supeixun/brand/"><span>品牌</span></a></li>
+       <li><a href="http://localhost/supeixun/job/"><span>人才</span></a></li>
+       <li><a href="http://localhost/supeixun/know/"><span>知道</span></a></li>
+       <li><a href="http://localhost/supeixun/special/"><span>专题</span></a></li>
+       <li><a href="http://localhost/supeixun/photo/"><span>图库</span></a></li>
+       <li><a href="http://localhost/supeixun/video/"><span>视频</span></a></li>
+       <li><a href="http://localhost/supeixun/down/"><span>下载</span></a></li>
+       <li><a href="http://localhost/supeixun/club/"><span>商圈</span></a></li>
+       -->
+    </ul>
+  </div>
+</div>
+<div id="ipad_tips" style="display:none;"></div>
+<div class="m">
+  <div class="ntop_z">
+    <div class="ntop_zz">
+      <div class="m_l f_l">
+
+        <div class="topr">
+          <div>
+            <script type="text/javascript" src="{DT_STATIC}file/script/slide.js"></script>
+            <div id="slide_a14" class="slide" style="width:730px;height:300px;margin-top: 10px">
+              <a href="http://www.supeixun.com/" target="_blank">
+                <img src="{DT_STATIC}file/image/player_1.jpg" width="650" height="300"
+                     alt=""/></a>
+              <a href="http://www.supeixun.com/" target="_blank">
+                <img src="{DT_STATIC}file/image/player_1.jpg" width="650" height="300"
+                     alt=""/>
+              </a>
+            </div>
+            <div class="ntop_c_b1">
+              <div class="ntop_c_bl">
+                <a href="#"><img src="{DT_STATIC}file/image/pj.png" alt=""></a></div>
+              <div class="ntop_c_b">
+                <a href="#"><img src="{DT_STATIC}file/image/pj.png" alt=""></a></div>
+              <div class="ntop_c_b">
+                <a href="#"><img src="{DT_STATIC}file/image/pj.png" alt=""></a></div>
+            </div>
+            <script type="text/javascript">new dslide('slide_a14');</script>
+          </div>
+        </div>
+        <div class="ntip_l">
+          <div class="mid">
+            <div class="t-n-l">
+              <div class="category-main " data-fmc="qd">
+                <div class="class-list">
+                  <div class="icatalog_body">
+                    <div class="icatalog">
+                      {if $DT[page_catalog]}
+                      {php $mid = 5;}
+                      {php $child = get_maincat(0, $mid, 1);}
+                      {loop $child $i $c}
+                      {if $i<12 && $c[child]}
+                      {php $sub = get_maincat($c[catid], $mid, 1);}
+                      <div class="list-item item1" data-type="learn">
+                        <div class="list-wrapper">
+                          <div>
+                                           <span class="ntop_l_f">
+                                               <img src="{DT_SKIN}image/f2.png" alt="">
+                                              &nbsp;{set_style($c[catname], $c[style])}
+                                           </span>
+                          </div>
+                          <b class="arrow-icon"></b>
+                          <b class="line-cover"></b>
+                        </div>
+                        <div style="display: none; margin-top: 91px;" class="hot-query-layer">
+                          <div class="class-sub">
+                            <strong class="class-name">
+                              <a target="_blank" href="#">中小辅导</a>
+                            </strong>
+                            <ul class="class-item">
+                              {loop $sub $j $s}
+                              {if
+                              $j<4}<span class="item"><a href="{$MODULE[$mid][linkurl]}{$s[linkurl]}" target="_blank">{set_style($s[catname], $s[style])}</a></span>{/if}
+                              {/loop}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      {/if}
+                      {/loop}
+                      {/if}
+
+                      <script>$('.h_class_tab_u li').hover(function(){
+                        $('.h_tab_u_on').removeClass('h_tab_u_on');
+                        $(this).addClass('h_tab_u_on');
+                        var i = $(this).index();
+                        $('.h_tab_d_on').removeClass('h_tab_d_on');
+                        $('.h_class_tab_d:eq(' + i + ')').addClass('h_tab_d_on');
+                      }, function(){
+                      });</script>
+                    </div>
+                    <script src="{DT_STATIC}file/script/classtab.js" type="text/javascript" charset="GBK"></script>
+                  </div>
+                </div>
+              </div>
+              <div class="ntop_r">
+                <div class="ntop_r_t">
+                  <a href="#">
+                    <img src="{DT_SKIN}image/logo.gif" alt="">
+                  </a>
+                </div>
+                <div class="ntop_r_c">
+                  <a href="#"><img src="{DT_STATIC}file/image/xuexiao.png" alt=""></a>
+                  <a href="#"><p>金牌学校</p></a>
+                </div>
+                <div class="ntop_r_c">
+                  <a href="3"> <img src="{DT_STATIC}file/image/shizi.png" alt=""></a>
+                  <a href="#"><p>雄厚师资</p></a>
+                </div>
+                <div class="ntop_r_c">
+                  <a href="#"><img src="{DT_STATIC}file/image/baoming.png" alt=""></a>
+                  <a href="#"><p>快捷报名</p></a>
+                </div>
+                <div class="ntop_r_c">
+                  <a href="#"> <img src="{DT_STATIC}file/image/genzong.png" alt=""></a>
+                  <a href="#"><p>实时跟踪</p></a>
+                </div>
+                <div class="ntop_r_c">
+                  <a href="#"><img src="{DT_STATIC}file/image/anquan.png" alt=""></a>
+                  <a href="#"><p>安全省心</p></a>
+                </div>
+                <div class="ntop_r_c">
+                  <a href="#"> <img src="{DT_STATIC}file/image/houfu.png" alt=""></a>
+                  <a href="#"><p>先学后付</p></a>
+                </div>
+              </div>
+              <div class="ntop_r_b">
+                <a href="#"> <img src="{DT_STATIC}file/image/banner.png" alt=""></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="m_n f_l">&nbsp;</div>
+        </div>
+        <div class="m b10">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>
