@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  .qq {
+    width: 100px;
+    height: 100px;
+    transition-duration: 1s;
+    transform-origin: center top;
+    position: absolute;
+    z-index: 100;
+    top: 150px;
+  }
+  .main{
+    margin-top: 100px;
+    margin-left: 100px;
+    width: 100px;
+    height: 100px;
+    background: #d9d9d9;
+  }
+  .blue {
+    width: 100px;
+    height: 49px;
+    background: #20C7F3;
+  }
+
+  .red {
+    width: 100px;
+    height: 49px;
+    background: #daae53;
+  }
+</style>
+<body>
+<input type="text" id="du" onchange="rotate();">
+<div class="main">
+  <div class="qq">
+    <div class="blue"></div>
+    <div class="red"></div>
+  </div>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function rotate(){
+    var deg = $('#du').val();
+    if(deg){
+      $('.qq').css('transform', 'rotateX(' + deg + 'deg)');
+    }
+  }
+</script>
+</body>
+</html>

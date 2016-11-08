@@ -64,7 +64,7 @@ section {
 
 .innie, .outie {
   height: 100%;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, .1) 100%);
+  /*background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, .1) 100%);*/
   border-radius: .25rem;
 }
 
