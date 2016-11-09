@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <base href="/trsWSSlfTest/">
+  <link rel="stylesheet" href="bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<style>
+
+</style>
+<body>
+<input class="form_datetime" type="text" readonly unselectable="on">
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script>
+  $(".form_datetime").datetimepicker({
+    format: "dd MM yyyy - hh:ii",
+    autoclose: true,
+    todayBtn: true,
+    pickerPosition: "bottom-left"
+  });
+</script>
+</body>
+</html>
