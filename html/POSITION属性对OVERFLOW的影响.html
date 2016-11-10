@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  .main {
+    width: 1000px;
+    height: 200px;
+    border: 1px solid;
+    overflow: scroll;
+  }
+
+  .qq {
+    width: 100px;
+    height: 900px;
+    background: -webkit-linear-gradient(270deg, #32beff, red);
+    background: linear-gradient(180deg, #32beff, red);
+  }
+
+  .posrlt {
+    position: relative;
+  }
+
+  .posab {
+    position: absolute;
+  }
+
+  .posfix {
+    position: fixed;
+  }
+</style>
+<body>
+<div class="main">
+  <div class="qq"></div>
+</div>
+<div class="main">
+  <div class="qq posrlt"></div>
+</div>
+<div class="main">
+  <div class="qq posab"></div>
+</div>
+<div class="main">
+  <div class="qq posfix"></div>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

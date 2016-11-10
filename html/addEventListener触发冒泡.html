@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--
+addEventListener 第三个参数true代表捕获阶段，false代表冒泡阶段
+捕获事件是从外到内，正常执行是从内到外
+设置为true的话，那在捕获阶段就执行
+-->
+<style>
+  .qq {
+    width: 100px;
+    height: 100px;
+    padding: 50px;
+    border: 1px solid;
+    background: #32beff;
+  }
+</style>
+<body>
+<div class="qq">
+  <button type="button" id="btn">测试</button>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  document.querySelector('#btn').addEventListener('click', function(){
+    alert(1);
+  }, false);
+  document.querySelector('#btn').addEventListener('click', function(){
+    alert(2);
+  }, true);
+</script>
+</body>
+</html>
