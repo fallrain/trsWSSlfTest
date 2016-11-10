@@ -8,20 +8,26 @@
   <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <style>
-
+  .form_datetime {
+    width: 100px;
+    height: 30px;
+    border: 1px solid;
+  }
 </style>
 <body>
-<input class="form_datetime" type="text" readonly unselectable="on">
-<script src="js/jquery-1.11.0.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
-<script>
-  $(".form_datetime").datetimepicker({
-    format: "dd MM yyyy - hh:ii",
-    autoclose: true,
-    todayBtn: true,
-    pickerPosition: "bottom-left"
-  });
-</script>
+<label class="form_datetime" type="text" readonly unselectable="on" onselectstart1="return false;">
+  <script src="js/jquery-1.11.0.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script>
+    $(".form_datetime").datetimepicker({
+      format: "dd MM yyyy - hh:ii",
+      autoclose: true,
+      todayBtn: true,
+      pickerPosition: "bottom-left",
+      maxView:0,
+      notIpt:true,
+    });
+  </script>
 </body>
 </html>
