@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--unload在1.8及其以后被废弃-->
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  $(window).on('onbeforeunload', function(e){
+    alert(1)
+    console.log(e.screenTop);
+    alert(2);
+  });
+</script>
+</body>
+</html>
