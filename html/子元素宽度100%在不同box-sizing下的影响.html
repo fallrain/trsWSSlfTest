@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--
+  子元素一旦设置了定位里的脱离文档流的定位（fixed,absolute）,
+  它的百分比的大小就不按照父元素来了，absolute会忽略padding,
+  fixed会直接按照文档大小算
+-->
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .main {
+    width: 500px;
+    height: 500px;
+    border: 1px solid;
+    padding: 50px;
+    position: relative;
+  }
+
+  .qq {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #5bb75b;
+    top: 10px;
+  }
+</style>
+<body>
+<div class="main">
+  <div class="qq"></div>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

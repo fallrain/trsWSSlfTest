@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 </head>
-<!--position relative元素，如果父元素不规定高度，百分比是不起作用的，absolute不同，任何时候都可以用百分比控制高度-->
+<!--
+  position relative元素，如果父元素不规定高度，百分比是不起作用的，absolute不同，任何时候都可以用百分比控制高度
+  宽度是任何时候都起作用的,不脱离文档流，就跟普通的块级元素一样
+-->
 <style>
-    .main{
-        width: 600px;
-        height: 400px;
-        border:1px solid;
-        position: relative;
-    }
-    .qq{
-        position: relative;
-        border: 1px solid;
-        width: 50%;
-        height: 100px;
-    }
+  .main {
+    width: 600px;
+    height: 400px;
+    border: 1px solid #5bb75b;
+    position: relative;
+  }
+
+  .qq {
+    position: absolute;
+    border: 1px solid #c12e2a;
+    width: 50%;
+    height: 50%;
+  }
 </style>
 <body>
 <div class="main1">
-    <div class="qq"></div>
+  <div class="qq">这里是子元素</div>
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
 <script>
