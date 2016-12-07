@@ -66,7 +66,7 @@ pre{font-family:'微软雅黑'}
 //页面一打开就执行，放入ready是为了layer所需配件（css、扩展模块）加载完毕
 layer.ready(function(){ 
   //官网欢迎页
-  layer.open({
+ /* layer.open({
     type: 2,
     //skin: 'layui-layer-lan',
     title: 'layer弹层组件',
@@ -78,7 +78,7 @@ layer.ready(function(){
     end: function(){
       layer.tips('试试相册模块？', '#photosDemo', {tips: 1})
     }
-  });
+  });*/
   
   //layer.msg('欢迎使用layer');
   
@@ -92,7 +92,7 @@ layer.ready(function(){
 $('#about').on('click', function(){
   layer.alert(layer.v + ' - 贤心出品');
 });
-
+  var index = layer.load(2); //又换了种风格，并且设定最长等待10秒
 }();
 </script>
 </body>
