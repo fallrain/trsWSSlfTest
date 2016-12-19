@@ -87,13 +87,24 @@ layer.ready(function(){
     photos: '#photosDemo'
   });
 });
-
+  layer.tips('上', '#id或者.class', {
+    tips: [1, '#0FA6D8'], //还可配置颜色
+    time: 30000000,
+  });
 //关于
 $('#about').on('click', function(){
   layer.alert(layer.v + ' - 贤心出品');
 });
-  var index = layer.load(2); //又换了种风格，并且设定最长等待10秒
+  //var index = layer.load(2); //又换了种风格，并且设定最长等待10秒
 }();
+$(".js_banBoxU").children("li").each(function () {
+  var $this =$(this);
+  if($this){
+
+  }
+  $this.addClass("cur");
+  return false;
+});
 </script>
 </body>
 </html>
