@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    overflow: hidden;
+  }
+
+  li {
+    width: 20%;
+    float: left;
+    text-align: center;
+  }
+
+  img {
+    width: 100%
+  }
+
+  .cover {
+    position: relative;
+    font-size: 0;
+    display: inline-block;
+    width: 100%
+  }
+
+  .cover img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .cover:before {
+    content: ' ';
+    padding-top: 100%;
+    display: block;
+  }
+</style>
+
+<body>
+<ul>
+  <li>
+    <div class="cover">
+      <img src="../img/banner_left.jpg" alt="">
+    </div>
+    <div>
+      文字
+    </div>
+  </li>
+</ul>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

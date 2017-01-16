@@ -21,23 +21,24 @@
   }
 </style>
 <body>
-<span class="main">
+<span class="main" id="n1">
   <div class="qq">
     外内联内块级
   </div>
 </span>
-<div class="main">
+<div class="main" id="n2">
   <div class="qq">双块级
   </div>
 </div>
 
-<div class="main">
+<div class="main" id="n3">
   快级
 </div>
 
 <script src="../js/jquery-1.11.0.js"></script>
 <script>
-
+  console.log($('#n1').css('height'));
+  console.log($('#n1').height());
 </script>
 </body>
 </html>
