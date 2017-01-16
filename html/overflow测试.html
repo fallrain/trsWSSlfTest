@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>overflow测试</title>
+  <meta charset="UTF-8">
+  <title>overflow测试</title>
 </head>
 <style>
-    .qq {
-        height: 100px;
-        width: 100px;
-        border: 1px solid;
-        overflow: hidden;
-    }
+  .qq {
+    height: 100px;
+    width: 100px;
+    border: 1px solid;
+    overflow: hidden;
+  }
 
-    .qq1 {
-        position: relative;
-        left:75px;
-        height: 50px;
-        width: 50px;
-        background: red;
-        z-index: 20
-    ;
-    }
+  .qq1 {
+    position: relative;
+    left: 75px;
+    height: 50px;
+    width: 50px;
+    background: red;
+    z-index: 20;
+  }
+
+  .par {
+    width: 500px;
+    height: 60px;
+  }
+
+  .cnt {
+    width: 1500px;
+    height: 10px;
+  }
 </style>
 <body>
+<div class="par">
+  <div class="cnt"></div>
+</div>
 <div class="qq">
-    <div class="qq1">
+  <div class="qq1">
 
-    </div>
+  </div>
 </div>
 </body>
 </html>
