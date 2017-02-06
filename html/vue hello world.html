@@ -28,6 +28,9 @@
     <label>Message:</label><input type="text" v-model="message">{{message}}
   </p>
   <p>
+    <label>lazy的Message,change事件后才改变值:</label><input type="text" v-model.lazy="message1">{{message1}}
+  </p>
+  <p>
     <label><span id="beNewSpan">现在没值：</span>{{data.newVal}}</label>
     <button type="button" v-on:click="showTips();">设置值</button>
   </p>
@@ -59,9 +62,9 @@
   <fieldset>
     <legend>单选多选框测试</legend>
     <span>性别：</span>
-    <label><input type="radio" value="男" v-model="rdSex">男</label>
-    <label><input type="radio" value="女" v-model="rdSex">女</label>
-    <div>选中的性别：{{rdSex[0]}}</div>
+    <label><input type="radio" value="男" v-model="rdSex" v-bind:true-value="chooseNan" v-bind:false-value="noChooseNan">男</label>
+    <label><input type="radio" value="女" v-model="rdSex" v-bind:true-value="chooseNv" v-bind:false-value="noChooseNv">女</label>
+    <div>选中的性别：{{rdSex}}</div>
     <span>爱好：</span>
     <label><input type="checkbox" value="游泳" v-model="ckAihao">游泳</label>
     <label><input type="checkbox" value="Dota" v-model="ckAihao">Dota</label>
@@ -74,9 +77,9 @@
   <fieldset>
     <legend>下拉框</legend>
     <select v-model="slts">
-      <option value="你那不是直">你那不是直</option>
-      <option value="你那是傻逼阿">你那是傻逼阿</option>
-      <option value="你还傻逼呵呵的">你还傻逼呵呵的</option>
+      <option value="一二三四五">一二三四五</option>
+      <option value="上山打老虎">上山打老虎</option>
+      <option value="老虎打不着">老虎打不着</option>
     </select>
     <div>选中的是：{{slts}}</div>
   </fieldset>
@@ -88,82 +91,43 @@
     <button type="button" v-on:click="setNewValTest();">设置新值后立即判断</button>
     <button type="button" v-on:click="setNewValTest(true);">设置新值后等待刷新完再判断</button>
   </fieldset>
+  <div>
+    <anchored-heading :level="3">Hello world!</anchored-heading>
+  </div>
+  <fieldset>
+    <legend>自定义组件之自定义输入框</legend>
+    <ipt v-bind:fn="slfIptFn"></ipt>
+  </fieldset>
+  <fieldset>
+    <legend>触发事件测试</legend>
+    <cbsj v-on:emitTest="alert1" ></cbsj>
+  </fieldset>
 </div>
 <script src="../js/jquery-1.11.0.js"></script>
 <script src="../js/Vue.js"></script>
-<script>
-  Vue.component('slt', {
-    props : ['person'],
-    template : '<li class="v-slt" >{{person.name}}</li>'
-  });
-  var app;
-  app = new Vue({
-    el : '#app',
-    data : {
-      isRedBg : false,
-      message : 'Hello Vue!',
-      data : {},
-      isIf : false,
-      rdSex : [],
-      ckAihao : [],
-      slts : '你那不是直',
-      setNewValOldVal : '这是老的值',
-      persons : [
-        {
-          name : 'wangchenhao'
-        },
-        {
-          name : 'wangdaer'
-        },
-        {
-          name : 'chenchunmei'
-        }
-      ]
-    },
-    methods : {
-      showTips : function(){
-        var vthis = this;
-        setTimeout(function(){
-          vthis.$set(vthis.data, 'newVal', '设置完了新的值');
-          $('#beNewSpan').html('现在有值了：');
-        }, 2000);
-      },
-      changeBg : function(){
-        this.isRedBg = true;
-        $('#mybj').html('背景红色');
-      },
-      setNewValTest : function(lazy){
-        if(lazy){
-          this.setNewValOldVal = '延迟判断值';
-          Vue.nextTick(function(){
-            if($('#setNewValOldVal').text() === '延迟判断值'){
-              alert('和新值相等');
-            }else{
-              alert('和新值不相等');
-            }
-          });
-        }else{
-          this.setNewValOldVal = '立即判断值';
-          if($('#setNewValOldVal').text() === '立即判断值'){
-            alert('和新值相等');
-          }else{
-            alert('和新值不相等');
-          }
-        }
-      }
-    },
-    computed : {
-      computeVal : function(){
-        var vthis = this;
-        var val = '';
-        for(var i = 0; i < 2; i++){
-          val += 'a';
-        }
-        return val;
-      }
-    }
-  });
-
+<!--组件模板必须要有根节点-->
+<script type="text/x-template" id="anchored-heading-template">
+  <div>
+    <h1 v-if="level === 1">
+      <p>值是1</p>
+    </h1>
+    <h2 v-if="level === 2">
+      <p>值是2</p>
+    </h2>
+    <h3 v-if="level === 3">
+      <p>值是3</p>
+    </h3>
+    <h4 v-if="level === 4">
+      <p>值是4</p>
+    </h4>
+    <h5 v-if="level === 5">
+      <p>值是5</p>
+    </h5>
+    <h6 v-if="level === 6">
+      <p>值是6</p>
+    </h6>
+  </div>
 </script>
+<script src="../js/helloVue.js"></script>
 </body>
 </html>
