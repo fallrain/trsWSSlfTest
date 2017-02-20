@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link rel="stylesheet" href="../css/helloVue.css">
 </head>
 <style>
   .v-slt {
@@ -34,7 +35,8 @@
     <label><span id="beNewSpan">现在没值：</span>{{data.newVal}}</label>
     <button type="button" v-on:click="showTips();">设置值</button>
   </p>
-  <slt v-for="person in persons" v-bind:person="person"></slt>
+  <slt v-bind:person="persons"></slt>
+  <!-- v-for="person in persons"-->
   {{2+1}}
   <div>{{computeVal}}</div>
   <p>
@@ -100,7 +102,33 @@
   </fieldset>
   <fieldset>
     <legend>触发事件测试</legend>
-    <cbsj v-on:emitTest="alert1" ></cbsj>
+    <cbsj v-on:woca="alert1"></cbsj>
+    <div id="counter-event-example">
+      <p>{{ total }}</p>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>作用域插槽</legend>
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <td>姓名</td>
+          <td>年龄</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr is="slot-cld" v-bind:slot-cld-data="persons">
+          <template scope="props" slot="slotCldSlot">
+            <td>{{props.ren}}</td>
+            <td>30</td>
+          </template>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </fieldset>
 </div>
 <script src="../js/jquery-1.11.0.js"></script>

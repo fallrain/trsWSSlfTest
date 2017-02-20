@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  .qq {
+    width: 5000px;
+    height: 1200px;
+    border: 1px solid;
+  }
+
+  .main {
+    overflow: scroll;
+    width: 600px;
+    height: 600px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>
+<body>
+<div class="main" id="main">
+  <div class="qq"></div>
+</div>
+<div class="qq"></div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  $(document).on('mousewheel DOMMouseScroll', function(e, d){
+    //$(document).on('scroll', function(e, d){
+    e.preventDefault();
+    var originalE = e.originalEvent;
+    var delta = originalE.wheelDelta * -1 || originalE.detail;
+    if(delta > 0){
+      window.scrollTo($(window).scrollLeft() + 100, 0);
+    }else{
+      window.scrollTo($(window).scrollLeft() - 100, 0);
+    }
+  });
+</script>
+</body>
+</html>

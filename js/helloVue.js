@@ -3,7 +3,9 @@
  */
 Vue.component('slt', {
   props : ['person'],
-  template : '<li class="v-slt" >{{person.name}}</li>'
+  template : '<ul>' +
+  '<li class="v-slt" v-for="p in person">{{p.name}}</li>' +
+  '</ul>'
 });
 Vue.component('anchored-heading', {
   template : '#anchored-heading-template',
@@ -26,15 +28,44 @@ Vue.component('ipt', {
     };
   }
 });
+//emitTest名字不行????
 Vue.component('cbsj', {
   template : '<div>'
-  + '<button type="button" v-on:click="emitTest">传播事件</button>'
+  + '<button type="button" v-on:click="woca">传播事件</button>'
   + '</div>',
   methods : {
-    emitTest : function(){
-      this.$emit('emitTest');
+    woca : function(){
+      this.$emit('woca');
     },
   }
+});
+Vue.component('button-counter', {
+  template : '<button v-on:click="increment">{{ counter }}</button>',
+  data : function(){
+    return {
+      counter : 0
+    }
+  },
+  methods : {
+    increment : function(){
+      this.counter += 1
+      this.$emit('increment')
+    }
+  },
+});
+Vue.component('slotCld', {
+  props : ['slotCldData'],
+  template : '' +
+  '<div ref="slotCldRef">' +
+  '<slot name="slotCldSlot" text="要插入的地方的text" v-for="slot in slotCldData" :ren="slot.name"></slot>' +
+  '<button type="button" @click="tets">测试ref</button>' +
+  '</div>',
+  methods : {
+    tets : function(){
+      console.log(app.$refs);
+      alert(app.$refs.slotCldRef);
+    }
+  },
 });
 var app;
 app = new Vue({
@@ -63,7 +94,8 @@ app = new Vue({
       {
         name : 'chenchunmei'
       }
-    ]
+    ],
+    total : 0
   },
   methods : {
     alert1 : function(val){
@@ -105,6 +137,9 @@ app = new Vue({
     },
     slfIptFn : function(){
       counter++;
+    },
+    incrementTotal : function(){
+      this.total += 1
     }
   },
   computed : {
