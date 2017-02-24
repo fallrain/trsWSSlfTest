@@ -8,7 +8,14 @@ Vue.component('slt', {
   '</ul>'
 });
 Vue.component('anchored-heading', {
-  template : '#anchored-heading-template',
+  //template : '#anchored-heading-template',
+  render : function(createElement){
+    //为何在一个组件里定义，其他所有组件的事件都会触发
+    return createElement(
+      'h' + this.level,   // tag name 标签名称
+      this.$slots.default // 子组件中的阵列
+    )
+  },
   props : {
     level : {
       type : Number,
