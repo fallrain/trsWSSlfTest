@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<input type="radio" name="hao" value="1">nan
+<input type="radio" name="hao" value="2">nv
+<input type="checkbox" name="sex" value="1">nv1
+<input type="checkbox" name="sex" value="2">nv2
+<input type="checkbox" name="sex" value="3">nv3
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+<button>5</button>
+<input type="text" id="qq" value="null">
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  var nodes = document.getElementsByTagName('button');
+  /*for(var i = 0; i < nodes.length; i++){
+   nodes[i].addEventListener('click', (function(i){
+   return function(){
+   console.log('You clicked element #' + i);
+   }
+   })(i));
+   }*/
+  for(var i = 0; i < nodes.length; i++){
+    nodes[i].addEventListener('click', function(){
+      (function(i){
+        var k = i;
+        console.log('You clicked element #' + k);
+      })(i);
+    });
+  }
+  var num = 887;
+  var sayAlert = (function(num){
+    return function(){
+      alert(num);
+    }
+  })(num);
+  num++;
+  sayAlert();
+</script>
+</body>
+</html>

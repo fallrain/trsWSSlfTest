@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .test {
+      width: 100px;
+      height: 100px;
+      background: red;
+      position: relative;
+      animation: mymove 1s infinite linear;
+    }
+
+    @keyframes mymove {
+      0% {
+        transform: rotate(0deg);
+      }
+      33% {
+        transform: rotate(8deg);
+      }
+      66% {
+        transform: rotate(-7deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="test"></div>
+<p><strong>注释：</strong>Internet Explorer 9 以及更早的版本不支持 animation 属性。</p>
+
+<div></div>
+
+</body>
+</html>

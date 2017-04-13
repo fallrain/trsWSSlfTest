@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<!--
+  return return true代表continue
+  return false代表 break
+-->
+<body>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  $('li').each(function(i, li){
+    console.log(li);
+    if(i == 2){
+      return true
+    }
+    console.log(i)
+  });
+</script>
+</body>
+</html>
