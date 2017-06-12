@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    body {
+      width: 40rem;
+      height: 30rem;
+      font-size: 62.50%; /* 把body的字体设置为10px以方便使用rem时的计算 */
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      background: #0f0;
+      text-align: center;
+    }
+
+    /* 设置content元素的属性 */
+    /* 此元素的宽和高必须相等，即设置border-radius: 50%;后应该是一个圆 */
+    /* 使用rem相对于body的字体尺寸设置了宽和高 */
+    .content {
+      display: inline-block;
+      margin-top: 5rem;
+      width: 20rem;
+      height: 20rem;
+      border: solid 15px rgba(255, 255, 255, 1); /* 此处设置边框，使用rgba的方式是为了后面隐藏时方便，只需要设置a的值为0即可隐藏 */
+      border-radius: 50%;
+      box-sizing: border-box; /* 使用此属性防止边框撑开盒子，border-box会让边框占用盒子里面的空间 */
+      transition: all 2s; /* 该元素的所有属性的变化会在2s内完成 */
+    }
+
+    /* 使用伪类before设置需要转动的边框 */
+    /* 因为如果元素边框转动，内容也会跟着转动 */
+    /* 此处要的效果是只有边框转动而内容不转动 */
+    .content:before {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-sizing: border-box;
+      content: '';
+    }
+
+    /* 设置鼠标悬停在content元素上时content属性的变化 */
+    .content:hover {
+      /*border: solid 15px rgba(255, 255, 255, 0);*/
+    }
+
+    /* 设置鼠标悬停在content上时content的before伪类属性的变化 */
+    .content:hover:before {
+      border: dashed 30px #fff;
+      animation: whirl 9s linear infinite; /* 执行动画whirl,执行一次的周期是9s,执行期间的速度曲线为linear,无限循环 */
+    }
+
+    /* 设置文本内容显示的样式 */
+    .con-text {
+      margin: -60% auto;
+      width: 80%;
+      font-size: 3rem;
+      /* 以下三个属性为了让文字超出宽度时显示省略号，必须同时使用才有效果 */
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    /* 动画whirl,从0度旋转到360度 */
+    @keyframes whirl {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<section class="container">
+  <div class="content" title="新年好新年好新年好">
+    <p class="con-text">新年好新年好新年好</p>
+  </div>
+</section>
+</body>
+</html>

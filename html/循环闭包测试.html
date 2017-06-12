@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<li>0</li>
+<li>1</li>
+<li>2</li>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  for(var i = 0; i < 3; i++){
+    var li = $('li').eq(i)
+    li.click((function(li){
+      return function(){
+        alert(li.html());
+      }
+    })(li));
+  }
+</script>
+</body>
+</html>

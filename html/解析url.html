@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function parse(str){
+    var paramObj = {};
+    var paramArr = decodeURI(str).split('&');  // 先解码
+    for(var i = 0; i < paramArr.length; i++){
+      var tmp = paramArr[i].split('=');
+      var key = tmp[0];
+      var value = tmp[1] || true;
+      if(typeof paramObj[key] === 'undefined'){ // 判断 key 是否存在
+        paramObj[key] = value;
+      }else{
+        var newValue = Array.isArray(paramObj[key]) ? paramObj[key] : [paramObj[key]];  // 正确处理数组
+        newValue.push(value);
+        paramObj[key] = newValue;
+      }
+    }
+
+    return paramObj;
+  }
+  parse('b=2')
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<div id="a">a</div>
+<input type="text" id="ipt">
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  $('#ipt').on('propertychange',function(){
+    console.log(1);
+  });
+</script>
+</body>
+</html>
