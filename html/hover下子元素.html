@@ -4,18 +4,23 @@
   <meta charset="UTF-8">
   <title></title>
 </head>
-<!--内联元素如果设置了浮动，那么就可以设置宽和高了-->
 <style>
-  span {
-    float: left;
+  .qq {
+    width: 100px;
+    height: 100px;
     border: 1px solid;
-    width: 200px;
-    height: 200px;
+  }
+
+  .qq:hover .hao {
+    width: 10px;
+    height: 10px;
+    border: 1px solid;
   }
 </style>
 <body>
-<span>内用</span>
-<span>内用</span>
+<div class="qq">
+  <div class="hao"></div>
+</div>
 <script src="../js/jquery-1.11.0.js"></script>
 <script>
 

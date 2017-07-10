@@ -3,31 +3,56 @@
 <head>
   <style>
     .test {
-      width: 100px;
-      height: 100px;
+      width: 300px;
+      height: 300px;
       background: red;
       position: relative;
-      animation: mymove 1s infinite linear;
+      animation: mymove 20s linear;
+    }
+
+    .qq {
+      width: 50px;
+      height: 50px;
+      background: #000;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .qq:hover .q1 {
+      display: block;
+    }
+
+    .q1 {
+      display: none;
+      position: absolute;
+      height: 10px;
+      width: 60px;
+      border: 1px solid;
     }
 
     @keyframes mymove {
       0% {
         transform: rotate(0deg);
       }
-      33% {
-        transform: rotate(8deg);
-      }
-      66% {
-        transform: rotate(-7deg);
-      }
+      /*    33% {
+            transform: rotate(20deg);
+          }
+          66% {
+            transform: rotate(10deg);
+          }*/
       100% {
-        transform: rotate(0deg);
+        transform: rotate(90deg);
       }
     }
   </style>
 </head>
 <body>
-<div class="test"></div>
+<div class="test">
+  <div class="qq">
+    <div class="q1">fdfd</div>
+  </div>
+</div>
 <p><strong>注释：</strong>Internet Explorer 9 以及更早的版本不支持 animation 属性。</p>
 
 <div></div>
