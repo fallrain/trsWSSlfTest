@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+  <a href="#">1</a><a href="#">2</a><a href="#">3</a>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  for(var i = 0; i < 3; i++){
+    let a=$('a')[i];
+     $($('a')[i]).click(function(){
+       console.log(a)
+     })
+  }
+
+</script>
+</body>
+</html>
