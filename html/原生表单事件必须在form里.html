@@ -10,14 +10,19 @@
 </style>
 <body>
 <div>
-  <div class="qq"></div>
-
+  <form action="">
+    <input class="qq qq1" type="text">
+    <input class="qq qq2" type="button">
+  </form>
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
 <script>
   //表单事件在HTML表单中触发 (适用于所有 HTML 元素, 但该HTML元素需在form表单内):
-  $('.qq').blur(function(){
-    alert();
+  $('.qq1').blur(function(){
+    alert(1);
+  });
+  $('.qq2').click(function(){
+    alert(2);
   });
 </script>
 </body>
