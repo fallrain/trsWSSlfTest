@@ -18,12 +18,16 @@
 <script src="../js/jquery-1.8.3.min.js"></script>
 <script>
   //表单事件在HTML表单中触发 (适用于所有 HTML 元素, 但该HTML元素需在form表单内):
-  $('.qq1').blur(function(){
+  $('.qq1').focusout(function(){
     alert(1);
   });
+  /*$('.qq2').mousedown(function(){
+    alert(2);
+  });*/
   $('.qq2').click(function(){
     alert(2);
   });
+
 </script>
 </body>
 </html>

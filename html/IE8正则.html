@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  var a = "整体设计，时尚简约<br/>　　高档转... 　";
+  /*for(var i = 0; i < a.length; i++){
+    var obj = a[i];
+    console.log(obj.charCodeAt(0));
+  }*/
+  a = a.replace(/<br\/>/g, '').replace(/[\s\u3000\u2002\u2003\u2009\u200c\u200d]+/g, ' ');
+  document.write(a);
+  $('.qq').html('&ensp;&emsp;&thinsp;&zwnj;&zwj;');
+   console.log('s'+$('.qq').html()+'s')
+</script>
+</body>
+</html>
