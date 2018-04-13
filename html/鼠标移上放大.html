@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .wuzi {
+  }
+
+  .zhuozi:hover {
+    transform: scale(1.2, 1.2);
+    box-shadow: green 0 0 5px;
+  }
+
+  .main {
+    position: relative;
+    display: inline-block;
+    margin-left: 200px;
+    margin-top: 200px;
+  }
+
+  /*
+    大图分辨率是 579*297
+    小图相对大图的位置是top 205px left 287px
+    所以就用比例来定位，这样不管大图小图怎么同比例放缩，位置都对
+  */
+  .zhuozi {
+    position: absolute;
+    top: 51.63%; /* 205/397 */
+    left: 49.56% /* 287/579 */
+  }
+</style>
+<body>
+<div class="main">
+  <img src="../img/zhuozi.png" class="zhuozi">
+  <img src="../img/wuzi.jpg" class="wuzi">
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+</body>
+</html>

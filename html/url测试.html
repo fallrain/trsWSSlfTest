@@ -12,12 +12,15 @@
 <script src="../js/jquery-1.11.0.js"></script>
 <script src="../js/common.js"></script>
 <script>
-  Common.sendFormData('http://test.haier.com/HaierFramework/GetNginxConfig/getNginxConfigUnique.do',
+  Common.sendFormData('http://172.16.167.4:8081/webchat-app/appTestWeb/testGateway',
     function(data){
-      $('body').html(data)
+      debugger
     },
+    JSON.stringify({
+      name : 'zhang'
+    }),
     {
-      docid : 692
+      contentType : 'application/json'
     }
   );
 </script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  function formatCardNo(num, type){
+    /*把电话号码、借记卡号、信用卡号转化为带星号的*/
+    //type 0:借记卡 1：信用卡 2：手机号
+    type = type || 0;
+    let newNum = '';
+    //号码的部分数字转为*
+    if(type == 0){
+      num = num.substr(0, 6) + '*********' + num.substr(15);
+    }else if(type == 1){
+      num = num.substr(0, 4) + '********' + num.substr(12);
+    }else{
+      num = num.substr(0, 3) + '****' + num.substr(7);
+    }
+    if(type == 0 || type == 1){
+      //加上空格间隔
+      for(let i = 1; i <= Math.ceil(num.length / 4); i++){
+        newNum += num.substr(4 * (i - 1), 4) + (i < num.length / 4 ? ' ' : '');
+      }
+    }
+    return newNum;
+  }
+
+  formatCardNo('6283650040003391', 1);
+</script>
+</body>
+</html>

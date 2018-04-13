@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<style>
+  .id1 {
+    width: 500px;
+    height: auto;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: block;
+    transition: opacity 0s;
+  }
+
+  .id2 {
+    border: 5px solid;
+    display: block;
+    height: 40px;
+    transition: opacity 1s;
+    opacity: 0;
+  }
+
+  .id1 li:hover .id2 {
+    border-color: red;
+    opacity: 1;
+  }
+
+  .id1 li {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin-top: 10px;
+  }
+</style>
+<div class="id1">
+  <ul>
+    <li>
+      <div class="id2"></div>
+    </li>
+    <li>
+      <div class="id2"></div>
+    </li>
+    <li>
+      <div class="id2"></div>
+    </li>
+    <li>
+      <div class="id2"></div>
+    </li>
+
+  </ul>
+</div>
+</body>
+</html>

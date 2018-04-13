@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<!--${}里可以运行函数-->
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  let a = function(){
+    return '好的'
+  };
+  let str =
+    `
+      <div>${a()}${'key' + 2}</div>
+    `;
+  $('.qq').html(str)
+</script>
+</body>
+</html>

@@ -52,6 +52,7 @@
   var completeFn = function(){
   };
   var successFn = function(json){
+    debugger
     if(typeof json === 'string'){
       try{
         json = eval("(" + json + ")");
