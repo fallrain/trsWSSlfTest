@@ -15,22 +15,11 @@
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
 <script>
-  'use strict';
-  console.log(this)
-  var a = 1;
-  for(let i = 0; i < 2; i++){
-    a=3
+  function a(){
+    var a = window.open('http://image.tongshuai.com/tongshuai/laundry/W020180418684645655005.pdf');
+    //a.document.write("<p>这是'我的窗口'</p>");
+    a.document.title = 'aaa';
   }
- setTimeout(function () {
-   alert(0)
- })
-  function fn(){
-    console.log(this)
-    toString.call('')
-    a = 2;
-  }
-
-  fn();
 </script>
 </body>
 </html>

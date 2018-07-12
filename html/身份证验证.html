@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/IDValidator.js"></script>
+<script>
+  function isValid(id, forceType) {
+    var GB2260 = this.GB2260 || null;
+    var code = util.checkArg(id, forceType);
+    if (code === false) {
+      return false;
+    }
+    //查询cache
+    if (this.cache.hasOwnProperty(id) && typeof this.cache[id].valid !== 'undefined') {
+      return this.cache[id].valid;
+    } else {
+      if (!this.cache.hasOwnProperty(id)) {
+        this.cache[id] = {};
+      }
+    }
+
+    var addr = code.body.slice(0, 6);
+    var birth = (code.type === 18 ? code.body.slice(6, 14) : code.body.slice(6, 12));
+    var order = code.body.slice(-3);
+
+    if (!(util.checkAddr(addr, GB2260) && util.checkBirth(birth) && util.checkOrder(order))) {
+      this.cache[id].valid = false;
+      return false;
+    }
+
+    //15位不含校验码，到此已结束
+    if (code.type === 15) {
+      this.cache[id].valid = true;
+      return true;
+    }
+
+    /* 校验位部分 */
+
+    //位置加权
+    var posWeight = [];
+    for (var i = 18; i > 1; i--) {
+      var wei = util.weight(i);
+      posWeight[i] = wei;
+    }
+
+    //累加body部分与位置加权的积
+    var bodySum = 0;
+    var bodyArr = code.body.split('');
+    for (var j = 0; j < bodyArr.length; j++) {
+      bodySum += (parseInt(bodyArr[j], 10) * posWeight[18 - j]);
+    }
+
+    //得出校验码
+    var checkBit = 12 - (bodySum % 11);
+    if (checkBit == 10) {
+      checkBit = 'X';
+    } else if (checkBit > 10) {
+      checkBit = checkBit % 11;
+    }
+    checkBit = (typeof checkBit === 'number' ? checkBit.toString() : checkBit);
+
+    //检查校验码
+    if (checkBit !== code.checkBit) {
+      this.cache[id].valid = false;
+      return false;
+    } else {
+      this.cache[id].valid = true;
+      return true;
+    }
+
+  }
+
+  var Validator = new IDValidator();
+  var id = "660103197001087419";
+
+  console.log(isValid(id))
+</script>
+</body>
+</html>

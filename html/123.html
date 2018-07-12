@@ -1,67 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=0">
+  <title>张家口银行</title>
+  <link href=./static/css/app.67a1353ede8c7dfa757ce710e01b93f7.css rel=stylesheet>
 </head>
-
-<body>
-<style>
-  .tu {
-    display: none;
-    height: 100px;
-    width: 100px;
-    border: 1px solid;
-    background-color: blue
-  }
-
-</style>
-
-<div class="tupian">
-  <div id="div1" class="tu" style="display: block;">����1</div>
-  <div id="div2" class="tu">����2</div>
-  <div id="div3" class="tu">����3</div>
-  <div id="div4" class="tu">����4</div>
-  <div id="div5" class="tu">����5</div>
-
-
-</div>
-<div style="position: fixed ;left: 200px;top: 50px;">
-  <ui>
-    <li><a href="#" onmouseover="show('div1')" onmouseout="hide('div1')">���Ǳ���1</a></li>
-    <li><a href="#" onmouseover="show('div2')" onmouseout="hide('div2')">���Ǳ���2</a></li>
-    <li><a href="#" onmouseover="show('div3')" onmouseout="hide('div3')">���Ǳ���3</a></li>
-    <li><a href="#" onmouseover="show('div4')" onmouseout="hide('div4')">���Ǳ���4</a></li>
-    <li><a href="#" onmouseover="show('div5')" onmouseout="hide('div5')">���Ǳ���5</a></li>
-  </ui>
-</div>
-<script src="../js/test12.js"></script>
-<script>
-  //方法1：避免每次隐藏所有，缺点，div1不确定，扩展性不好
-  /*  function show(n){
-   var div1 = document.getElementById('div1');
-   if(div1.style.display == 'block'){
-   div1.style.display = 'none';
-   }
-   document.getElementById(n).style.display = "block";
-   }
-   function hide(n){
-   document.getElementById(n).style.display = "none";
-   }*/
-  //方法2：每次隐藏所有，缺点：无脑隐藏所有，浪费资源，但是适用性好
-  function show(n){
-    var tus = document.getElementsByClassName('tu');
-    var tusLen = tus.length;
-    for(var i = 0; i < tusLen; i++){
-      tus[i].style.display = "none";
-    }
-
-    document.getElementById(n).style.display = "block";
-  }
-  function hide(n){
-    document.getElementById(n).style.display = "none";
-  }
-
-</script>
+<body class=zjkccb>
+<div id=app></div>
+<script type=text/javascript src=./static/js/manifest.50661d0603e9d7a6a321.js></script>
+<script type=text/javascript src=./static/js/vendor.911e3cb91bdab44f0b47.js></script>
+<script type=text/javascript src=./static/js/app.4ca76519a8d320fa0c01.js></script>
 </body>
 </html>

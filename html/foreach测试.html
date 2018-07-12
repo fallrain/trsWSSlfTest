@@ -15,22 +15,16 @@
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
 <script>
-  'use strict';
-  console.log(this)
-  var a = 1;
-  for(let i = 0; i < 2; i++){
-    a=3
+  var a = {
+    b: 1
+  };
+  a.f = function () {
+    let ay = [1, 2, 3];
+    ay.forEach(()=> {
+      console.log(this.b)
+    })
   }
- setTimeout(function () {
-   alert(0)
- })
-  function fn(){
-    console.log(this)
-    toString.call('')
-    a = 2;
-  }
-
-  fn();
+  a.f();
 </script>
 </body>
 </html>

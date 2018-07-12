@@ -16,13 +16,17 @@
 <script>
   let a = new Promise(function(resolve, reject){
     setTimeout(function(){
-      resolve(4)
-    }, 3000)
-    resolve(3)
+      reject('拒绝')
+    }, 1000);
+    /*setTimeout(function(){
+      resolve('同意')
+    }, 1000);*/
   });
   a.then(function(a){
     console.log(a)
-  })
+  }).catch(function(a){
+    console.log(a)
+  });
   console.log('aa')
 </script>
 </body>

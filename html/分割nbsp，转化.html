@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq" name="1"></div>
+  <input type="radio" id="rdo">
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  function converHtmlCode(code) {
+    /*html字符编号转为html字符*/
+    var parDom = $('<span>');
+    return parDom.html(code).text();
+  }
+
+  function converHtmlCodeExcludeSpaces(str) {
+    var ay = str.split('&nbsp;');
+    var resultAy = [];
+    $.each(ay, function (i, v) {
+      resultAy.push(converHtmlCode(v));
+    });
+    return resultAy.join('&nbsp;');
+  }
+
+  var str = "&lt;&nbsp;&gt;";
+  console.log(converHtmlCodeExcludeSpaces(str))
+  var a = document.getElementsByClassName('qq')[0];
+  var b = document.getElementById('rdo');
+</script>
+</body>
+</html>

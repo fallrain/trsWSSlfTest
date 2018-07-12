@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  .cui_pager a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid;
+    text-align: center;
+  }
+
+  .cur {
+    background: #000;
+    color: #fff;
+  }
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+  <div class="contbox">
+    <div class="cui_pager js_newPager">
+      <!-- <a href="" class="o_xs-hide"><i class="iconfont"></i></a>
+      <a href="">1</a>
+      <a href="" class="cur">2</a>
+      <a href="">3</a>
+      <a href="">4</a>
+      <a href="">5</a>
+      <a href="" class="o_xs-hide"><i class="iconfont"></i></a> -->
+    </div>
+    <ul class="newsList" id="js_newList">
+    </ul>
+  </div>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  var curPage = 1;
+  var PageSize = 2;
+  search(curPage, PageSize);
+
+  //新闻分页
+  function search(_curPage, _pageSize) {
+    var infohtml = "";
+    jQuery.ajax({
+      type: "get",
+      dataType: "json",
+      url: "http://testuser.casarte.com/yxhd/travel/xwzx/newsList.json",
+      data: {
+        'currentPage': _curPage,
+        'pageSize': _pageSize
+      },
+      success: function (data) {
+
+        var resultList = data;
+        // 分页参数
+        var currentPage = 1;
+        var pageSize = 2;
+        var totalCount = 0;
+
+        if (resultList != null && resultList.length >= 1) {
+
+          totalCount = resultList.length - 1;
+
+          var begin = (_curPage - 1) * _pageSize; //页起始位置(包括)
+          var end = _curPage * _pageSize; //页结束位置(不包括)
+          end = end > totalCount ? totalCount : end;
+          var returnData = data.slice(begin, end);
+          //清空
+          $('#js_newList').html("");
+
+          //绘制产品
+          for (var i = 0; i < returnData.length; i++) {
+            if (returnData[i].title != undefined) {
+              var pic = returnData[i].pic;
+              var url = returnData[i].url;
+              var title = returnData[i].title;
+              var jianjie = returnData[i].jianjie;
+              var time = returnData[i].time.replace(/-/g, ".").substring(0, 10);
+
+              infohtml += '<li><a href="' + url + '">';
+              infohtml += '<img class="o_picture img o_xs-hide o_sm-hide" src="' + pic + '" alt />';
+              infohtml += '<div class="imgbox o_df-hide o_sm-show o_xs-show">';
+              infohtml += '<img class="o_picture js_bgcenter" src="' + pic + '" alt /></div>';
+              infohtml += '<h2>' + title + '</h2>';
+              infohtml += '<p>' + jianjie + '</p>';
+              infohtml += '<span class="time">更新时间：<em>' + time + '</em></span></a>';
+              infohtml += '<div class="o_clear"></div></li>'
+
+            }
+          }
+          $('#js_newList').append(infohtml);
+
+          //产品检索分页 底部
+          jQuery(".js_newPager").html("");
+          var splitPage = splitPageHTML(_curPage, _pageSize, totalCount);
+          jQuery(".js_newPager").append(splitPage);
+
+        }
+      },
+      error: function () {
+
+      }
+    });
+  }
+
+  function splitPageHTML(currentPage, pageSize, totalCount) {
+    //总页数
+    var pageHtmlText = "";
+    var totalPage = parseInt(Math.ceil(totalCount / pageSize));//计算页码总数
+
+    //当前页大于总页数
+    if (currentPage > totalPage) {
+      currentPage = totalPage;
+    }
+    if (currentPage < 1) {
+      currentPage = 1;
+    }
+
+    //当前页数 > 1
+    if (currentPage > 1) {
+      pageHtmlText += '<a href="javascript:search(' + (currentPage - 1) + ',' + pageSize + ')" class="o_xs-hide"><i class="iconfont"></i></a>';
+    }
+
+    var start = currentPage - 1;
+    if (start < 1) {
+      start = 1
+    }
+    var end = currentPage + 1;
+    if (end > totalPage) {
+      end = totalPage;
+    }
+    var pageAy = [];
+    for (var i = start; i <= end; i++) {
+      if (i == currentPage) {
+        pageAy.push('<a href="javascript:;" class="cur">' + currentPage + '</a>');
+      } else {
+        pageAy.push('<a href="javascript:search(' + i + ',' + pageSize + ')">' + i + '</a>');
+      }
+    }
+    //按钮最多5个
+    var len = pageAy.length;
+    if (len < 6) {
+        if (currentPage === 1) {
+          end = Math.min(start + 3, totalPage);
+        }
+      } else {
+        start = Math.max(start - 3, totalPage);
+    }
+    //if (currentPage + temp <= totalPage) pageHtmlText += '<a>...</a>';
+    pageHtmlText += pageAy.join('');
+    if (currentPage != totalPage) {
+      pageHtmlText += '<a href="" class="o_xs-hide"><i class="iconfont"></i></a>';
+      if (1) {
+
+      }
+    }
+
+    return pageHtmlText;
+  }
+</script>
+</body>
+</html>
