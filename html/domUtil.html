@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery3.0.js"></script>
+<script src="../js/dom.js"></script>
+<script>
+  var a = u('.qq');
+  $('.qq').on('click', function () {
+    alert(1)
+  });
+  $('.qq').on('mouseover', function () {
+    alert(2)
+  });
+
+  function testOff() {
+    $('.qq').off();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  var z = 10;
+  function foo(){
+    console.log(z);
+  }
+  (function(funArg){
+    var z = 20;
+    funArg();
+    var a = funArg;
+    a();
+  })(foo);
+  var data = [];
+  for(var k = 0; k < 3; k++){
+    data[k] = function(){
+      console.log(k);
+    };
+  }
+  data[0]();
+  data[1]();
+  data[2]();
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function setCookie(c_name, value, expiredays){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
+    var s = c_name + "=" + encodeURIComponent(value) +
+      ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
+    debugger
+    document.cookie = s
+  }
+  setCookie('wode', 1);
+  //setCookie('wode',null,-1);
+  function setCookie(cName, value, expiredays){
+    /*设置cookie，清空expiredays传-1*/
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
+    document.cookie = cName + "=" + encodeURIComponent(value) +
+      ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+  }
+  function clearCooKie(cName){
+    this.setCookie(cName, null, -1);
+  }
+</script>
+</body>
+</html>

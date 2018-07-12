@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .main {
+    width: 600px;
+    height: 500px;
+    display: flex;
+  }
+
+  .qq1 {
+    width: 100px;
+    height: 100%;
+    background: red;
+    flex-shrink:0;
+  }
+
+  .qq2 {
+    display: flex;
+    background: greenyellow;
+
+  }
+
+  .qq3 {
+    width: 550px;
+    height: 100px;
+    background: darkgray;
+  }
+</style>
+<body>
+<div>
+  <div class="main">
+    <div class="qq1">
+
+    </div>
+    <div class="qq2">
+      <div class="qq3"></div>
+    </div>
+  </div>
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+</body>
+</html>

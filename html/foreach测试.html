@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  var a = {
+    b: 1
+  };
+  a.f = function () {
+    let ay = [1, 2, 3];
+    ay.forEach(()=> {
+      console.log(this.b)
+    })
+  }
+  a.f();
+</script>
+</body>
+</html>

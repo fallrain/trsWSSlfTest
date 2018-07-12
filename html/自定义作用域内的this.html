@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<!--严格模式下，this不再指向window-->
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  'use strict';
+  function fn(){
+    var aa = function(){
+      console.log(this);
+    };
+    aa();
+  }
+  fn();
+</script>
+</body>
+</html>

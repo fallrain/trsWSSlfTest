@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function jc(n){
+    if(n <= 1){
+      return 1;
+    }
+    return n * jc(n - 1);
+  }
+  var d1 = new Date();
+  //console.log(jc(31400));
+  var num = 1;
+  for(var i = 1; i <= 64; i++){
+    num *= 2;
+  }
+  console.log(num);
+  var d2 = new Date();
+  console.log(d2 - d1);
+</script>
+</body>
+</html>

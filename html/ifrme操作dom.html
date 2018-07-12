@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<iframe src="三列自适应.html" frameborder="0" name="sanname" id="sanid">
+
+</iframe>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  //可以通过window.frames属性通过ifame的name名来获取到iframe的window对象
+  var frameDocument = window.frames['sanname'].document;
+  //也可以直接通过id获取
+  $('#sanid');
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  $.ajax({
+    url : '../json/test2.json',
+    type : 'get',
+    //async : false,
+    complete : function(data){
+      for(var i = 0; i < 10; i++){
+        console.log(i + 'ajax');
+      }
+    }
+  });
+  $.ajax({
+    url : '../json/test2.json',
+    type : 'get',
+    async : true,
+    complete : function(data){
+      for(var i = 0; i < 5; i++){
+        console.log(i + '2');
+      }
+    }
+  });
+  for(var i = 0; i < 5; i++){
+    console.log(i + 'null');
+  }
+</script>
+</body>
+</html>

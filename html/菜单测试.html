@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    padding: 0;
+    margin: 0;
+  }
+
+  .top {
+    height: 60px;
+    width: 100%;
+    background: red;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+
+  .btm {
+    width: 100%;
+    height: 60px;
+    background: blue;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .main {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    background: #def8fa;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .menu {
+    width: 150px;
+    background: #953b39;
+    position: absolute;
+    top: 80px;
+    bottom: 80px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  .content {
+    border: 1px solid #499249;
+    position: absolute;
+    top: 80px;
+    bottom: 80px;
+    right: 100px;
+    left: 260px;
+    overflow: scroll;
+  }
+
+  .qq {
+    width: 100px;
+    height: 150px;
+    border: 1px solid;
+    float: left;
+  }
+</style>
+<body>
+<div class="top"></div>
+<div class="main">
+  <div class="menu">
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+  </div>
+  <div class="content">
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+    <div class="qq"></div>
+  </div>
+</div>
+<div class="btm"></div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

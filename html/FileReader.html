@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<div id="preImgDiv"></div>
+<input type="file" id="file" name="file" class="none-dis-imp" onchange="showImage(event)"/>
+<p>Upload File: <input type="file" name="file1" onchange="uploadAndSubmit(this);"/></p>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function uploadAndSubmit(_this){
+    var reader = new FileReader();
+
+    reader.onload = function(){
+      alert();
+      // 这个事件在读取成功结束后触发
+      console.log("load complete");
+    }
+    reader.readAsDataURL(_this.files[0]);
+  }
+  function showImage(e){
+    e = e || window.event;
+    var hasFileReader = 'FileReader' in window;
+    var hasFile = 'File' in window;
+    if(!hasFile || !hasFileReader){
+      alert("IE10以上版本才能使用！");
+      return;
+    }
+    var files = e.target.files; //FileList Objects
+    var ireg = /image\/.*/i;
+    var p = $("#preImgDiv");
+    for(var i = 0, f; f = files[i]; i++){
+      var reader = new FileReader();
+      reader.onload = (function(file){
+        return function(e){
+          var span = $('<span>');
+          var img = $('<img>');
+          img.css(
+            {
+              "width" : "360px",
+              "height" : "120px"
+            }).prop("id", "preImg");
+          img.prop(
+            {
+              src : this.result,
+              alt : file.name
+            });
+          span.html(img);
+          p.prepend(span, null);
+        };
+      })(f);
+      //读取文件内容
+      reader.readAsDataURL(f);
+    }
+  }
+</script>
+</body>
+</html>

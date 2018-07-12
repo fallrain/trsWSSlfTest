@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function zh(n, m){
+    /*组合算法*/
+    var fenmu = 1;
+    var fenzi = 1;
+    for(var i = 1; i <= m; i++){
+      fenmu *= i;
+      fenzi *= n--;
+    }
+    return fenzi / fenmu;
+  }
+  function count(n, m){
+    //n，m代表方格的格子数
+    var min = n >= m ? m : n;
+    min += Math.abs(n - m);
+    var num = 0;
+    for(var i = 1; i <= min; i++){
+      num += zh(m + n - i - 2, i);
+    }
+    return num + 1;
+  }
+
+</script>
+</body>
+</html>

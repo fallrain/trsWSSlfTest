@@ -12,14 +12,18 @@
   }
 </style>
 <body>
-<div class="qq"></div>
-<div class="qq"></div>
-<div class="qq"></div>
-<div class="qq"></div>
-<div class="qq"></div>
+<div class="qq">1</div>
+<div class="qq">2</div>
+<div class="qq">3</div>
+<div class="qq">4</div>
+<div class="qq">5</div>
+<input type="checkbox" name="sex" value="1">
+<input type="checkbox" name="sex" value="2">
+<input type="checkbox" name="sex" value="3">
 <script src="../js/jquery-1.11.0.js"></script>
 <script>
-  var qqs =document.querySelectorAll('.qq');
+  var qqs = document.querySelectorAll('.qq');
+  console.log($('[name=sex]:checked').val());
 </script>
 </body>
 </html>

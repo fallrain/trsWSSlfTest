@@ -82,5 +82,11 @@ body {
     -webkit-transform: scale(0, 0); }
   to {
     -webkit-transform: scale(1, 1); } }
+a {
+  font-size: 29; }
+  [data-dpr="2"] a {
+    font-size: 58; }
+  [data-dpr="3"] a {
+    font-size: 87; }
 
 /*# sourceMappingURL=pageRefresh.css.map */

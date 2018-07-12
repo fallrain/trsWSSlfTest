@@ -23,11 +23,33 @@
         tagNum = j
       }
     }
-    var temp=ay[tagNum];
-    ay[tagNum]=ay[i];
-    ay[i]=temp;
+    var temp = ay[tagNum];
+    ay[tagNum] = ay[i];
+    ay[i] = temp;
   }
-  console.log(ay)
+  console.log(ay);
+
+  var num = 5;
+  function zh(n, m){
+    var fenzi = 1;
+    var fenmu = 1;
+
+    for(var i = m; i >= 1; i--){
+      fenzi *= n--;
+      fenmu *= i;
+    }
+    return fenzi / fenmu;
+  }
+
+  function count(num){
+    var bushu = 0;
+    var mid = Math.floor(num / 2);
+    for(var j = 0; j <= mid; j++){
+      bushu += zh(num - j, j);
+    }
+    return bushu;
+  }
+  count(num);
 </script>
 </body>
 </html>

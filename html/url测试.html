@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script src="../js/common.js"></script>
+<script>
+  Common.sendFormData('http://172.16.167.4:8081/webchat-app/appTestWeb/testGateway',
+    function(data){
+      debugger
+    },
+    JSON.stringify({
+      name : 'zhang'
+    }),
+    {
+      contentType : 'application/json'
+    }
+  );
+</script>
+</body>
+</html>

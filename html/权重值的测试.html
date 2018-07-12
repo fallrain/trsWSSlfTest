@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--权重并没有值这一说，一万个多层的值也不如同一个id选择器值大-->
+<style>
+  #q2,
+  #q9,
+  #q10,
+  #q12 {
+    color: #000;
+  }
+
+  .q1 .q2,
+  .q1 .q2 .q3 .q4 .q5 .q6 .q7 .q8 .q9,
+  .q1 .q2 .q3 .q4 .q5 .q6 .q7 .q8 .q9, .q10
+  .q1 .q2 .q3 .q4 .q5 .q6 .q7 .q8 .q9 .q10 .q11 .q12 {
+    color: #67E2FE;
+  }
+
+
+</style>
+<body>
+<div class="q1">
+  <div class="q2" id="q2">
+    第二个
+    <div class="q3">
+      <div class="q4">
+        <div class="q5">
+          <div class="q6">
+            <div class="q7">
+              <div class="q8">
+                <div class="q9" id="q9">
+                  第九个
+                  <div class="q10" id="q10">
+                    第十个
+                    <div class="q11">
+                      <div class="q12" id="q12">
+                        字体颜色
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

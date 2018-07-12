@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!--由于背景位置是用百分比，所以改变分辨率的时候,移动的距离也不同-->
+</head>
+<style>
+  html {
+    //filter: expression(document.execCommand("BackgroundImageCache", false, true));
+  }
+  .main {
+    width: 90%;
+    transition: width 2s;
+    position: absolute;
+  }
+
+  .qq {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    background-repeat: repeat-x;
+
+  }
+
+  .main:hover {
+    width: 1000px;
+  }
+
+  .qq0 {
+    background-image: url('../img/hdm1.png');
+    background-position: 15% 0;
+  }
+
+  .qq1 {
+    background-image: url('../img/hdm2.png');
+    background-position: 40% 0;
+  }
+
+  .qq2 {
+    background-image: url('../img/hdm3.png');
+    background-position: 80% 0;
+  }
+</style>
+<body>
+<div class="main">
+  <div class="qq0 qq"></div>
+  <div class="qq1 qq"></div>
+  <div class="qq2 qq"></div>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+</script>
+</body>
+</html>

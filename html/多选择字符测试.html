@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<!--jquery支持以各种数组形式操作DOM-->
+<style>
+  .qq {
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+  }
+</style>
+<body>
+<div id="qq1">ds</div>
+<div id="qq2">dsads</div>
+<div class="qq">
+
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  console.log($('#qq1,#qq2'));
+  console.log($(['#qq1', '#qq2']));
+  console.log($([$('#qq1'), $('#qq2')]));
+  console.log($([$('#qq1')[0], $('#qq2')[0]]));
+  $(".qq").html([$('#qq1'), $('#qq2')]);
+</script>
+</body>
+</html>

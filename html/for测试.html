@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+
+  function count(num){
+    //只为演示，不做类型检查
+    num += '';
+    var len = num.length;
+    var lastNum = num[len - 1];
+    var max = num[0];
+    var maxLen = -(1 / 0);
+    for(var i = num[0] * 1 + 1; i <= lastNum; i++){
+      var dis = num.indexOf(i) - num.indexOf(i - 1);
+      if(dis > maxLen){
+        maxLen = dis;
+        max = i - 1;
+      }
+    }
+    if(lastNum - num.indexOf(lastNum - 1) > max){
+      max = lastNum;
+    }
+    return max;
+  }
+  var num = '1122333444445';
+  count(num);
+</script>
+</body>
+</html>

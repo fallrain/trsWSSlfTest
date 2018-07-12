@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../css/helloVue.css">
+</head>
+<style>
+  .v-slt {
+
+  }
+
+  .red-bg {
+    background: red;
+  }
+
+  .blue {
+    color: blue;
+  }
+
+  fieldset {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+</style>
+<body>
+<div id="app">
+  <p>
+    <label>Message:</label><input type="text" v-model="message">{{message}}
+  </p>
+  <p>
+    <label>lazy的Message,change事件后才改变值:</label><input type="text" v-model.lazy="message1">{{message1}}
+  </p>
+  <p>
+    <label><span id="beNewSpan">现在没值：</span>{{data.newVal}}</label>
+    <button type="button" v-on:click="showTips();">设置值</button>
+  </p>
+  <slt v-bind:person="persons"></slt>
+  <!-- v-for="person in persons"-->
+  {{2+1}}
+  <div>{{computeVal}}</div>
+  <p>
+    <label v-bind:class="{'red-bg':isRedBg}" id="mybj">现在没有背景</label>
+    <button v-on:click="changeBg();">改变背景</button>
+  </p>
+  <fieldset>
+    <legend>if else</legend>
+    <div v-if="isIf">显示if</div>
+    <div v-else="">显示else</div>
+    <div v-else="">显示第二个else</div>
+  </fieldset>
+  <fieldset>
+    <legend>带其他参数的for循环</legend>
+    <ul>
+      <li v-for="(item,index) in persons">这是第{{index+1}}个：{{item.name}}</li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <legend>整数迭代，类似于for循环</legend>
+    <ul>
+      <li v-for="i in 5">{{i}}</li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <legend>单选多选框测试</legend>
+    <span>性别：</span>
+    <label><input type="radio" value="男" v-model="rdSex" v-bind:true-value="chooseNan" v-bind:false-value="noChooseNan">男</label>
+    <label><input type="radio" value="女" v-model="rdSex" v-bind:true-value="chooseNv" v-bind:false-value="noChooseNv">女</label>
+    <div>选中的性别：{{rdSex}}</div>
+    <span>爱好：</span>
+    <label><input type="checkbox" value="游泳" v-model="ckAihao">游泳</label>
+    <label><input type="checkbox" value="Dota" v-model="ckAihao">Dota</label>
+    <label><input type="checkbox" value="魔兽" v-model="ckAihao">魔兽</label>
+    <label><input type="checkbox" value="把妹" v-model="ckAihao">把妹</label>
+    <ul>
+      <li v-for="ah in ckAihao">{{ah}}</li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <legend>下拉框</legend>
+    <select v-model="slts">
+      <option value="一二三四五">一二三四五</option>
+      <option value="上山打老虎">上山打老虎</option>
+      <option value="老虎打不着">老虎打不着</option>
+    </select>
+    <div>选中的是：{{slts}}</div>
+  </fieldset>
+  <fieldset>
+    <legend>异步刷新测试</legend>
+    <div>
+      <span>这是老的值：</span> <label id="setNewValOldVal">{{setNewValOldVal}}</label>
+    </div>
+    <button type="button" v-on:click="setNewValTest();">设置新值后立即判断</button>
+    <button type="button" v-on:click="setNewValTest(true);">设置新值后等待刷新完再判断</button>
+  </fieldset>
+  <div>
+    <anchored-heading :level="3"><div>dsd</div> Hello world!</anchored-heading>
+  </div>
+  <fieldset>
+    <legend>自定义组件之自定义输入框</legend>
+    <ipt v-bind:fn="slfIptFn"></ipt>
+  </fieldset>
+  <fieldset>
+    <legend>触发事件测试</legend>
+    <cbsj v-on:woca="alert1"></cbsj>
+    <div id="counter-event-example">
+      <p>{{ total }}</p>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+      <button-counter v-on:increment="incrementTotal"></button-counter>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>作用域插槽</legend>
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <td>姓名</td>
+          <td>年龄</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr is="slot-cld" v-bind:slot-cld-data="persons">
+          <template scope="props" slot="slotCldSlot">
+            <td>{{props.ren}}</td>
+            <td>30</td>
+          </template>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </fieldset>
+</div>
+<script src="../js/jquery-1.11.0.js"></script>
+<script src="../js/Vue.js"></script>
+<!--组件模板必须要有根节点-->
+<script type="text/x-template" id="anchored-heading-template">
+  <div>
+    <h1 v-if="level === 1">
+      <p>值是1</p>
+    </h1>
+    <h2 v-if="level === 2">
+      <p>值是2</p>
+    </h2>
+    <h3 v-if="level === 3">
+      <p>值是3</p>
+    </h3>
+    <h4 v-if="level === 4">
+      <p>值是4</p>
+    </h4>
+    <h5 v-if="level === 5">
+      <p>值是5</p>
+    </h5>
+    <h6 v-if="level === 6">
+      <p>值是6</p>
+    </h6>
+  </div>
+</script>
+<script src="../js/helloVue.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  function event(a, b, c){
+    console.log(a + '--' + b + '---' + c)
+  }
+  function trigger(){
+    event.apply(this, arguments);
+  }
+  trigger(1, 2, 3);
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    +function(){
+      let beforeSendFn = function(ajaxRequest){
+        ajaxRequest.setRequestHeader("Accept", "application/json");
+      };
+      let completeFn = function(){
+      };
+      let successFn = function(json, textStatus, jqXHR){
+        if(typeof json === 'string'){
+          try{
+            json = eval("(" + json + ")");
+          }catch(e){
+          }
+        }
+        if(this.callBack){
+          this.callBack(json);
+        }
+      };
+      let errorFn = function(x, t, e){
+        let data = {
+          isSuccess : false
+        };
+        if(t == "timeout"){
+          data.resultMsg = "请求超时";
+        }else if(x.status == 404){
+          data.resultMsg = "404:您访问的资源不存在";
+        }else if(x.status == 403){
+          data.resultMsg = "403:您的访问被拒绝";
+        }else if(x.readyState < 4){
+          //data.resultMsg = "请求失败";
+          //请求未完成不再提示
+          return;
+        }else{
+          //data.resultMsg = "未知异常！源：" + (x && x.responseText) + "； 错误类型：" + t + "；异常：" + e;
+          data.resultMsg = (x.responseJSON && x.responseJSON.resultMsg) || e || '未知错误' + ((x.responseJSON && x.responseJSON.errorCode) || x.statusText || '');
+        }
+        /*if(x.responseJSON && x.responseJSON.errorCode == 'error.notLogin'){
+          var loginUrl = mpUrlsObj.login.login;
+          var returnUrl = window.location.href;
+          location.href = loginUrl + "&returnUrl=" + returnUrl;
+          return;
+        }*/
+        if(this.callBack){
+          //类型处理暂定
+          this.callBack(data);
+        }
+
+      };
+      window.Common = {
+        sendData(url, data, callBack, options){
+          if(!Common.preventSend || (options && options.important)){
+            options = options || {};
+            $.ajax($.extend({
+              url : url,
+              type : 'post',
+              async : true,
+              data : data,
+              xhrFields : {
+                withCredentials : true
+              },
+              beforeSend : beforeSendFn,
+              complete : function(XMLHttpRequest, textStatus){
+                completeFn(XMLHttpRequest, textStatus);
+              },
+              success : successFn,
+              error(XMLHttpRequest, textStatus, errorThrown){
+                errorFn.call(this, XMLHttpRequest, textStatus, errorThrown);
+              },
+              callBack : callBack
+            }, options));
+          }
+        },
+        encode(encodeStr){
+          return encodeURIComponent(encodeStr);
+        },
+        decode(decodeStr){
+          return decodeURIComponent(decodeStr);
+        }
+      };
+    }();
+    Common.sendData(
+      'http://10.1.8.129:8080/services/appTestWeb/getValue', {
+        id : 1,
+        name : 'wang',
+        //test : 'testing'
+      },
+      function(data){
+        console.log(data)
+      }
+    )
+</script>
+</body>
+</html>

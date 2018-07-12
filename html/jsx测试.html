@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Hello React!</title>
+  <!-- 请先于 index.html 中引入 react.js, react-dom.js 和 babel-core 的 browser.min.js -->
+  <script src="../js/react.min.js"></script>
+  <script src="../js/react-dom.min.js"></script>
+  <script src="../js/browser.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<reacttest></reacttest>
+<script type="text/babel">
+  // 程式码写在这边！
+  ReactDOM.render(
+    <h1>Hello, world!</h1>,
+    document.getElementById('example')
+  );
+
+  class reacttest extends React.Component {
+    render(){
+      return (
+        <div>
+          <p>Hello React!</p>
+          <MessageList/>
+        </div>
+      )
+    }
+  }
+</script>
+</body>
+</html>

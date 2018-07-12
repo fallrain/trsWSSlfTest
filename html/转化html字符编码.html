@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+
+</style>
+<body>
+<span></span>
+<script src="../js/jquery-1.11.0.js"></script>
+<script>
+  var convert = function(code){
+    var parDom = $('<span>');
+    var str = parDom.html(code).text();
+    return str;
+  }
+  var a = convert('&lt;script&gt;alert();&lt;/script&gt;');
+  var s='<script>alert();<\/script>'
+  convert(s);
+  console.log(s);
+  console.log(a);
+</script>
+</body>
+</html>
