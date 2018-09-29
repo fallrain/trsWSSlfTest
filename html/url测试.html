@@ -13,14 +13,23 @@
 <script src="../js/common.js"></script>
 <script>
   Common.sendFormData('http://172.16.167.4:8081/webchat-app/appTestWeb/testGateway',
-    function(data){
+    JSON.stringify({
+      name: 'zhang'
+    }),
+    function (data) {
       debugger
     },
-    JSON.stringify({
-      name : 'zhang'
-    }),
     {
-      contentType : 'application/json'
+      contentType: 'application/json'
+    }
+  );
+  var id = 12345;
+  Common.sendFormData('/webchat-app',
+    {
+      user_id: id
+    },
+    function (data) {
+      console.log(data);
     }
   );
 </script>

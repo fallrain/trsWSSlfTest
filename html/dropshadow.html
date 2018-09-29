@@ -6,12 +6,29 @@
 </head>
 <link rel="stylesheet" href="../css/main.css">
 <style>
+  .icon-color {
+    display: inline-block;
+    width: 144px;
+    height: 144px;
+    background: url('https://user-gold-cdn.xitu.io/2018/7/31/164f0e6745afe2ba?w=144&h=144&f=png&s=2780') no-repeat center / cover;
+    //overflow: hidden;
+    margin-left: 200px;
+  }
 
+  .icon-color:after {
+    content: '';
+    display: block;
+    height: 100%;
+    transform: translateX(-100%);
+    background: inherit;
+    filter: drop-shadow(200px 200px 0 #42b983);
+  / / 需要修改的颜色值
+  }
 </style>
 <body>
 <div>
   <div class="qq"></div>
-
+  <i class="icon-color"></i>
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
 </body>

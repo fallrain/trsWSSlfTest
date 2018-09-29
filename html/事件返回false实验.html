@@ -8,11 +8,20 @@
 <style>
 
 </style>
+<!--onclick 直接在属性上写时间return false可以阻止默认事件，但是换成函数就行-->
 <body>
 <div>
-  <div class="qq"></div>
-
+  <a class="qq" onclick="f(event);" href="123.html"></a>
+  <a href="123.html" onclick="console.log('The link was clicked.'); return false" class="qq">
+    Click me
+  </a>
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  function f(e) {
+    e.preventDefault();
+    return false;
+  }
+</script>
 </body>
 </html>

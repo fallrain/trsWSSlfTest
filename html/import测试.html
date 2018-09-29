@@ -8,11 +8,21 @@
 <style>
 
 </style>
+<!--form提交不同的多个name会提多个参数-->
 <body>
 <div>
   <div class="qq"></div>
+  <form action="/trsWSSlfTest/json/specData.json" target="fm">
+    <input type="checkbox" name="a" value="1">
+    <input type="checkbox" name="a" value="2">
+    <button>tijiao</button>
+  </form>
+  <iframe src="" frameborder="0"name="fm"></iframe>
 
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
+<script type="module">
+  import a, {f, f2} from '../js/export1.js'
+</script>
 </body>
 </html>

@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+<div onclick="App.fn1()">展示</div>
+<!--class里无法使用-->
+<script>
+  class App {
+    fn() {
+      alert('this is fn');
+    }
+
+    fn1 = () => {
+      console.log('will show function fn');
+      this.fn();
+    }
+  }
+</script>
 </body>
 </html>

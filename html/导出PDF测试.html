@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
+
 <body>
-$END$
+<div id="test" style="padding: 10px; background: #f5da55;width: 100px;height: 200px;">
+  <h4 style="color: #000; ">Hello world!
+    这是个测试页面 <br>
+    试试导出PDF
+  </h4>
+</div>
+<img src="" id="img">
+<button type="button" onclick="exportPdf();">导出PDF</button>
+<script src="../js/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"
+        integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+        crossorigin="anonymous"></script>
+<script>
+  function exportPdf() {
+    html2canvas(document.getElementById("test"), {
+      onrendered: function (canvas) {
+
+        //通过html2canvas将html渲染成canvas，然后获取图片数据
+        var imgData = canvas.toDataURL('image/jpeg');
+        document.getElementById('img').setAttribute("src", imgData);
+        //初始化pdf，设置相应格式
+        var doc = new jsPDF("p", "mm", "a4");
+        doc.setFontSize(16);
+        doc.text(35, 25, "Octonyan 的丰盛的 jsPDF");
+        doc.addImage(imgData, 'JPEG', 15, 40, 180, 180);
+
+        //输出保存命名为content的pdf
+        doc.save('test.pdf');
+      }
+    });
+
+  }
+</script>
 </body>
+
 </html>

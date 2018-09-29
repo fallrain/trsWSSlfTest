@@ -11,8 +11,16 @@
 <body>
 <div>
   <div class="qq"></div>
+  <div class="qq1" style="height: 2000px;"></div>
 
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  function f() {
+    var of = $('.qq1').offset();
+    console.log('x:' + of.left);
+    console.log('y:' + of.top);
+  }
+</script>
 </body>
 </html>
