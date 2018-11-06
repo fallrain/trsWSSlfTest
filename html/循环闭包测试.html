@@ -13,13 +13,38 @@
 <li>2</li>
 <script src="../js/jquery-1.11.0.js"></script>
 <script>
-  for(var i = 0; i < 3; i++){
+  for (var i = 0; i < 3; i++) {
     var li = $('li').eq(i)
-    li.click((function(li){
-      return function(){
+    li.click((function (li) {
+      return function () {
         alert(li.html());
       }
     })(li));
+  }
+
+  for (var i = 0; i < 10; ++i) {
+
+    function a() {
+      var newi = i;
+      setTimeout(function () {
+        console.log(newi)
+      });
+    }
+
+    a();
+  }
+  for (var i = 0; i < 3; ++i) {
+    setTimeout((function () {
+      var newi = i;
+      return function () {
+        console.log(newi + 'ss')
+      }
+    })());
+  }
+  for (var i = 0; i < 10; ++i) {
+    setTimeout(function () {
+      console.log(i + 'ww')
+    });
   }
 </script>
 </body>

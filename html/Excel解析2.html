@@ -44,29 +44,29 @@
 
   var wtf_mode = false;
 
-  function fixdata(data){
+  function fixdata(data) {
     var o = "", l = 0, w = 10240;
-    for(; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
+    for (; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
     o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
     return o;
   }
 
-  function to_json(workbook){
+  function to_json(workbook) {
     var result = {};
-    workbook.SheetNames.forEach(function(sheetName){
+    workbook.SheetNames.forEach(function (sheetName) {
       var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-      if(roa.length > 0){
+      if (roa.length > 0) {
         result[sheetName] = roa;
       }
     });
     return result;
   }
 
-  function to_formulae(workbook){
+  function to_formulae(workbook) {
     var result = [];
-    workbook.SheetNames.forEach(function(sheetName){
+    workbook.SheetNames.forEach(function (sheetName) {
       var formulae = X.utils.get_formulae(workbook.Sheets[sheetName]);
-      if(formulae.length > 0){
+      if (formulae.length > 0) {
         result.push("SHEET: " + sheetName);
         result.push("");
         result.push(formulae.join("\n"));
@@ -75,11 +75,11 @@
     return result.join("\n");
   }
 
-  function to_csv(workbook){
+  function to_csv(workbook) {
     var result = [];
-    workbook.SheetNames.forEach(function(sheetName){
+    workbook.SheetNames.forEach(function (sheetName) {
       var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
-      if(csv.length > 0){
+      if (csv.length > 0) {
         result.push("SHEET: " + sheetName);
         result.push("");
         result.push(csv);
@@ -101,9 +101,9 @@
    return result.join("\n");
    }*/
 
-  function process_wb(wb,type){
+  function process_wb(wb, type) {
     var output = "";
-    switch(type){
+    switch (type) {
       case "json":
         output = JSON.stringify(to_json(wb), 2, 2);
         break;
@@ -113,20 +113,21 @@
       default:
         output = to_csv(wb);
     }
-    if(out.innerText === undefined) out.textContent = output;
+    if (out.innerText === undefined) out.textContent = output;
     else out.innerText = output;
-    if(typeof console !== 'undefined') console.log("output", new Date());
+    if (typeof console !== 'undefined') console.log("output", new Date());
   }
 
   var xlf = document.getElementById('xlf');
-  function handleFile(e){
+
+  function handleFile(e) {
     var files = e.target.files;
     var f = files[0];
     {
       var reader = new FileReader();
       var name = f.name;
-      reader.onload = function(e){
-        if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
+      reader.onload = function (e) {
+        if (typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
         var data = e.target.result;
 
         var wb;
@@ -134,12 +135,13 @@
         var arr = fixdata(data);
         wb = X.read(btoa(arr), {type: 'base64'});
         process_wb(wb);
-      //};
-      reader.readAsArrayBuffer(f);
+        //};
+        reader.readAsArrayBuffer(f);
+      }
     }
   }
 
-  if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+  if (xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 </script>
 </body>
 </html>

@@ -14,20 +14,32 @@
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
 <script>
-  let a = new Promise(function(resolve, reject){
-    setTimeout(function(){
-      reject('拒绝')
-    }, 1000);
-    /*setTimeout(function(){
+  /*promise可以链式操作*/
+  let a = new Promise(function (resolve, reject) {
+    /* setTimeout(function () {
+       reject('拒绝')
+     }, 1000);*/
+    setTimeout(function () {
       resolve('同意')
-    }, 1000);*/
+    }, 1000);
   });
-  a.then(function(a){
+
+  /*a.then(function (a) {
     console.log(a)
-  }).catch(function(a){
+  }).catch(function (a) {
     console.log(a)
+  });*/
+
+  function p1() {
+    return a.then(function (value) {
+      return Promise.resolve(value + '+1');
+      //return Promise.resolve(value + '+1');//是等价的？
+    }).catch(v => v + '-1')
+  }
+
+  p1().then(function (v) {
+    console.log(v);
   });
-  console.log('aa')
 </script>
 </body>
 </html>
