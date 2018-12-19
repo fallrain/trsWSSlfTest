@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script src="../js/ajaxtest.js"></script>
+<script>
+  class Http {
+    constructor(cfg) {
+      this.cfg = cfg ? JSON.parse(JSON.stringify(cfg)) : {};
+    }
+
+    send() {
+      const request = new XMLHttpRequest();
+      request.open('GET', 'somepage.xml', true);
+      //request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      request.send(null);
+      request.onreadystatechange = function () {
+        let DONE = this.DONE || 4;
+        if (this.readyState === DONE) {
+          alert(this.readyState);
+        }
+      };
+    }
+  }
+
+
+</script>
+</body>
+</html>

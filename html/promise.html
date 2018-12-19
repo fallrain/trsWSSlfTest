@@ -15,20 +15,30 @@
 </div>
 <script src="../js/jquery-1.8.3.min.js"></script>
 <script>
-  function set(time){
-    return new Promise((resolve, reject) =>{
+  function set(time) {
+    return new Promise((resolve, reject) => {
       let a;
-      setTimeout(function(){
+      setTimeout(function () {
         a = 2;
         resolve(a)
       }, time)
     });
   }
 
-  set(2000).then(function(val){
+  set(2000).then(function (val) {
     alert(1)
   });
-  alert(2)
+  var ay = [1, 2, 3].map(v => {
+    return new Promise(r => {
+      console.log(v)
+      r('新结果：' + v);
+    });
+  });
+  Promise.all(ay).then(r => {
+    r.forEach(v => {
+      console.log(v)
+    })
+  })
 </script>
 </body>
 </html>

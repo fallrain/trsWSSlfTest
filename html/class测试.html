@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<link rel="stylesheet" href="../css/main.css">
+<style>
+
+</style>
+<body>
+<div>
+  <div class="qq"></div>
+
+</div>
+<script src="../js/jquery-1.8.3.min.js"></script>
+<script>
+  class A {
+    constructor(cfg) {
+      this.name = cfg.name;
+    }
+
+    add() {
+      this.name += '1';
+      console.log(this.name);
+    }
+  }
+
+  var a = new A({
+    name: 'wang'
+  });
+  a.add();
+
+  class B extends A {
+    constructor(cfg) {
+      super(cfg);
+    }
+  }
+
+  var b = new B({
+    name: 'liu'
+  });
+  b.add();
+</script>
+</body>
+</html>
