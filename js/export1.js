@@ -7,7 +7,5 @@ export function f() {
 export function f2() {
   alert('导出的函数2')
 }
-
-export default function () {
-  alert('这是默认导出的')
-}
+export const v1 = 4;
+export default {f,v1}
