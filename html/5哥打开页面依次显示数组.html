@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  var ay = [1, 2, 3, 4, 5, 6];
+  var ayIndex = localStorage.getItem('ayIndex') || 0;
+  ayIndex *= 1;
+  var nextIndex;
+  if (ayIndex === ay.length - 1) {
+    nextIndex = 0;
+  } else {
+    nextIndex = ayIndex + 1;
+  }
+  localStorage.setItem('ayIndex', nextIndex);
+</script>
+</html>
