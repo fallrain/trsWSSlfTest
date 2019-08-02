@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>html转图片</title>
+</head>
+<body>
+<div id="cc">
+  dsdasdas
+</div>
+
+<canvas width="320" height="180" style="width:160px;height:90px;" id="id"></canvas>
+</body>
+<script src="../node_modules/html2canvas/dist/html2canvas.js"></script>
+<script>
+  html2canvas(document.getElementById('cc'),{
+    //backgroundColor:'#000',
+    width:100,
+    height:100,
+    foreignObjectRendering:false
+  }).then(function(canvas) {
+    debugger
+    document.body.appendChild(canvas);
+  });
+</script>
+</html>

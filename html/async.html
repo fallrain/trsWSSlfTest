@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  function f1() {
+    console.log('this is f1');
+    return new Promise(function (r,rj) {
+      //rj('f1 return');
+      r('f1 return');
+    });
+  }
+
+  function f2() {
+    console.log('this is f2');
+    return 'f2 return'
+  }
+ function test(){
+   return new Promise(function (r) {
+     console.log('f3 ing');
+     //r(1)
+   });
+ }
+  async function f3() {
+    await test();
+    console.log('f3 end');
+  }
+
+  async function fn() {
+    const a = await f1();
+    console.log(a);
+    const b = await f2();
+    console.log(b);
+    const c = await f3();
+    console.log('end');
+  }
+
+  fn();
+</script>
+</html>

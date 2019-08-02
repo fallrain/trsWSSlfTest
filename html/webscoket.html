@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  const ws = new WebSocket('wss://127.0.0.1:10191');
+  // const ws = new WebSocket('wss://echo.websocket.org');
+  ws.onopen = (data) => {
+    ws.send('send');
+    console.log(data);
+  }
+  ws.onmessage = data => {
+    console.log(data);
+  }
+  /*var ws = new WebSocket("wss://echo.websocket.org");
+
+  ws.onopen = function(evt) {
+    console.log("Connection open ...");
+    ws.send("Hello WebSockets!dsds");
+  };
+
+  ws.onmessage = function(evt) {
+    console.log( "Received Message: " + evt.data);
+    ws.close();
+  };
+
+  ws.onclose = function(evt) {
+    console.log("Connection closed.");
+  };*/
+
+</script>
+</body>
+</html>
