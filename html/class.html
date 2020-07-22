@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  class a{
+    constructor(name){
+      this.name=name
+    }
+    set(a){
+      this.name=a;
+    }
+  }
+  const aa=new a(111)
+  console.log(aa.name);
+  aa.set(6666)
+  console.log(aa.name);
+  class b extends a{
+    constructor(props) {
+      super(props);
+      this.age=props.age
+    }
+  }
+  const bb=new b({age:555});
+  console.log(bb.name)
+  bb.set('sun')
+  console.log(bb.name)
+  console.log(bb.age)
+</script>
+</body>
+</html>
