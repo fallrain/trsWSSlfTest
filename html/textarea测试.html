@@ -6,13 +6,18 @@
 </head>
 <style>
   .qqq {
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    overflow-y: hidden;
-    word-break: break-all;
-    word-wrap: break-word;
+    width: 100px;
+    min-height: 20px;
+    max-height: 70px;
+    outline: 0;
+    border: 1px solid #397EFF;
+    font-size: 13px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-user-modify: read-write-plaintext-only;
+  }
+  [contentEditable=true]:empty:not(:focus):before {
+    content: attr(data-text);
   }
 </style>
 <body>

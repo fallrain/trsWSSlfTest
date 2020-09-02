@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+
 </body>
+<script src="../js/util.js"></script>
+<script>
+  const a1 = {
+    creditModel: "0",
+    farWeek: "0",
+    farWeekDate: "",
+    isCheckCreditModel: "0",
+    isCheckFarWeek: "0",
+    isStock: "1",
+    number: 1,
+    priceType: "PT",
+    priceVersion: "",
+    productCode: "AB8M60000",
+    productSeries: "",
+    transferVersion: ""
+  };
+  a2 = {
+    creditModel: "0",
+    farWeek: "0",
+    isCheckCreditModel: "0",
+    isCheckFarWeek: "0",
+    isStock: "1",
+    number: 1,
+    priceType: "PT",
+    priceVersion: "",
+    productCode: "AB8M60000",
+    productSeries: ""
+  };
+  b = Util.findDifKey(a2, a1);
+  console.log(b);
+</script>
 </html>
